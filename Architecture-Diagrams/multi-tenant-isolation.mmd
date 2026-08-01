@@ -1,0 +1,26 @@
+flowchart LR
+  subgraph client [Client]
+    Token[JWT_with_tenant_id]
+  end
+
+  subgraph edge [Edge_Layer]
+    BFF[BFF]
+    Ctx[Tenant_Context]
+    BFF --> Ctx
+  end
+
+  subgraph services [Platform_Services]
+    SvcA[Application_Service]
+    SvcB[Platform_Service]
+  end
+
+  subgraph data [Persistence]
+    DBA[(Service_A_DB)]
+    DBB[(Service_B_DB)]
+  end
+
+  Token --> BFF
+  Ctx -->|X-Tenant-Id header| SvcA
+  Ctx -->|X-Tenant-Id header| SvcB
+  SvcA -->|WHERE tenant_id| DBA
+  SvcB -->|WHERE tenant_id| DBB

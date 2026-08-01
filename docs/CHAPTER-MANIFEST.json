@@ -1,0 +1,1996 @@
+{
+  "version": "1.0",
+  "total": 192,
+  "chapters": [
+    {
+      "id": "v1-01",
+      "title": "Vision and Mission",
+      "volume": 1,
+      "file": "Volume-1-Foundation/01-vision-and-mission.md",
+      "status": "reviewed",
+      "depends_on": []
+    },
+    {
+      "id": "v1-02",
+      "title": "Platform Objective",
+      "volume": 1,
+      "file": "Volume-1-Foundation/02-platform-objective.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-01"
+      ]
+    },
+    {
+      "id": "v1-03",
+      "title": "Core Philosophy",
+      "volume": 1,
+      "file": "Volume-1-Foundation/03-core-philosophy.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-02"
+      ]
+    },
+    {
+      "id": "v1-04",
+      "title": "Scope and Domain Neutrality",
+      "volume": 1,
+      "file": "Volume-1-Foundation/04-scope-and-domain-neutrality.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-03"
+      ]
+    },
+    {
+      "id": "v1-05",
+      "title": "Architecture Principles",
+      "volume": 1,
+      "file": "Volume-1-Foundation/05-architecture-principles.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-04"
+      ]
+    },
+    {
+      "id": "v1-06",
+      "title": "Layered Architecture",
+      "volume": 1,
+      "file": "Volume-1-Foundation/06-layered-architecture.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-05"
+      ]
+    },
+    {
+      "id": "v1-07",
+      "title": "Frontend Layer",
+      "volume": 1,
+      "file": "Volume-1-Foundation/07-frontend-layer.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-06"
+      ]
+    },
+    {
+      "id": "v1-08",
+      "title": "Backend For Frontend BFF",
+      "volume": 1,
+      "file": "Volume-1-Foundation/08-bff-layer.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-07"
+      ]
+    },
+    {
+      "id": "v1-09",
+      "title": "Platform Services Layer",
+      "volume": 1,
+      "file": "Volume-1-Foundation/09-platform-services-layer.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-08"
+      ]
+    },
+    {
+      "id": "v1-10",
+      "title": "Shared Libraries",
+      "volume": 1,
+      "file": "Volume-1-Foundation/10-shared-libraries.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-09"
+      ]
+    },
+    {
+      "id": "v1-11",
+      "title": "Model Separation",
+      "volume": 1,
+      "file": "Volume-1-Foundation/11-model-separation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-10"
+      ]
+    },
+    {
+      "id": "v1-12",
+      "title": "Read Write Separation",
+      "volume": 1,
+      "file": "Volume-1-Foundation/12-read-write-separation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-11"
+      ]
+    },
+    {
+      "id": "v1-13",
+      "title": "Transactional vs Reporting",
+      "volume": 1,
+      "file": "Volume-1-Foundation/13-transactional-vs-reporting.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-12"
+      ]
+    },
+    {
+      "id": "v1-14",
+      "title": "Independent Services",
+      "volume": 1,
+      "file": "Volume-1-Foundation/14-independent-services.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-13"
+      ]
+    },
+    {
+      "id": "v1-15",
+      "title": "DTO Standards",
+      "volume": 1,
+      "file": "Volume-1-Foundation/15-dto-standards.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-14"
+      ]
+    },
+    {
+      "id": "v1-16",
+      "title": "Entity Standards",
+      "volume": 1,
+      "file": "Volume-1-Foundation/16-entity-standards.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-15"
+      ]
+    },
+    {
+      "id": "v1-17",
+      "title": "Mapping Strategy",
+      "volume": 1,
+      "file": "Volume-1-Foundation/17-mapping-strategy.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-16"
+      ]
+    },
+    {
+      "id": "v1-18",
+      "title": "API Standards",
+      "volume": 1,
+      "file": "Volume-1-Foundation/18-api-standards.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-17"
+      ]
+    },
+    {
+      "id": "v1-19",
+      "title": "Error Handling",
+      "volume": 1,
+      "file": "Volume-1-Foundation/19-error-handling.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18"
+      ]
+    },
+    {
+      "id": "v1-20",
+      "title": "Logging Standards",
+      "volume": 1,
+      "file": "Volume-1-Foundation/20-logging-standards.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v1-21",
+      "title": "Security Foundation",
+      "volume": 1,
+      "file": "Volume-1-Foundation/21-security-foundation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-20"
+      ]
+    },
+    {
+      "id": "v1-22",
+      "title": "Configuration Management",
+      "volume": 1,
+      "file": "Volume-1-Foundation/22-configuration-management.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-21"
+      ]
+    },
+    {
+      "id": "v1-23",
+      "title": "Folder Structure",
+      "volume": 1,
+      "file": "Volume-1-Foundation/23-folder-structure.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-22"
+      ]
+    },
+    {
+      "id": "v1-24",
+      "title": "Naming Conventions",
+      "volume": 1,
+      "file": "Volume-1-Foundation/24-naming-conventions.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-23"
+      ]
+    },
+    {
+      "id": "v1-25",
+      "title": "Coding Standards",
+      "volume": 1,
+      "file": "Volume-1-Foundation/25-coding-standards.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-24"
+      ]
+    },
+    {
+      "id": "v1-26",
+      "title": "Development Workflow",
+      "volume": 1,
+      "file": "Volume-1-Foundation/26-development-workflow.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-25"
+      ]
+    },
+    {
+      "id": "v1-27",
+      "title": "Testing Standards",
+      "volume": 1,
+      "file": "Volume-1-Foundation/27-testing-standards.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-26"
+      ]
+    },
+    {
+      "id": "v1-28",
+      "title": "Documentation Standards",
+      "volume": 1,
+      "file": "Volume-1-Foundation/28-documentation-standards.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-27"
+      ]
+    },
+    {
+      "id": "v1-29",
+      "title": "DevOps Standards",
+      "volume": 1,
+      "file": "Volume-1-Foundation/29-devops-standards.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-28"
+      ]
+    },
+    {
+      "id": "v1-30",
+      "title": "Infrastructure Overview",
+      "volume": 1,
+      "file": "Volume-1-Foundation/30-infrastructure-overview.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-29"
+      ]
+    },
+    {
+      "id": "v1-31",
+      "title": "Docker and Containers",
+      "volume": 1,
+      "file": "Volume-1-Foundation/31-docker-and-containers.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-30"
+      ]
+    },
+    {
+      "id": "v1-32",
+      "title": "CI CD Pipeline",
+      "volume": 1,
+      "file": "Volume-1-Foundation/32-cicd-pipeline.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-31"
+      ]
+    },
+    {
+      "id": "v1-33",
+      "title": "Monitoring and Observability",
+      "volume": 1,
+      "file": "Volume-1-Foundation/33-monitoring-observability.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-32"
+      ]
+    },
+    {
+      "id": "v1-34",
+      "title": "Architecture Decision Records",
+      "volume": 1,
+      "file": "Volume-1-Foundation/34-architecture-decision-records.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-33"
+      ]
+    },
+    {
+      "id": "v1-35",
+      "title": "Engineering Principles",
+      "volume": 1,
+      "file": "Volume-1-Foundation/35-engineering-principles.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-34"
+      ]
+    },
+    {
+      "id": "v1-36",
+      "title": "Platform First Design",
+      "volume": 1,
+      "file": "Volume-1-Foundation/36-platform-first-design.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-35"
+      ]
+    },
+    {
+      "id": "v1-37",
+      "title": "API First Design",
+      "volume": 1,
+      "file": "Volume-1-Foundation/37-api-first-design.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-36"
+      ]
+    },
+    {
+      "id": "v1-38",
+      "title": "Cloud Native Principles",
+      "volume": 1,
+      "file": "Volume-1-Foundation/38-cloud-native-principles.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-37"
+      ]
+    },
+    {
+      "id": "v1-39",
+      "title": "Common Functionalities",
+      "volume": 1,
+      "file": "Volume-1-Foundation/39-common-functionalities.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-38"
+      ]
+    },
+    {
+      "id": "v1-40",
+      "title": "Volume 1 Index",
+      "volume": 1,
+      "file": "Volume-1-Foundation/40-volume1-index.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-39"
+      ]
+    },
+    {
+      "id": "v2-01",
+      "title": "Identity and Access",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/01-identity-and-access.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-02",
+      "title": "Authentication",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/02-authentication.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-03",
+      "title": "Authorization",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/03-authorization.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-04",
+      "title": "User Management",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/04-user-management.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-05",
+      "title": "Role Management",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/05-role-management.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-06",
+      "title": "Permission Management",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/06-permission-management.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-07",
+      "title": "Tenant Management",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/07-tenant-management.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-08",
+      "title": "Organization Management",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/08-organization-management.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-09",
+      "title": "Configuration Service",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/09-configuration-service.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-10",
+      "title": "Feature Flags",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/10-feature-flags.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-11",
+      "title": "Logging Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/11-logging-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-12",
+      "title": "Audit Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/12-audit-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-13",
+      "title": "Monitoring Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/13-monitoring-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-14",
+      "title": "Health Checks",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/14-health-checks.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-15",
+      "title": "Notification Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/15-notification-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-16",
+      "title": "Template Engine",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/16-template-engine.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-17",
+      "title": "Scheduler Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/17-scheduler-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-18",
+      "title": "Roster Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/18-roster-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-19",
+      "title": "Workflow Engine",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/19-workflow-engine.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-20",
+      "title": "Rule Engine",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/20-rule-engine.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-21",
+      "title": "Search Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/21-search-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-22",
+      "title": "Dashboard Engine",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/22-dashboard-engine.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-23",
+      "title": "Report Engine",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/23-report-engine.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-24",
+      "title": "Document Engine",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/24-document-engine.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-25",
+      "title": "File Management",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/25-file-management.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-26",
+      "title": "Import Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/26-import-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-27",
+      "title": "Export Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/27-export-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-28",
+      "title": "Queue Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/28-queue-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-29",
+      "title": "Cache Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/29-cache-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-30",
+      "title": "Event Bus",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/30-event-bus.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-31",
+      "title": "Integration Framework",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/31-integration-framework.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-32",
+      "title": "Master Data Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/32-master-data-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-33",
+      "title": "Localization Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/33-localization-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-34",
+      "title": "Validation Platform",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/34-validation-platform.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-35",
+      "title": "Exception Handling",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/35-exception-handling.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-36",
+      "title": "Response Formatting",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/36-response-formatting.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-37",
+      "title": "Pagination Sorting Filtering",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/37-pagination-sorting-filtering.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-38",
+      "title": "Global Search",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/38-global-search.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-39",
+      "title": "Bulk Operations",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/39-bulk-operations.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-40",
+      "title": "Document Generation",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/40-document-generation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-41",
+      "title": "Developer Utilities",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/41-developer-utilities.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-42",
+      "title": "Notification Email Channel",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/42-notification-email-channel.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-43",
+      "title": "Notification SMS Channel",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/43-notification-sms-channel.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-44",
+      "title": "Notification Push Channel",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/44-notification-push-channel.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-45",
+      "title": "Notification In App Channel",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/45-notification-in-app-channel.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-46",
+      "title": "Notification WhatsApp Channel",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/46-notification-whatsapp-channel.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-47",
+      "title": "Scheduler Cron Jobs",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/47-scheduler-cron-jobs.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-48",
+      "title": "Scheduler Retry Processing",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/48-scheduler-retry-processing.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-49",
+      "title": "Roster Appointments",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/49-roster-appointments.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-50",
+      "title": "Roster Availability",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/50-roster-availability.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-51",
+      "title": "Roster Conflict Detection",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/51-roster-conflict-detection.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-52",
+      "title": "Workflow State Machine",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/52-workflow-state-machine.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-53",
+      "title": "Rule Engine Evaluation",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/53-rule-engine-evaluation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-54",
+      "title": "Search Indexing",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/54-search-indexing.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-55",
+      "title": "Dashboard Widget Model",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/55-dashboard-widget-model.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-56",
+      "title": "Report Template Model",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/56-report-template-model.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-57",
+      "title": "Document Template Pipeline",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/57-document-template-pipeline.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-58",
+      "title": "File Upload Download",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/58-file-upload-download.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-59",
+      "title": "Import Validation Pipeline",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/59-import-validation-pipeline.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-60",
+      "title": "Export Format Handlers",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/60-export-format-handlers.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-61",
+      "title": "Queue Dead Letter Handling",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/61-queue-dead-letter-handling.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-62",
+      "title": "Cache Invalidation Strategy",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/62-cache-invalidation-strategy.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-63",
+      "title": "Event Bus Schema Registry",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/63-event-bus-schema-registry.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-64",
+      "title": "Integration Adapter Pattern",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/64-integration-adapter-pattern.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-65",
+      "title": "Master Data Versioning",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/65-master-data-versioning.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-66",
+      "title": "Localization Resource Bundles",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/66-localization-resource-bundles.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-67",
+      "title": "AI Services Overview",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/67-ai-services-overview.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-68",
+      "title": "Metadata Engine",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/68-metadata-engine.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-69",
+      "title": "Form Builder",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/69-form-builder.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-70",
+      "title": "Screen Builder",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/70-screen-builder.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-71",
+      "title": "Plugin Architecture",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/71-plugin-architecture.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v2-72",
+      "title": "Low Code Components",
+      "volume": 2,
+      "file": "Volume-2-Platform-Services/72-low-code-components.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-18",
+        "v1-19"
+      ]
+    },
+    {
+      "id": "v3-01",
+      "title": "Project Setup",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/01-project-setup.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v1-23"
+      ]
+    },
+    {
+      "id": "v3-02",
+      "title": "Development Environment",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/02-development-environment.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-01"
+      ]
+    },
+    {
+      "id": "v3-03",
+      "title": "Repository Structure",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/03-repository-structure.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-02"
+      ]
+    },
+    {
+      "id": "v3-04",
+      "title": "Create New Service",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/04-create-new-service.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-03"
+      ]
+    },
+    {
+      "id": "v3-05",
+      "title": "Create New API",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/05-create-new-api.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-04"
+      ]
+    },
+    {
+      "id": "v3-06",
+      "title": "Create Request DTO",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/06-create-request-dto.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-05"
+      ]
+    },
+    {
+      "id": "v3-07",
+      "title": "Create Response DTO",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/07-create-response-dto.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-06"
+      ]
+    },
+    {
+      "id": "v3-08",
+      "title": "Create Entity",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/08-create-entity.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-07"
+      ]
+    },
+    {
+      "id": "v3-09",
+      "title": "Create Mapper",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/09-create-mapper.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-08"
+      ]
+    },
+    {
+      "id": "v3-10",
+      "title": "Create Domain Model",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/10-create-domain-model.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-09"
+      ]
+    },
+    {
+      "id": "v3-11",
+      "title": "Create Workflow",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/11-create-workflow.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-10"
+      ]
+    },
+    {
+      "id": "v3-12",
+      "title": "Create Scheduler Job",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/12-create-scheduler-job.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-11"
+      ]
+    },
+    {
+      "id": "v3-13",
+      "title": "Create Notification Event",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/13-create-notification-event.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-12"
+      ]
+    },
+    {
+      "id": "v3-14",
+      "title": "Create Dashboard",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/14-create-dashboard.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-13"
+      ]
+    },
+    {
+      "id": "v3-15",
+      "title": "Create Report",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/15-create-report.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-14"
+      ]
+    },
+    {
+      "id": "v3-16",
+      "title": "Unit Testing Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/16-unit-testing-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-15"
+      ]
+    },
+    {
+      "id": "v3-17",
+      "title": "Integration Testing Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/17-integration-testing-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-16"
+      ]
+    },
+    {
+      "id": "v3-18",
+      "title": "E2E Testing Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/18-e2e-testing-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-17"
+      ]
+    },
+    {
+      "id": "v3-19",
+      "title": "Deployment Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/19-deployment-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-18"
+      ]
+    },
+    {
+      "id": "v3-20",
+      "title": "Performance Tuning",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/20-performance-tuning.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-19"
+      ]
+    },
+    {
+      "id": "v3-21",
+      "title": "Security Checklist",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/21-security-checklist.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-20"
+      ]
+    },
+    {
+      "id": "v3-22",
+      "title": "Code Review Checklist",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/22-code-review-checklist.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-21"
+      ]
+    },
+    {
+      "id": "v3-23",
+      "title": "Naming Standards Reference",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/23-naming-standards-reference.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-22"
+      ]
+    },
+    {
+      "id": "v3-24",
+      "title": "Git Workflow",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/24-git-workflow.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-23"
+      ]
+    },
+    {
+      "id": "v3-25",
+      "title": "CI CD Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/25-cicd-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-24"
+      ]
+    },
+    {
+      "id": "v3-26",
+      "title": "Production Readiness",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/26-production-readiness.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-25"
+      ]
+    },
+    {
+      "id": "v3-27",
+      "title": "Environment Configuration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/27-environment-configuration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-26"
+      ]
+    },
+    {
+      "id": "v3-28",
+      "title": "Secrets Management",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/28-secrets-management.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-27"
+      ]
+    },
+    {
+      "id": "v3-29",
+      "title": "Database Migrations",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/29-database-migrations.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-28"
+      ]
+    },
+    {
+      "id": "v3-30",
+      "title": "API Versioning",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/30-api-versioning.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-29"
+      ]
+    },
+    {
+      "id": "v3-31",
+      "title": "Event Publishing Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/31-event-publishing-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-30"
+      ]
+    },
+    {
+      "id": "v3-32",
+      "title": "Event Consumption Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/32-event-consumption-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-31"
+      ]
+    },
+    {
+      "id": "v3-33",
+      "title": "Caching Patterns",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/33-caching-patterns.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-32"
+      ]
+    },
+    {
+      "id": "v3-34",
+      "title": "Queue Processing Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/34-queue-processing-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-33"
+      ]
+    },
+    {
+      "id": "v3-35",
+      "title": "File Upload Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/35-file-upload-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-34"
+      ]
+    },
+    {
+      "id": "v3-36",
+      "title": "Import Data Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/36-import-data-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-35"
+      ]
+    },
+    {
+      "id": "v3-37",
+      "title": "Export Data Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/37-export-data-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-36"
+      ]
+    },
+    {
+      "id": "v3-38",
+      "title": "Search Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/38-search-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-37"
+      ]
+    },
+    {
+      "id": "v3-39",
+      "title": "Audit Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/39-audit-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-38"
+      ]
+    },
+    {
+      "id": "v3-40",
+      "title": "Logging Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/40-logging-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-39"
+      ]
+    },
+    {
+      "id": "v3-41",
+      "title": "Feature Flag Usage",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/41-feature-flag-usage.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-40"
+      ]
+    },
+    {
+      "id": "v3-42",
+      "title": "Localization Implementation",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/42-localization-implementation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-41"
+      ]
+    },
+    {
+      "id": "v3-43",
+      "title": "Master Data Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/43-master-data-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-42"
+      ]
+    },
+    {
+      "id": "v3-44",
+      "title": "BFF Aggregation Patterns",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/44-bff-aggregation-patterns.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-43"
+      ]
+    },
+    {
+      "id": "v3-45",
+      "title": "Frontend Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/45-frontend-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-44"
+      ]
+    },
+    {
+      "id": "v3-46",
+      "title": "Authentication Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/46-authentication-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-45"
+      ]
+    },
+    {
+      "id": "v3-47",
+      "title": "Authorization Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/47-authorization-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-46"
+      ]
+    },
+    {
+      "id": "v3-48",
+      "title": "Multi Tenant Setup",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/48-multi-tenant-setup.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-47"
+      ]
+    },
+    {
+      "id": "v3-49",
+      "title": "Organization Hierarchy Setup",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/49-organization-hierarchy-setup.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-48"
+      ]
+    },
+    {
+      "id": "v3-50",
+      "title": "Workflow Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/50-workflow-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-49"
+      ]
+    },
+    {
+      "id": "v3-51",
+      "title": "Rule Engine Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/51-rule-engine-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-50"
+      ]
+    },
+    {
+      "id": "v3-52",
+      "title": "Roster Integration",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/52-roster-integration.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-51"
+      ]
+    },
+    {
+      "id": "v3-53",
+      "title": "Template Engine Usage",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/53-template-engine-usage.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-52"
+      ]
+    },
+    {
+      "id": "v3-54",
+      "title": "Document Generation Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/54-document-generation-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-53"
+      ]
+    },
+    {
+      "id": "v3-55",
+      "title": "Dashboard Builder Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/55-dashboard-builder-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-54"
+      ]
+    },
+    {
+      "id": "v3-56",
+      "title": "Report Builder Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/56-report-builder-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-55"
+      ]
+    },
+    {
+      "id": "v3-57",
+      "title": "Health Check Implementation",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/57-health-check-implementation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-56"
+      ]
+    },
+    {
+      "id": "v3-58",
+      "title": "Monitoring Instrumentation",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/58-monitoring-instrumentation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-57"
+      ]
+    },
+    {
+      "id": "v3-59",
+      "title": "Error Handling Implementation",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/59-error-handling-implementation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-58"
+      ]
+    },
+    {
+      "id": "v3-60",
+      "title": "Pagination Implementation",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/60-pagination-implementation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-59"
+      ]
+    },
+    {
+      "id": "v3-61",
+      "title": "Filtering Implementation",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/61-filtering-implementation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-60"
+      ]
+    },
+    {
+      "id": "v3-62",
+      "title": "Sorting Implementation",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/62-sorting-implementation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-61"
+      ]
+    },
+    {
+      "id": "v3-63",
+      "title": "Bulk Operations Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/63-bulk-operations-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-62"
+      ]
+    },
+    {
+      "id": "v3-64",
+      "title": "Global Search Implementation",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/64-global-search-implementation.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-63"
+      ]
+    },
+    {
+      "id": "v3-65",
+      "title": "Integration Adapter Development",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/65-integration-adapter-development.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-64"
+      ]
+    },
+    {
+      "id": "v3-66",
+      "title": "Plugin Development",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/66-plugin-development.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-65"
+      ]
+    },
+    {
+      "id": "v3-67",
+      "title": "Metadata Driven Screens",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/67-metadata-driven-screens.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-66"
+      ]
+    },
+    {
+      "id": "v3-68",
+      "title": "Dynamic Forms Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/68-dynamic-forms-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-67"
+      ]
+    },
+    {
+      "id": "v3-69",
+      "title": "Developer CLI Usage",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/69-developer-cli-usage.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-68"
+      ]
+    },
+    {
+      "id": "v3-70",
+      "title": "Code Generator Usage",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/70-code-generator-usage.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-69"
+      ]
+    },
+    {
+      "id": "v3-71",
+      "title": "Reference Implementation Overview",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/71-reference-implementation-overview.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-70"
+      ]
+    },
+    {
+      "id": "v3-72",
+      "title": "Sample Service Walkthrough",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/72-sample-service-walkthrough.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-71"
+      ]
+    },
+    {
+      "id": "v3-73",
+      "title": "Anti Patterns Catalog",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/73-anti-patterns-catalog.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-72"
+      ]
+    },
+    {
+      "id": "v3-74",
+      "title": "Troubleshooting Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/74-troubleshooting-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-73"
+      ]
+    },
+    {
+      "id": "v3-75",
+      "title": "Debugging Platform Services",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/75-debugging-platform-services.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-74"
+      ]
+    },
+    {
+      "id": "v3-76",
+      "title": "Local Development Tips",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/76-local-development-tips.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-75"
+      ]
+    },
+    {
+      "id": "v3-77",
+      "title": "Onboarding Checklist",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/77-onboarding-checklist.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-76"
+      ]
+    },
+    {
+      "id": "v3-78",
+      "title": "Release Checklist",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/78-release-checklist.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-77"
+      ]
+    },
+    {
+      "id": "v3-79",
+      "title": "Incident Response Guide",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/79-incident-response-guide.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-78"
+      ]
+    },
+    {
+      "id": "v3-80",
+      "title": "Volume 3 Index",
+      "volume": 3,
+      "file": "Volume-3-Developer-Guide/80-volume3-index.md",
+      "status": "reviewed",
+      "depends_on": [
+        "v3-79"
+      ]
+    }
+  ]
+}

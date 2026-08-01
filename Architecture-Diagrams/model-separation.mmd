@@ -1,0 +1,29 @@
+flowchart LR
+  subgraph api [API_Boundary]
+    Req[Request_DTO]
+    Res[Response_DTO]
+  end
+
+  subgraph service [Service_Interior]
+    Tx[Transaction_Model]
+    Dom[Domain_Model]
+    MapperIn[Mapper_In]
+    MapperOut[Mapper_Out]
+  end
+
+  subgraph data [Persistence]
+    Ent[Persistence_Entity]
+    Repo[Repository]
+  end
+
+  Req -->|validate| MapperIn
+  MapperIn --> Tx
+  Tx --> Dom
+  Dom -->|toEntity| MapperOut
+  MapperOut --> Ent
+  Ent --> Repo
+  Repo --> Ent
+  Ent -->|toDomain| Dom
+  Dom -->|toResponse| MapperOut
+  MapperOut --> Res
+  Ent -.->|join map| Res

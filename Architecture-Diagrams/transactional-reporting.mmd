@@ -1,0 +1,29 @@
+flowchart TB
+  subgraph transactional [Transactional_Path]
+    API_W[Write_APIs]
+    Cmd[Command_Handlers]
+    TxDB[(Transactional_Store)]
+    API_W --> Cmd --> TxDB
+  end
+
+  subgraph pipeline [Data_Pipeline]
+    Events[Event_Bus]
+    ETL[ETL_or_Stream]
+    Cmd --> Events
+    Events --> ETL
+  end
+
+  subgraph reporting [Reporting_Path]
+    API_R[Read_Report_APIs]
+    Qry[Query_Handlers]
+    RepDB[(Reporting_Store)]
+    Dash[Dashboard_Engine]
+    Rep[Report_Engine]
+    API_R --> Qry --> RepDB
+    Dash --> RepDB
+    Rep --> RepDB
+  end
+
+  ETL --> RepDB
+
+  TxDB -.-x RepDB

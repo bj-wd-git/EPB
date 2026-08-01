@@ -1,0 +1,24 @@
+flowchart TB
+  subgraph svc_a [Service_A]
+    LogicA[Business_Logic]
+    DBA[(Database_A)]
+    LogicA --> DBA
+  end
+
+  subgraph svc_b [Service_B]
+    LogicB[Business_Logic]
+    DBB[(Database_B)]
+    LogicB --> DBB
+  end
+
+  subgraph integration [Integration_Layer]
+    API[HTTP_API]
+    Bus[Event_Bus]
+  end
+
+  LogicA -->|sync call| API
+  API --> LogicB
+  LogicA -->|publish| Bus
+  Bus -->|subscribe| LogicB
+
+  DBA -.-x DBB

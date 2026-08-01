@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+.pglite/
+*.pglite/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# gbrain local (global brain lives in ~/.gbrain)
+.gbrain/
+.gbrain-source
+
+# Build artifacts
+dist/
+build/
+*.log
+
+# Env secrets
+.env
+.env.local
+*.pem

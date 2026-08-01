@@ -1,0 +1,24 @@
+flowchart TB
+  subgraph api [API_Layer]
+    GET[GET_Read]
+    WRITE[POST_PUT_PATCH_DELETE]
+  end
+
+  subgraph service [Service_Interior]
+    Q[Query_Handlers]
+    C[Command_Handlers]
+  end
+
+  subgraph data [Data_Access]
+    ReadRepo[Read_Repositories]
+    WriteRepo[Write_Repositories]
+    TxDB[(Transactional_Store)]
+    ReadDB[(Read_Replica_or_Projection)]
+  end
+
+  GET --> Q
+  WRITE --> C
+  Q --> ReadRepo
+  C --> WriteRepo
+  ReadRepo --> ReadDB
+  WriteRepo --> TxDB

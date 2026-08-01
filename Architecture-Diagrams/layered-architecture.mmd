@@ -1,0 +1,68 @@
+# EPB Layered Architecture
+
+```mermaid
+flowchart TB
+  subgraph clients [Clients]
+    Web[Web_App]
+    Mobile[Mobile_App]
+    API_Client[API_Client]
+  end
+
+  subgraph presentation [Presentation_Layer]
+    FE[Frontend]
+  end
+
+  subgraph edge [Edge_Layer]
+    BFF[Backend_For_Frontend]
+  end
+
+  subgraph platform [Platform_Services]
+    Auth[Authentication]
+    Notif[Notification]
+    Sched[Scheduler]
+    File[File_Management]
+    More[More_Services]
+  end
+
+  subgraph shared [Shared_Layer]
+    Lib[Shared_Libraries]
+  end
+
+  subgraph infra [Infrastructure]
+    DB[(Databases)]
+    Cache[(Cache)]
+    Queue[Message_Queue]
+    Storage[Object_Storage]
+  end
+
+  Web --> FE
+  Mobile --> FE
+  API_Client --> BFF
+  FE --> BFF
+  BFF --> Auth
+  BFF --> Notif
+  BFF --> Sched
+  BFF --> File
+  BFF --> More
+  Auth --> Lib
+  Notif --> Lib
+  Sched --> Lib
+  File --> Lib
+  More --> Lib
+  Lib --> DB
+  Lib --> Cache
+  Lib --> Queue
+  Lib --> Storage
+```
+
+## Description
+
+The Enterprise Platform Blueprint uses strict layering:
+
+1. **Frontend** — UI, state, validation, UX
+2. **BFF** — Single entry point, auth, aggregation, mapping
+3. **Platform Services** — Reusable capabilities, each owning its data
+4. **Shared Libraries** — DTOs, entities, interfaces, validators
+5. **Infrastructure** — Docker, CI/CD, monitoring, queues, storage
+
+No layer skips adjacent layers. Frontend never calls platform services directly.

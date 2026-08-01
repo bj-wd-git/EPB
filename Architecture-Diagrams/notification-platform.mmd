@@ -1,0 +1,11 @@
+flowchart TB
+  App[Application_Service] -->|notification.event| EB[Event_Bus]
+  EB --> NP[Notification_Platform]
+  NP --> TE[Template_Engine]
+  TE -->|platform default + tenant override| NP
+  NP --> Email[Email_Channel]
+  NP --> SMS[SMS_Channel]
+  NP --> Push[Push_Channel]
+  NP --> InApp[In_App_Channel]
+  NP --> WA[WhatsApp_Channel]
+  NP -->|notification.sent| EB
