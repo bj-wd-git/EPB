@@ -4,7 +4,7 @@
  *   node scripts/validate-prd.js --feature notification-retry
  *   node scripts/validate-prd.js --feature notification-retry --score
  *   node scripts/validate-prd.js --all
- *   node scripts/validate-prd.js --feature X --strict
+ *   node scripts/validate-prd.js --feature notification-retry --pipeline
  */
 const fs = require('fs');
 const path = require('path');
@@ -41,6 +41,11 @@ const REQUIRED_DEV_SECTIONS = [
   'Handoff',
 ];
 
+const REQUIRED_WORKFLOWS_SECTIONS = ['Workflow Summary', 'Process Flows', 'WF-001', 'Traceability'];
+const REQUIRED_UX_SECTIONS = ['UX Summary', 'Screen Specifications', 'SCR-001', 'HTML Design Handoff'];
+
+const PIPELINE_STAGES = ['prd', 'doc', 'workflows', 'ux', 'designs'];
+
 function readJson(fp) {
   const raw = fs.readFileSync(fp, 'utf8').replace(/^\uFEFF/, '');
   return JSON.parse(raw);
@@ -48,12 +53,13 @@ function readJson(fp) {
 
 function parseArgs() {
   const args = process.argv.slice(2);
-  const opts = { feature: null, all: false, score: false, strict: false };
+  const opts = { feature: null, all: false, score: false, strict: false, pipeline: false };
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--feature' && args[i + 1]) opts.feature = args[++i];
     else if (args[i] === '--all') opts.all = true;
     else if (args[i] === '--score') opts.score = true;
     else if (args[i] === '--strict') opts.strict = true;
+    else if (args[i] === '--pipeline') opts.pipeline = true;
   }
   return opts;
 }
@@ -126,6 +132,49 @@ function computeScore(prd, dev) {
   return { score: Math.min(100, score), breakdown };
 }
 
+function validatePipeline(dir, slug) {
+  const errors = [];
+  const stages = {};
+
+  stages.prd = fs.existsSync(path.join(dir, 'PRD.md')) ? 'complete' : 'missing';
+  stages.doc = fs.existsSync(path.join(dir, 'dev-docs.md')) ? 'complete' : 'missing';
+  if (stages.prd === 'missing') errors.push(`[${slug}] Missing PRD.md (stage 1)`);
+  if (stages.doc === 'missing') errors.push(`[${slug}] Missing dev-docs.md (stage 2)`);
+
+  const workflowsPath = path.join(dir, 'workflows.md');
+  if (!fs.existsSync(workflowsPath)) {
+    errors.push(`[${slug}] Missing workflows.md (stage 3)`);
+    stages.workflows = 'missing';
+  } else {
+    const wfErrors = checkSections(fs.readFileSync(workflowsPath, 'utf8'), REQUIRED_WORKFLOWS_SECTIONS, `[${slug}] workflows`);
+    errors.push(...wfErrors);
+    stages.workflows = wfErrors.length ? 'incomplete' : 'complete';
+  }
+
+  const uxPath = path.join(dir, 'ux-spec.md');
+  if (!fs.existsSync(uxPath)) {
+    errors.push(`[${slug}] Missing ux-spec.md (stage 4)`);
+    stages.ux = 'missing';
+  } else {
+    const uxErrors = checkSections(fs.readFileSync(uxPath, 'utf8'), REQUIRED_UX_SECTIONS, `[${slug}] ux-spec`);
+    errors.push(...uxErrors);
+    stages.ux = uxErrors.length ? 'incomplete' : 'complete';
+  }
+
+  const designsDir = path.join(dir, 'designs');
+  const htmlCount = fs.existsSync(designsDir)
+    ? fs.readdirSync(designsDir).filter((f) => f.endsWith('.html')).length
+    : 0;
+  if (htmlCount < 1) {
+    errors.push(`[${slug}] designs/: need ≥1 HTML file (stage 5), found ${htmlCount}`);
+    stages.designs = 'missing';
+  } else {
+    stages.designs = 'complete';
+  }
+
+  return { stages, pipelineErrors: errors };
+}
+
 function validateFeature(slug, opts) {
   const errors = [];
   const warnings = [];
@@ -191,14 +240,27 @@ function validateFeature(slug, opts) {
     warnings.length = 0;
   }
 
+  let pipeline = null;
+  const requirePipeline = opts.pipeline || opts.score;
+  if (requirePipeline && dir) {
+    pipeline = validatePipeline(dir, slug);
+    errors.push(...pipeline.pipelineErrors);
+  }
+
+  const pipelineComplete =
+    pipeline &&
+    PIPELINE_STAGES.every((s) => pipeline.stages[s] === 'complete');
+
   return {
     slug,
     score,
     breakdown,
+    pipeline: pipeline ? pipeline.stages : undefined,
+    pipelineComplete,
     errors,
     warnings,
     ok: errors.length === 0,
-    approveReady: errors.length === 0 && score >= MIN_SCORE,
+    approveReady: errors.length === 0 && score >= MIN_SCORE && (!requirePipeline || pipelineComplete),
   };
 }
 
@@ -221,7 +283,7 @@ function main() {
   } else if (opts.feature) {
     results.push(validateFeature(opts.feature, opts));
   } else {
-    console.error('Usage: node scripts/validate-prd.js --feature <slug> [--score] [--strict] | --all');
+    console.error('Usage: node scripts/validate-prd.js --feature <slug> [--score] [--pipeline] [--strict] | --all');
     process.exit(2);
   }
 

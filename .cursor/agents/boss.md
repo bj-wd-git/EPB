@@ -101,18 +101,31 @@ PM → BA → Architect → UX+BE (parallel) → FE
 - After each phase: update checkpoint, commit report + checkpoint when appropriate
 - If `status: blocked`, stop and report `blockedReason`
 
-### 8. PRD → Dev-docs → Deliver
+### 8. PRD Pipeline → Develop
 
-**Recommended flow for new features:**
+**Full pipeline for new features:**
 
 ```text
-BOSS prd <slug> → PRD.md + dev-docs.md → BOSS prd approve <slug> → BOSS deliver <slug>
+BOSS prd <slug>           → PRD.md + dev-docs.md
+BOSS prd workflows <slug> → workflows.md
+BOSS prd ux <slug>        → ux-spec.md
+BOSS prd designs <slug>   → designs/*.html
+BOSS prd approve <slug>   → validate --pipeline, status approved
+BOSS deliver <slug>       → implement from doc + ux + HTML designs
 ```
 
-- `BOSS prd <feature>` — invoke prd-developer (+ PM, BA, Architect as needed) to author full PRD and dev-docs
-- `BOSS prd approve <feature>` — set `prd-meta.json` status to `approved` after `validate-prd.js` passes
-- `BOSS deliver <feature>` — **read dev-docs first** if `.cursor/team/prds/<slug>/dev-docs.md` exists; use tasks, APIs, BOSS config from dev-docs as source of truth
-- Warn if PRD is draft when delivering
+| Stage | Artifact | Role |
+|-------|----------|------|
+| 1 PRD | PRD.md | prd-developer, PM, BA |
+| 2 Doc | dev-docs.md | prd-developer, architect |
+| 3 Workflows | workflows.md | business-analyst |
+| 4 UI/UX | ux-spec.md | ui-ux-designer |
+| 5 HTML | designs/*.html | ui-ux-designer |
+| 6 Develop | code | BOSS deliver |
+
+- `BOSS prd approve <feature>` — `validate-prd.js --score --pipeline` must pass
+- `BOSS deliver <feature>` — read dev-docs, ux-spec, and HTML designs before coding
+- Warn if pipeline incomplete or PRD is draft
 
 ## Commands
 
@@ -120,8 +133,12 @@ BOSS prd <slug> → PRD.md + dev-docs.md → BOSS prd approve <slug> → BOSS de
 |-----------|-----------|
 | `BOSS init` | Scaffold role + specialist catalogs, MCP defaults |
 | `BOSS sync` | Update all agents, refresh MCP health |
-| `BOSS prd <feature>` | Author PRD + dev-docs via prd-developer (score ≥ 85) |
-| `BOSS prd approve <feature>` | Approve PRD after validate-prd.js passes |
+| `BOSS prd <feature>` | Author PRD + dev-docs (stages 1–2) |
+| `BOSS prd doc <feature>` | Author/update dev-docs only |
+| `BOSS prd workflows <feature>` | Author workflows.md (stage 3) |
+| `BOSS prd ux <feature>` | Author ux-spec.md (stage 4) |
+| `BOSS prd designs <feature>` | Author designs/*.html (stage 5) |
+| `BOSS prd approve <feature>` | Approve after validate-prd.js --pipeline |
 | `BOSS prd revise <feature>` | Revise PRD — reset to draft, increment version |
 | `BOSS fix <desc>` | Fast inline fix + validation.json gate |
 | `BOSS deliver <feature>` | Read dev-docs → triage → compose team → deliver |

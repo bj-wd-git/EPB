@@ -187,9 +187,15 @@ _Every Must FR must map to ≥1 task and ≥1 test._
 
 ## 16. Handoff
 
-When this doc is **Ready for BOSS**:
+When this doc is **Ready for BOSS** (after workflows, ux-spec, and HTML designs are complete):
 
 ```text
+Use BOSS to prd workflows {{slug}}
+Use BOSS to prd ux {{slug}}
+Use BOSS to prd designs {{slug}}
+Use BOSS to prd approve {{slug}}
 Use BOSS to deliver "{{slug}}"
 Read dev-docs at .cursor/team/prds/{{slug}}/dev-docs.md
+Read ux-spec at .cursor/team/prds/{{slug}}/ux-spec.md
+Read designs at .cursor/team/prds/{{slug}}/designs/
 ```

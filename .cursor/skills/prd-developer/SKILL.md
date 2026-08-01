@@ -1,140 +1,112 @@
----
-name: prd-developer
-description: >-
-  Enterprise PRD authoring, requirements traceability, and dev-docs generation for
-  BOSS delivery. Use for BOSS prd, product requirements, FRD, dev handoff docs, or
-  when the user mentions PRD, requirements, or specification before development.
----
-
 # PRD Developer Skill
 
-Produce **enterprise-grade PRDs** and **development-ready docs** that BOSS `deliver` consumes without ambiguity.
+Produce **enterprise-grade PRDs** and the full **pre-development pipeline** that BOSS `deliver` consumes.
+
+## Pipeline (6 stages)
+
+```text
+1. PRD        → PRD.md              (product requirements)
+2. Doc        → dev-docs.md         (technical handoff)
+3. Workflows  → workflows.md        (business process flows)
+4. UI/UX      → ux-spec.md          (screens, journeys, a11y)
+5. Designs    → designs/*.html      (static HTML mockups)
+6. Develop    → BOSS deliver        (implementation)
+```
+
+**Approve gate:** stages 1–5 complete + score ≥ 85 → `BOSS prd approve` → `BOSS deliver`
 
 ## Mandatory Reading
 
-1. [reference.md](reference.md) — quality rubric, INVEST, traceability, anti-patterns
+1. [reference.md](reference.md) — rubric, INVEST, traceability, anti-patterns
 2. [PRD template](../../team/prds/PRD-TEMPLATE.md)
 3. [Dev-docs template](../../team/prds/DEV-DOCS-TEMPLATE.md)
-4. `.cursor/skills/epb-vision/SKILL.md` — EPB platform work
-5. Role playbooks: product-manager, business-analyst, solution-architect
+4. [Workflows template](../../team/prds/WORKFLOWS-TEMPLATE.md)
+5. [UI/UX template](../../team/prds/UI-UX-TEMPLATE.md)
+6. [HTML design template](../../team/prds/HTML-DESIGN-TEMPLATE.html)
+7. `.cursor/skills/epb-vision/SKILL.md` — EPB platform work
 
 ## Quality Standard
 
-**Minimum score 85/100** before `BOSS prd approve`. Run:
-
 ```bash
-node scripts/validate-prd.js --feature <slug> --score
+node scripts/validate-prd.js --feature <slug> --score --pipeline
 ```
 
-Never approve with score &lt; 85 or validation errors.
+Never approve with score &lt; 85, pipeline incomplete, or validation errors.
 
-## Workflow: BOSS prd
+## BOSS Commands (per stage)
+
+| Stage | Command | Role | Output |
+|-------|---------|------|--------|
+| 1–2 | `BOSS prd <slug>` | prd-developer | PRD.md + dev-docs.md |
+| 2 only | `BOSS prd doc <slug>` | prd-developer | dev-docs.md |
+| 3 | `BOSS prd workflows <slug>` | business-analyst | workflows.md |
+| 4 | `BOSS prd ux <slug>` | ui-ux-designer | ux-spec.md |
+| 5 | `BOSS prd designs <slug>` | ui-ux-designer | designs/*.html |
+| Gate | `BOSS prd approve <slug>` | BOSS | prd-meta approved |
+| 6 | `BOSS deliver <slug>` | BOSS + SDLC team | code + gates |
+
+## Workflow Phases
 
 ### Phase 0 — Clarify (mandatory)
 
-Answer discovery questions (see reference.md). If brief is thin:
+Answer discovery questions (reference.md). State assumptions in PRD §4 if brief is thin.
 
-- State assumptions in PRD §4
-- Add open questions §16
-- Do **not** block — proceed with labeled assumptions
+### Phase 1 — Discover (parallel, max 4 subagents)
 
-### Phase 1 — Discover (parallel when BOSS allows)
+PM → goals · BA → stories · Architect → API · explore → codebase
 
-| Source | Method | Feeds |
-|--------|--------|-------|
-| Handbook / ADRs | gbrain MCP | §14 EPB mapping |
-| Codebase | explore specialist | §2 current state |
-| Goals / metrics | product-manager subagent | §3, §4 |
-| Stories / FR | business-analyst subagent | §6, §7 |
-| API / architecture | solution-architect subagent | §11, §14 |
+### Phase 2 — Author PRD
 
-Max 4 parallel subagents. **Synthesize** into one voice.
+Path: `.cursor/team/prds/<slug>/PRD.md` — see template minimums.
 
-### Phase 2 — Author PRD (17 sections + traceability)
+### Phase 3 — Author dev-docs
 
-Path: `.cursor/team/prds/<slug>/PRD.md`
+Path: `.cursor/team/prds/<slug>/dev-docs.md` — tasks, APIs, tests, traceability.
 
-**Minimums:**
+### Phase 4 — Author workflows
 
-| Item | Minimum |
-|------|---------|
-| User stories | 2 (US-001, US-002…) |
-| Acceptance criteria | 3+ checkboxes, testable |
-| Functional reqs | 3+ with FR-###, MoSCoW priority |
-| NFRs | Security + performance or availability |
-| API outline | If any API — method + path per endpoint |
-| EPB mapping | Required in EPB repo |
-| Risks | ≥1 row |
-| Open questions | ≥1 or explicit "none" |
+Path: `.cursor/team/prds/<slug>/workflows.md` — WF-001+, state machines, BR rules, traceability to US/FR.
 
-Write `prd-meta.json` → `status: draft`
+### Phase 5 — Author UI/UX spec
 
-### Phase 3 — Generate dev-docs (BOSS handoff)
+Path: `.cursor/team/prds/<slug>/ux-spec.md` — journeys, SCR-### screens, a11y, design tokens, HTML handoff table.
 
-Path: `.cursor/team/prds/<slug>/dev-docs.md`
+### Phase 6 — Author HTML designs
 
-**Minimums:**
+Path: `.cursor/team/prds/<slug>/designs/*.html` — one file per Must screen in ux-spec §5/§9.
 
-| Item | Minimum |
-|------|---------|
-| Tasks | 3+ (T-001…) with role + depends |
-| API contracts | Full JSON request/response per endpoint |
-| Test plan | 2+ (TP-001…) mapped to AC |
-| Traceability matrix | US → FR → T → TP → AC |
-| BOSS config | mode, roles, MCPs, skills |
-| Handoff | `BOSS deliver` command block |
-
-Meta status: **Ready for BOSS**
-
-### Phase 4 — Self-review
-
-Check against [reference.md](reference.md) anti-patterns table. Fix before validation.
-
-### Phase 5 — Validate & register
+### Phase 7 — Validate & register
 
 ```bash
-node scripts/validate-prd.js --feature <slug> --score
+node scripts/validate-prd.js --feature <slug> --score --pipeline
 ```
 
-Update `prd-meta.json` with `qualityScore` and `traceability` counts. Register in `registry.json` → `prds`.
+Update `prd-meta.json`:
 
-### Phase 6 — Approve (BOSS prd approve only)
-
-Set `status: approved`, `approved: <ISO date>`. Require score ≥ 85.
-
-## Output to BOSS
-
-```markdown
-## PRD Developer Summary
-- **Slug:** <slug>
-- **Status:** draft | approved
-- **Quality score:** NN/100
-- **User stories:** N | **FRs:** N | **Tasks:** N | **Tests:** N
-- **Validation:** PASS | FAIL
-- **Files:** PRD.md, dev-docs.md, prd-meta.json
-- **Open questions:** N (list blockers if any)
-- **Next:** BOSS prd approve <slug> | BOSS deliver <slug>
+```json
+"pipeline": { "prd": "complete", "doc": "complete", "workflows": "complete", "ux": "complete", "designs": "complete" }
 ```
 
-## Handoff to BOSS deliver
+### Phase 8 — Approve (BOSS only)
+
+`BOSS prd approve` after validation passes.
+
+## Handoff to develop
 
 ```text
 Use BOSS to deliver "<slug>"
-Source of truth: .cursor/team/prds/<slug>/dev-docs.md
-Execute tasks in order. Enforce traceability matrix. Mode from BOSS Delivery Config.
+Read: dev-docs.md, ux-spec.md, designs/*.html
+Implement React/components from HTML designs. Follow workflows for business logic.
 ```
 
 ## Do Not
 
-- Ship PRD without dev-docs
-- Use untestable acceptance criteria
-- Skip traceability matrix
-- Approve below quality threshold
-- Put implementation detail in PRD (belongs in dev-docs)
-- Use industry-specific terms in platform sections
+- Skip workflows or UX before HTML designs
+- Approve without `--pipeline` validation
+- Implement in PRD (belongs in dev-docs)
+- Ship HTML designs without ux-spec traceability
 
 ## Related
 
 - [prds README](../../team/prds/README.md)
 - [BOSS skill](../boss/SKILL.md)
-- [validate-prd.js](../../../scripts/validate-prd.js)

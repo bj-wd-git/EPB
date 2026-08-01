@@ -8,46 +8,28 @@ description: >-
 
 # BOSS Skill — Team Orchestration
 
-## PRD → Dev-docs → Deliver (recommended for new features)
+## PRD Pipeline → Develop (recommended for new features)
 
 ```text
-1. BOSS prd <slug>     → prd-developer authors PRD.md + dev-docs.md
-2. validate-prd.js     → completeness check
-3. BOSS prd approve    → prd-meta.json status: approved
-4. BOSS deliver <slug> → reads dev-docs as source of truth
+1. BOSS prd <slug>           → PRD.md + dev-docs.md
+2. BOSS prd workflows <slug> → workflows.md
+3. BOSS prd ux <slug>        → ux-spec.md
+4. BOSS prd designs <slug>   → designs/*.html
+5. BOSS prd approve <slug>   → validate --pipeline
+6. BOSS deliver <slug>       → implement
 ```
-
-### BOSS prd workflow
-
-1. Parse brief → slug
-2. Invoke **prd-developer** (optionally PM + BA + Architect in parallel for input)
-3. Write `.cursor/team/prds/<slug>/PRD.md` from [PRD-TEMPLATE](../../team/prds/PRD-TEMPLATE.md)
-4. Write `.cursor/team/prds/<slug>/dev-docs.md` from [DEV-DOCS-TEMPLATE](../../team/prds/DEV-DOCS-TEMPLATE.md)
-5. Write `prd-meta.json` with `status: draft`
-6. Run `node scripts/validate-prd.js --feature <slug>`
-7. Register in `registry.json` → `prds` array
 
 ### BOSS prd approve
 
-1. Run `node scripts/validate-prd.js --feature <slug> --score` — must pass with score ≥ 85
-2. Set `prd-meta.json` → `status: approved`, `approved: <date>`, `qualityScore: <score>`
+1. Run `node scripts/validate-prd.js --feature <slug> --score --pipeline`
+2. Set `prd-meta.json` → `status: approved`, `pipeline` all complete
 3. Confirm dev-docs status → `Ready for BOSS`
 
-### BOSS prd revise
+### BOSS deliver with full pipeline
 
-1. Set `prd-meta.json` → `status: draft`, bump `version` (semver patch)
-2. Re-run prd-developer with revision notes
-3. Re-validate before re-approve
-
-### BOSS deliver with dev-docs
-
-When `.cursor/team/prds/<slug>/dev-docs.md` exists:
-
-1. Read dev-docs **before** triage
-2. Use **BOSS Delivery Config** section for mode, roles, MCPs, skills
-3. Execute **Task Breakdown** T-001… in order
-4. Validate against **Acceptance Criteria** and **Test Plan**
-5. If PRD status is `draft`, warn user — recommend `BOSS prd approve` first
+1. Read dev-docs, ux-spec.md, designs/*.html **before** triage
+2. Frontend implements from HTML designs + ux-spec
+3. Business logic follows workflows.md
 
 Skill: [prd-developer](../prd-developer/SKILL.md)
 

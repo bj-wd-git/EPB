@@ -60,62 +60,60 @@ Use BOSS to deliver "my-feature"
 | Approve PRD for development | `Use BOSS to prd approve user-auth` | prd approve |
 | Resume yesterday's work | `Use BOSS to continue "user-auth"` | continue |
 
-**Recommended for new features:** `prd` → `prd approve` → `deliver`
+**Recommended for new features:**
 
-**Rule of thumb:** New feature? Start with **prd**. Small fix? **fix**. Ready to code? **deliver** (reads dev-docs if present).
+```text
+prd → doc → workflows → ux → designs → approve → deliver
+```
+
+**Rule of thumb:** New feature? Start with **prd**. Need UI? Run **ux** then **designs** before **deliver**.
 
 ---
 
-## 3. PRD → Dev-docs → Deliver (new features)
+## 3. PRD pipeline → Develop (new features)
 
-### Step 1 — Author PRD + dev-docs
-
-```text
-Use BOSS to prd "notification-retry"
-
-Context:
-- Add retry with exponential backoff to notification platform
-- Follow epb-vision
-- Full PRD all 17 sections + dev-docs with task breakdown
-```
-
-**Creates:**
+### Full pipeline
 
 ```text
-.cursor/team/prds/notification-retry/
-├── PRD.md          # Full product requirements (stakeholders)
-├── dev-docs.md     # Development handoff for BOSS deliver
-└── prd-meta.json   # Status: draft
+Stage 1–2   BOSS prd "my-feature"              → PRD.md + dev-docs.md
+Stage 3     BOSS prd workflows my-feature      → workflows.md
+Stage 4     BOSS prd ux my-feature             → ux-spec.md
+Stage 5     BOSS prd designs my-feature        → designs/*.html
+Gate        BOSS prd approve my-feature         → status: approved
+Stage 6     BOSS deliver "my-feature"          → code
 ```
 
-### Step 2 — Validate
+### Folder structure
+
+```text
+.cursor/team/prds/my-feature/
+├── PRD.md
+├── dev-docs.md
+├── workflows.md
+├── ux-spec.md
+├── designs/
+│   └── registration.html
+└── prd-meta.json
+```
+
+### Validate (all stages)
 
 ```bash
-node scripts/validate-prd.js --feature notification-retry --score
+node scripts/validate-prd.js --feature my-feature --score --pipeline
 ```
 
-Target: **≥ 85/100** before `BOSS prd approve`.
+Target: **≥ 85/100** + all pipeline stages complete before `BOSS prd approve`.
 
-### Step 3 — Approve
+### Approve & deliver
 
 ```text
-Use BOSS to prd approve notification-retry
+Use BOSS to prd approve my-feature
+Use BOSS to deliver "my-feature"
 ```
 
-Sets `prd-meta.json` → `status: approved`
+BOSS reads **dev-docs** (API/tasks), **ux-spec** (screens/a11y), and **designs/*.html** (visual reference) during develop.
 
-### Step 4 — Deliver
-
-```text
-Use BOSS to deliver "notification-retry"
-
-Read dev-docs at .cursor/team/prds/notification-retry/dev-docs.md
-Execute tasks T-001… in order.
-```
-
-BOSS uses dev-docs for: mode, roles, API contracts, test plan, acceptance criteria.
-
-**Example:** [notification-retry PRD](.cursor/team/prds/_example/notification-retry/PRD.md) · [dev-docs](.cursor/team/prds/_example/notification-retry/dev-docs.md)
+**Example:** [notification-retry](.cursor/team/prds/_example/notification-retry/) — full pipeline
 
 ---
 

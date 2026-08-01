@@ -8,6 +8,14 @@
   "created": "2026-08-01",
   "approved": "2026-08-01",
   "bossMode": "standard",
+  "pipeline": {
+    "prd": "complete",
+    "doc": "complete",
+    "workflows": "complete",
+    "ux": "complete",
+    "designs": "complete",
+    "develop": "complete"
+  },
   "traceability": {
     "userStories": 2,
     "functionalReqs": 5,

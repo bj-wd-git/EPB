@@ -73,10 +73,11 @@ Use BOSS to mcp list
 
 BOSS auto-triages if you don't specify a mode.
 
-### PRD → Deliver pipeline
+### PRD → Develop pipeline
 
 ```text
-BOSS prd <slug> → PRD.md + dev-docs.md → BOSS prd approve <slug> → BOSS deliver <slug>
+PRD → Doc → Workflows → UI/UX → HTML Designs → Develop
+BOSS prd → prd doc → prd workflows → prd ux → prd designs → prd approve → deliver
 ```
 
 See [prds README](.cursor/team/prds/README.md) and [BOSS-USAGE.md](BOSS-USAGE.md).
@@ -241,8 +242,12 @@ scripts/
 |---------|--------|
 | `BOSS init` | Scaffold role + specialist catalogs, MCP defaults |
 | `BOSS sync` | Update agents, refresh MCP health |
-| `BOSS prd <feature>` | Author full PRD + dev-docs (quality score ≥ 85) |
-| `BOSS prd approve <feature>` | Approve PRD after validate-prd.js passes |
+| `BOSS prd <feature>` | Author PRD + dev-docs (stages 1–2) |
+| `BOSS prd doc <feature>` | Author/update dev-docs |
+| `BOSS prd workflows <feature>` | Author workflows.md |
+| `BOSS prd ux <feature>` | Author ux-spec.md |
+| `BOSS prd designs <feature>` | Author HTML designs |
+| `BOSS prd approve <feature>` | Approve after validate --pipeline |
 | `BOSS prd revise <feature>` | Revise PRD — reset to draft, bump version |
 | `BOSS fix <desc>` | Fast inline fix + validation gate |
 | `BOSS deliver <feature>` | Standard delivery (auto-triage) |

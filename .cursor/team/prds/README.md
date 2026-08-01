@@ -1,52 +1,46 @@
 # BOSS PRD Workspace
 
-Full-level PRD automation — produce **PRD** + **dev-docs** that BOSS `deliver` consumes.
+Full pre-development pipeline before BOSS `deliver`.
 
-**Quality bar:** score ≥ 85/100 (`node scripts/validate-prd.js --feature <slug> --score`)
-
-Skill: [prd-developer](../../skills/prd-developer/SKILL.md) · Reference: [reference.md](../../skills/prd-developer/reference.md)
-
-## Flow
+## Pipeline
 
 ```text
-User brief → BOSS prd <slug> → PRD.md + dev-docs.md → BOSS deliver <slug>
+PRD → Doc → Workflows → UI/UX → HTML Designs → Develop
+ 1      2        3          4          5           6
 ```
+
+| Stage | Artifact | Template | BOSS command |
+|-------|----------|----------|--------------|
+| 1. PRD | `PRD.md` | [PRD-TEMPLATE.md](PRD-TEMPLATE.md) | `BOSS prd <slug>` |
+| 2. Doc | `dev-docs.md` | [DEV-DOCS-TEMPLATE.md](DEV-DOCS-TEMPLATE.md) | `BOSS prd doc <slug>` |
+| 3. Workflows | `workflows.md` | [WORKFLOWS-TEMPLATE.md](WORKFLOWS-TEMPLATE.md) | `BOSS prd workflows <slug>` |
+| 4. UI/UX | `ux-spec.md` | [UI-UX-TEMPLATE.md](UI-UX-TEMPLATE.md) | `BOSS prd ux <slug>` |
+| 5. HTML | `designs/*.html` | [HTML-DESIGN-TEMPLATE.html](HTML-DESIGN-TEMPLATE.html) | `BOSS prd designs <slug>` |
+| 6. Develop | code | — | `BOSS deliver <slug>` |
+
+**Approve:** `BOSS prd approve <slug>` — requires score ≥ 85 + all stages 1–5.
 
 ## Structure
 
 ```text
-.cursor/team/prds/
-├── PRD-TEMPLATE.md
-├── DEV-DOCS-TEMPLATE.md
-├── README.md
-└── <feature-slug>/
-    ├── PRD.md           # Full product requirements
-    ├── dev-docs.md      # Development handoff for BOSS
-    └── prd-meta.json    # Status, version, approval
-```
-
-## Commands
-
-```text
-Use BOSS to prd "notification-retry"
-Use BOSS to prd approve notification-retry
-Use BOSS to deliver notification-retry    # reads dev-docs if present
+.cursor/team/prds/<slug>/
+├── PRD.md
+├── dev-docs.md
+├── workflows.md
+├── ux-spec.md
+├── designs/
+│   └── *.html
+└── prd-meta.json
 ```
 
 ## Validation
 
 ```bash
-node scripts/validate-prd.js --feature notification-retry
+node scripts/validate-prd.js --feature <slug> --score --pipeline
 ```
-
-## Approval gate
-
-`BOSS deliver` should read dev-docs only when `prd-meta.json` → `status: approved` (or warn if draft).
 
 ## Example
 
-[_example/notification-retry/](_example/notification-retry/)
+[_example/notification-retry/](_example/notification-retry/) — full pipeline
 
-## Skill
-
-[prd-developer skill](../../skills/prd-developer/SKILL.md)
+Skill: [prd-developer](../../skills/prd-developer/SKILL.md)
