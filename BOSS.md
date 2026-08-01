@@ -52,11 +52,65 @@ Or attach this file with `@BOSS.md` after cloning the repo.
 
 ```text
 Use BOSS to init
+Use BOSS to fix "broken link in README"
 Use BOSS to deliver "my-feature-name"
-Use BOSS to sync
+Use BOSS to continue "my-feature-name"
 Use BOSS to mcp list
-Use BOSS to mcp enable github
 ```
+
+---
+
+## Delivery Modes
+
+| Mode | Command | Speed | Gates |
+|------|---------|-------|-------|
+| **fix** | `BOSS fix <desc>` | Fastest — BOSS inline, no subagents | `validation.json` |
+| **standard** | `BOSS deliver <feature>` | Balanced | code-review, qa, uat |
+| **full** | `BOSS deliver <feature> --full` | Thorough | All gates + security-review |
+
+BOSS auto-triages if you don't specify a mode.
+
+---
+
+## Hard Gates (CI-enforced)
+
+Reports cannot claim **PASS** without gate artifact files:
+
+```text
+.cursor/team/gates/<feature-slug>/
+├── validation.json      # fix mode
+├── code-review.json
+├── qa.json
+├── uat.json
+└── security-review.json
+```
+
+Validate locally:
+
+```bash
+node scripts/validate-boss-gates.js --feature notification-retry
+```
+
+CI runs **BOSS Gates** workflow on PRs (`.github/workflows/boss-gates.yml`).
+
+---
+
+## Multi-Session / Unattended Delivery
+
+Checkpoints track progress across sessions:
+
+```text
+.cursor/team/checkpoints/<feature-slug>.json
+```
+
+```text
+Use BOSS to continue notification-retry
+```
+
+For cloud agents or GitHub-triggered delivery:
+- Label issue `boss:deliver` or run **BOSS Deliver** workflow
+- Title format: `[boss:my-feature] Description`
+- Set `unattended: true` in checkpoint for hands-off runs
 
 ---
 
@@ -157,8 +211,15 @@ You do **not** need the EPB handbook volumes. BOSS works standalone.
 │   └── skills-catalog/
 └── team/
     ├── registry.json
+    ├── checkpoints/         ← multi-session state
+    ├── gates/               ← machine-checkable gate artifacts
     ├── reports/
     └── bootstrap.ps1
+scripts/
+└── validate-boss-gates.js   ← gate validator (CI + local)
+.github/workflows/
+├── boss-gates.yml           ← PR gate enforcement
+└── boss-deliver.yml         ← issue / manual delivery trigger
 ```
 
 ---
@@ -169,8 +230,10 @@ You do **not** need the EPB handbook volumes. BOSS works standalone.
 |---------|--------|
 | `BOSS init` | Scaffold role + specialist catalogs, MCP defaults |
 | `BOSS sync` | Update agents, refresh MCP health |
-| `BOSS deliver <feature>` | Compose team → coordinate → write report |
-| `BOSS continue <feature>` | Resume existing report |
+| `BOSS fix <desc>` | Fast inline fix + validation gate |
+| `BOSS deliver <feature>` | Standard delivery (auto-triage) |
+| `BOSS deliver <feature> --full` | Full SDLC + all gates |
+| `BOSS continue <feature>` | Resume from checkpoint |
 | `BOSS mcp list` | Show MCP catalog and active status |
 | `BOSS mcp enable <id>` | Add MCP from catalog |
 | `BOSS mcp sync` | Health-check active MCPs |
@@ -188,6 +251,8 @@ See [notification-retry example](.cursor/team/reports/_example/notification-retr
 | Doc | Path |
 |-----|------|
 | Team workspace | [.cursor/team/README.md](.cursor/team/README.md) |
+| Gate artifacts | [.cursor/team/gates/README.md](.cursor/team/gates/README.md) |
+| Checkpoints | [.cursor/team/checkpoints/CHECKPOINT-SCHEMA.md](.cursor/team/checkpoints/CHECKPOINT-SCHEMA.md) |
 | Agents index | [.cursor/agents/README.md](.cursor/agents/README.md) |
 | MCP catalog | [.cursor/mcps/README.md](.cursor/mcps/README.md) |
 | Skills catalog | [.cursor/skills/skills-catalog/SKILL.md](.cursor/skills/skills-catalog/SKILL.md) |

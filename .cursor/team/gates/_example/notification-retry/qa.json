@@ -1,0 +1,9 @@
+{
+  "gate": "qa",
+  "result": "PASS",
+  "timestamp": "2026-08-01T14:00:00.000Z",
+  "runner": "qa-engineer",
+  "evidence": ["scripts/check-links.js"],
+  "summary": "Example gate artifact for notification-retry",
+  "findings": []
+}

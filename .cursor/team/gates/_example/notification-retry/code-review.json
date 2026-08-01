@@ -1,0 +1,9 @@
+{
+  "gate": "code-review",
+  "result": "PASS",
+  "timestamp": "2026-08-01T14:00:00.000Z",
+  "runner": "solution-architect",
+  "evidence": [".cursor/team/reports/_example/notification-retry.md"],
+  "summary": "Example code review gate for notification-retry",
+  "findings": []
+}

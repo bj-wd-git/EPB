@@ -1,0 +1,9 @@
+{
+  "gate": "uat",
+  "result": "PASS",
+  "timestamp": "2026-08-01T14:00:00.000Z",
+  "runner": "business-analyst",
+  "evidence": [".cursor/team/reports/_example/notification-retry.md"],
+  "summary": "Example UAT sign-off for notification-retry",
+  "findings": []
+}

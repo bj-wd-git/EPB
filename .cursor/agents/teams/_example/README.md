@@ -20,8 +20,8 @@ This folder demonstrates a **dynamic team** created by BOSS for a single feature
 
 ## Report
 
-[notification-retry report](../../team/reports/_example/notification-retry.md)
+[notification-retry report](../../../team/reports/_example/notification-retry.md)
 
 ## Registry
 
-Listed in [registry.json](../../team/registry.json) with `status: example`.
+Listed in [registry.json](../../../team/registry.json) with `status: example`.

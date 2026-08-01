@@ -49,14 +49,17 @@
 ## 6. Code Review (solution-architect)
 
 **Result:** PASS (example)
+**Evidence:** `.cursor/team/gates/_example/notification-retry/code-review.json`
 
 ## 7. QA (qa-engineer)
 
 **Result:** PASS (example) — unit + integration tests for retry and dead-letter
+**Evidence:** `.cursor/team/gates/_example/notification-retry/qa.json`
 
 ## 8. UAT (business-analyst)
 
 **Result:** PASS (example)
+**Evidence:** `.cursor/team/gates/_example/notification-retry/uat.json`
 
 ## 9. Security (solution-architect)
 
@@ -87,6 +90,7 @@
 ### security-review
 
 **Result:** PASS (example) — retry policy API requires tenant auth; no PII in dead-letter payload
+**Evidence:** `.cursor/team/gates/_example/notification-retry/security-review.json`
 
 ### ci-investigator
 

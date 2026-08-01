@@ -1,0 +1,35 @@
+name: BOSS Gates
+
+on:
+  pull_request:
+    paths:
+      - '.cursor/team/**'
+      - 'scripts/validate-boss-gates.js'
+      - 'scripts/check-links.js'
+  workflow_dispatch:
+    inputs:
+      feature:
+        description: Feature slug to validate
+        required: false
+        type: string
+
+jobs:
+  validate-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate link integrity
+        run: node scripts/check-links.js
+
+      - name: Validate BOSS gate artifacts
+        run: |
+          if [ -n "${{ github.event.inputs.feature }}" ]; then
+            node scripts/validate-boss-gates.js --feature "${{ github.event.inputs.feature }}"
+          else
+            node scripts/validate-boss-gates.js --feature notification-retry --mode standard
+          fi

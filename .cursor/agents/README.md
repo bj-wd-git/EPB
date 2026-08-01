@@ -6,10 +6,11 @@ Invoke **BOSS** for all coordinated SDLC work:
 
 ```text
 Use BOSS to deliver "notification-retry"
+Use BOSS to fix "broken link in README"
+Use BOSS to continue "notification-retry"
 Use BOSS to init
 Use BOSS to sync
 Use BOSS to mcp list
-Use BOSS to mcp enable sentry
 ```
 
 **BOSS** = Build Orchestration Supervisory System

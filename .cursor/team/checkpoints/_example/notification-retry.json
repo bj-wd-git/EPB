@@ -1,0 +1,26 @@
+{
+  "slug": "notification-retry",
+  "mode": "standard",
+  "phase": 9,
+  "phaseName": "security-review",
+  "status": "complete",
+  "blockedOn": null,
+  "blockedReason": null,
+  "lastUpdated": "2026-08-01T14:00:00.000Z",
+  "lastCommit": null,
+  "phasesCompleted": [
+    "product-manager",
+    "business-analyst",
+    "solution-architect",
+    "backend-developer",
+    "solution-architect",
+    "qa-engineer",
+    "business-analyst",
+    "solution-architect",
+    "security-review",
+    "documentation-versioning"
+  ],
+  "phasesRemaining": [],
+  "report": ".cursor/team/reports/_example/notification-retry.md",
+  "unattended": false
+}

@@ -1,0 +1,9 @@
+{
+  "gate": "security-review",
+  "result": "PASS",
+  "timestamp": "2026-08-01T14:00:00.000Z",
+  "runner": "security-review",
+  "evidence": [".cursor/team/reports/_example/notification-retry.md"],
+  "summary": "Example security gate — tenant auth on retry policy API",
+  "findings": []
+}

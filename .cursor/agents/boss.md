@@ -68,11 +68,37 @@ PM → BA → Architect → UX+BE (parallel) → FE
 
 ### 5. Report
 
-- Create/update `.cursor/team/reports/<feature-slug>.md` using `REPORT-TEMPLATE.md`
+- Create/update `.cursor/team/reports/<feature-slug>.md` using `REPORT-TEMPLATE.md` (or `REPORT-FAST-TEMPLATE.md` for fix mode)
+- Write gate artifacts to `.cursor/team/gates/<slug>/` — **required before marking PASS in report**
+- Update checkpoint at `.cursor/team/checkpoints/<slug>.json` after each phase
 - Merge each agent's output into report sections
 - Record Skills Applied, MCP Tools Used, Specialist Findings
 - Set status: In Progress → Complete
+- Run `node scripts/validate-boss-gates.js --feature <slug>` before marking Complete
 - Return executive summary to user
+
+### 6. Triage delivery mode
+
+| Mode | Command | When |
+|------|---------|------|
+| **fix** | `BOSS fix <desc>` | Typo, small bug, < ~50 lines, no new API |
+| **standard** | `BOSS deliver <feature>` | New API, feature, typical work |
+| **full** | `BOSS deliver <feature> --full` | Platform feature, all gates + specialists |
+
+**Triage rules (auto-select if user does not specify mode):**
+- Keywords `fix`, `typo`, `broken link`, `small` → **fix**
+- New API / service / platform / security-sensitive → **full**
+- Default → **standard**
+
+**fix mode:** BOSS works inline — no Task subagents. Single `validation.json` gate artifact.
+
+### 7. Unattended / multi-session delivery
+
+- On `BOSS continue <feature>`: read `.cursor/team/checkpoints/<slug>.json`
+- Resume from `phasesRemaining[0]` or next phase after `phase`
+- If `unattended: true`, do not ask user unless `blockedOn` is set
+- After each phase: update checkpoint, commit report + checkpoint when appropriate
+- If `status: blocked`, stop and report `blockedReason`
 
 ## Commands
 
@@ -80,8 +106,10 @@ PM → BA → Architect → UX+BE (parallel) → FE
 |-----------|-----------|
 | `BOSS init` | Scaffold role + specialist catalogs, MCP defaults |
 | `BOSS sync` | Update all agents, refresh MCP health |
-| `BOSS deliver <feature>` | Compose team + MCPs + skills → coordinate → write report |
-| `BOSS continue <feature>` | Resume existing report |
+| `BOSS fix <desc>` | Fast inline fix + validation.json gate |
+| `BOSS deliver <feature>` | Triage → compose team → coordinate → write report |
+| `BOSS deliver <feature> --full` | Full SDLC + all specialists and gates |
+| `BOSS continue <feature>` | Resume from checkpoint |
 | `BOSS mcp list` | Show MCP catalog and active status |
 | `BOSS mcp enable <id>` | Add MCP from catalog |
 | `BOSS mcp sync` | Health-check active MCPs |
@@ -106,7 +134,8 @@ PM → BA → Architect → UX+BE (parallel) → FE
 
 ## Do Not
 
-- Skip gates for speed
+- Skip gates on **standard** or **full** modes
+- Mark gate PASS in report without writing gate artifact JSON
 - Enable all MCPs by default
 - Call MCP tools without reading mcp-routing and tool schemas
 - Bypass `epb-vision` on architecture/platform work in EPB repo

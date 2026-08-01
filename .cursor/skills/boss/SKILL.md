@@ -8,16 +8,73 @@ description: >-
 
 # BOSS Skill — Team Orchestration
 
+## Delivery Modes (Triage)
+
+| Mode | Command | Subagents | Gates | Report template |
+|------|---------|-----------|-------|-----------------|
+| **fix** | `BOSS fix <desc>` | None (BOSS inline) | `validation.json` | `REPORT-FAST-TEMPLATE.md` |
+| **standard** | `BOSS deliver <feature>` | 3–7 roles | code-review, bugbot, qa, uat | `REPORT-TEMPLATE.md` |
+| **full** | `BOSS deliver <feature> --full` | All 9 + specialists | All gates + security-review | `REPORT-TEMPLATE.md` |
+
+### Auto-triage (when mode not specified)
+
+```text
+fix      → typo, broken link, rename, < 50 lines, no new API
+full     → platform feature, new service, security-sensitive, EPB handbook chapter
+standard → everything else
+```
+
 ## Workflow: Deliver a Feature
 
-1. **Analyze** — parse request, pick SDLC roles, specialists, MCPs, skills; create feature slug
-2. **Compose** — create `.cursor/agents/teams/<slug>/`, scaffold agents from templates
-3. **Enable MCPs** — merge required templates into `.cursor/mcp.json` from catalog
-4. **Register** — update `.cursor/team/registry.json` (v2: teams, mcps, skills)
-5. **Report shell** — create `.cursor/team/reports/<slug>.md` from `REPORT-TEMPLATE.md`
-6. **Execute phases** — invoke agents, call MCP tools per mcp-routing, update report
-7. **Gate check** — code review, bugbot, UAT, security-review — block on FAIL
-8. **Finalize** — set status Complete, summarize for user
+1. **Triage** — select fix / standard / full
+2. **Analyze** — parse request, pick SDLC roles, specialists, MCPs, skills; create feature slug
+3. **Checkpoint** — create/update `.cursor/team/checkpoints/<slug>.json`
+4. **Compose** — create `.cursor/team/reports/<slug>.md` and team agents (skip for fix mode)
+5. **Enable MCPs** — merge required templates into `.cursor/mcp.json` from catalog
+6. **Register** — update `.cursor/team/registry.json` (v2)
+7. **Execute phases** — invoke agents (or inline for fix), write gate artifacts
+8. **Validate** — `node scripts/validate-boss-gates.js --feature <slug>`
+9. **Gate check** — block on FAIL; artifacts must exist for every PASS
+10. **Finalize** — set checkpoint `status: complete`, summarize for user
+
+## Workflow: BOSS fix (fast path)
+
+1. Create slug from description
+2. Create report from `REPORT-FAST-TEMPLATE.md`
+3. BOSS implements change inline (no Task subagents)
+4. Run validation (`check-links`, lint, or tests as applicable)
+5. Write `.cursor/team/gates/<slug>/validation.json` with result
+6. Run `node scripts/validate-boss-gates.js --feature <slug> --mode fix`
+7. Mark report Complete
+
+## Workflow: BOSS continue (multi-session)
+
+1. Read `.cursor/team/checkpoints/<slug>.json`
+2. If `status: blocked` → report blocker, stop
+3. Load report and registry entry
+4. Resume from `phasesRemaining[0]` or phase after `phaseName`
+5. After each phase: update checkpoint (`phasesCompleted`, `phase`, `lastUpdated`)
+6. If `unattended: true` → do not prompt user; document open questions in report
+7. Commit checkpoint + report when a phase completes (recommended for cloud agents)
+
+## Unattended Rules
+
+| Rule | Detail |
+|------|--------|
+| No user prompts | When `unattended: true`, unless `blockedOn` is set |
+| Blockers | Set `blockedOn` + `blockedReason` + `status: blocked` |
+| Max phases per session | Complete up to 4 phases, then update checkpoint and exit cleanly |
+| Auth failures | MCP `needsAuth` → set blockedOn: `mcp:<id>` |
+| Ambiguity | Pick conservative default; log in Open Questions |
+
+## GitHub Automation
+
+| Trigger | Workflow | Action |
+|---------|----------|--------|
+| PR changes `.cursor/team/**` | `boss-gates.yml` | check-links + validate-boss-gates |
+| Manual / issue label `boss:deliver` | `boss-deliver.yml` | Scaffold checkpoint, post Cursor instructions |
+
+Issue title format for auto-slug: `[boss:my-feature] Description here`
 
 ## SDLC + Specialist Phase Order
 
@@ -144,12 +201,18 @@ Replace `{{FEATURE}}` with feature slug, `{{DATE}}` with ISO date.
 
 ## Gate Definitions
 
-| Gate | Owner | Blocks |
-|------|-------|--------|
-| Code review | solution-architect | QA |
-| Bugbot review | bugbot | QA (on FAIL) |
-| UAT | business-analyst | Documentation |
-| Security | solution-architect + security-review | Documentation, DevOps |
+| Gate | Owner | Artifact | Blocks |
+|------|-------|----------|--------|
+| Validation | BOSS / scripts | `validation.json` | Complete (fix mode) |
+| Code review | solution-architect | `code-review.json` | QA |
+| Bugbot review | bugbot | `bugbot.json` | QA (on FAIL) |
+| QA | qa-engineer | `qa.json` | UAT |
+| UAT | business-analyst | `uat.json` | Documentation |
+| Security | security-review | `security-review.json` | Documentation, DevOps |
+
+Validate: `node scripts/validate-boss-gates.js --feature <slug>`
+
+See [gates README](../../team/gates/README.md) and [checkpoint schema](../../team/checkpoints/CHECKPOINT-SCHEMA.md).
 
 ## Role Playbooks
 

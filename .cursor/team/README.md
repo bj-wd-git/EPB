@@ -7,12 +7,38 @@
 ## Quick Start
 
 ```text
+Use BOSS to fix "broken link in README"
 Use BOSS to deliver "my-feature-name"
+Use BOSS to continue "my-feature-name"
 Use BOSS to init
-Use BOSS to sync
 Use BOSS to mcp list
-Use BOSS to mcp enable linear
 ```
+
+## Delivery Modes
+
+| Mode | Command | Gates |
+|------|---------|-------|
+| fix | `BOSS fix <desc>` | `validation.json` only |
+| standard | `BOSS deliver <feature>` | code-review, qa, uat |
+| full | `BOSS deliver <feature> --full` | all gates + security |
+
+## Gate Enforcement
+
+Gate artifacts: [gates/README.md](gates/README.md)
+
+```bash
+node scripts/validate-boss-gates.js --feature notification-retry
+```
+
+CI: `.github/workflows/boss-gates.yml` runs on PRs.
+
+## Checkpoints (multi-session)
+
+Resume delivery: `Use BOSS to continue <feature>`
+
+Schema: [checkpoints/CHECKPOINT-SCHEMA.md](checkpoints/CHECKPOINT-SCHEMA.md)
+
+GitHub trigger: label issue `boss:deliver` or run **BOSS Deliver** workflow.
 
 ## Structure
 
@@ -36,7 +62,11 @@ Use BOSS to mcp enable linear
 │   └── epb-vision/          ← use when required
 └── team/
     ├── registry.json        ← teams + MCPs + skills (v2)
+    ├── checkpoints/         ← multi-session state
+    ├── gates/               ← gate artifacts
     ├── reports/             ← one report per feature
+    ├── REPORT-TEMPLATE.md
+    ├── REPORT-FAST-TEMPLATE.md
     └── bootstrap.ps1        ← copy to other projects
 ```
 
@@ -75,7 +105,7 @@ See [mcps/README.md](../mcps/README.md) for setup and auth.
 .\.cursor\team\bootstrap.ps1 -TargetPath C:\path\to\your-project
 ```
 
-Copies BOSS agent, skills, role/specialist catalogs, MCP catalog, and team folder skeleton.
+Copies BOSS agent, skills, role/specialist catalogs, MCP catalog, validator script, workflows, and team folder skeleton.
 
 ## Agents Index
 

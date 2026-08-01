@@ -1,0 +1,116 @@
+name: BOSS Deliver
+
+on:
+  workflow_dispatch:
+    inputs:
+      feature:
+        description: Feature slug (e.g. notification-retry)
+        required: true
+        type: string
+      mode:
+        description: Delivery mode
+        required: true
+        default: standard
+        type: choice
+        options:
+          - fix
+          - standard
+          - full
+      unattended:
+        description: Unattended mode (BOSS should not block on user)
+        required: false
+        default: false
+        type: boolean
+  issues:
+    types: [labeled]
+
+jobs:
+  deliver:
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' && github.event.label.name == 'boss:deliver')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve feature slug
+        id: meta
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "slug=${{ github.event.inputs.feature }}" >> $GITHUB_OUTPUT
+            echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
+            echo "unattended=${{ github.event.inputs.unattended }}" >> $GITHUB_OUTPUT
+          else
+            SLUG=$(echo "${{ github.event.issue.title }}" | sed -n 's/.*\[boss:\([^]]*\)\].*/\1/p')
+            if [ -z "$SLUG" ]; then SLUG=$(echo "${{ github.event.issue.title }}" | tr ' ' '-' | tr '[:upper:]' '[:lower:]' | cut -c1-40); fi
+            echo "slug=$SLUG" >> $GITHUB_OUTPUT
+            echo "mode=standard" >> $GITHUB_OUTPUT
+            echo "unattended=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Scaffold checkpoint
+        run: |
+          SLUG="${{ steps.meta.outputs.slug }}"
+          MODE="${{ steps.meta.outputs.mode }}"
+          UNATTENDED="${{ steps.meta.outputs.unattended }}"
+          mkdir -p .cursor/team/checkpoints
+          cat > ".cursor/team/checkpoints/${SLUG}.json" << EOF
+          {
+            "slug": "${SLUG}",
+            "mode": "${MODE}",
+            "phase": 1,
+            "phaseName": "product-manager",
+            "status": "in_progress",
+            "blockedOn": null,
+            "blockedReason": null,
+            "lastUpdated": "$(date -u +%Y-%m-%dT%H:%M:%S.000Z)",
+            "lastCommit": "${{ github.sha }}",
+            "phasesCompleted": [],
+            "phasesRemaining": [],
+            "report": ".cursor/team/reports/${SLUG}.md",
+            "unattended": ${UNATTENDED}
+          }
+          EOF
+          echo "Checkpoint created for ${SLUG} (mode: ${MODE})"
+
+      - name: Post delivery instructions
+        if: github.event_name == 'issues'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const slug = '${{ steps.meta.outputs.slug }}';
+            const mode = '${{ steps.meta.outputs.mode }}';
+            const body = `## BOSS delivery queued
+
+            **Feature:** \`${slug}\`
+            **Mode:** \`${mode}\`
+
+            ### Run in Cursor (Cloud Agent recommended)
+
+            \`\`\`text
+            Use BOSS to continue ${slug}
+            Unattended: resume from checkpoint until complete or blocked
+            \`\`\`
+
+            Checkpoint: \`.cursor/team/checkpoints/${slug}.json\`
+
+            After delivery, gate validation runs on PR via **BOSS Gates** workflow.
+            `;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });
+
+      - name: Output instructions
+        run: |
+          echo "## BOSS Deliver"
+          echo "Feature: ${{ steps.meta.outputs.slug }}"
+          echo "Mode: ${{ steps.meta.outputs.mode }}"
+          echo ""
+          echo "In Cursor:"
+          echo "  Use BOSS to continue ${{ steps.meta.outputs.slug }}"
