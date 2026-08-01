@@ -5,6 +5,7 @@ on:
     paths:
       - '.cursor/team/**'
       - 'scripts/validate-boss-gates.js'
+      - 'scripts/validate-prd.js'
       - 'scripts/check-links.js'
   workflow_dispatch:
     inputs:
@@ -30,6 +31,8 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.feature }}" ]; then
             node scripts/validate-boss-gates.js --feature "${{ github.event.inputs.feature }}"
+            node scripts/validate-prd.js --feature "${{ github.event.inputs.feature }}" || true
           else
             node scripts/validate-boss-gates.js --feature notification-retry --mode standard
+            node scripts/validate-prd.js --feature notification-retry
           fi

@@ -17,11 +17,13 @@ BOSS applies skills dynamically based on task context. Record applied skills in 
 | `epb-vision` | `.cursor/skills/epb-vision/SKILL.md` | Platform architecture, handbook, ADRs |
 | `project-vision` | `.cursor/skills/project-vision/SKILL.md` | Non-EPB project context |
 | `mcp-routing` | `.cursor/skills/mcp-routing/SKILL.md` | Before any MCP tool call |
+| `prd-developer` | `.cursor/skills/prd-developer/SKILL.md` | PRD + dev-docs authoring |
 
 ## Role Playbooks (SDLC)
 
 | Skill | Path | Trigger |
 |-------|------|---------|
+| `prd-developer` | `.cursor/skills/sdlc-roles/prd-developer.md` | Full PRD, dev-docs for BOSS |
 | `product-manager` | `.cursor/skills/sdlc-roles/product-manager.md` | Goals, acceptance criteria |
 | `business-analyst` | `.cursor/skills/sdlc-roles/business-analyst.md` | Requirements, UAT |
 | `solution-architect` | `.cursor/skills/sdlc-roles/solution-architect.md` | Architecture, reviews |
@@ -47,7 +49,8 @@ BOSS applies skills dynamically based on task context. Record applied skills in 
 
 | Task type | Skills to apply |
 |-----------|-----------------|
-| EPB platform feature | `epb-vision`, `mcp-routing` |
+| New feature PRD | `prd-developer`, `epb-vision` |
+| EPB platform feature | `epb-vision`, `mcp-routing`, `prd-developer` |
 | Handbook content | `epb-vision`, `gbrain` MCP |
 | Non-EPB project | `project-vision` |
 | Any MCP usage | `mcp-routing` |

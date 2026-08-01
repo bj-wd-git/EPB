@@ -8,6 +8,43 @@ description: >-
 
 # BOSS Skill — Team Orchestration
 
+## PRD → Dev-docs → Deliver (recommended for new features)
+
+```text
+1. BOSS prd <slug>     → prd-developer authors PRD.md + dev-docs.md
+2. validate-prd.js     → completeness check
+3. BOSS prd approve    → prd-meta.json status: approved
+4. BOSS deliver <slug> → reads dev-docs as source of truth
+```
+
+### BOSS prd workflow
+
+1. Parse brief → slug
+2. Invoke **prd-developer** (optionally PM + BA + Architect in parallel for input)
+3. Write `.cursor/team/prds/<slug>/PRD.md` from [PRD-TEMPLATE](../../team/prds/PRD-TEMPLATE.md)
+4. Write `.cursor/team/prds/<slug>/dev-docs.md` from [DEV-DOCS-TEMPLATE](../../team/prds/DEV-DOCS-TEMPLATE.md)
+5. Write `prd-meta.json` with `status: draft`
+6. Run `node scripts/validate-prd.js --feature <slug>`
+7. Register in `registry.json` → `prds` array
+
+### BOSS prd approve
+
+1. Run validate-prd.js — must pass
+2. Set `prd-meta.json` → `status: approved`, `approved: <date>`
+3. Confirm dev-docs status → `Ready for BOSS`
+
+### BOSS deliver with dev-docs
+
+When `.cursor/team/prds/<slug>/dev-docs.md` exists:
+
+1. Read dev-docs **before** triage
+2. Use **BOSS Delivery Config** section for mode, roles, MCPs, skills
+3. Execute **Task Breakdown** T-001… in order
+4. Validate against **Acceptance Criteria** and **Test Plan**
+5. If PRD status is `draft`, warn user — recommend `BOSS prd approve` first
+
+Skill: [prd-developer](../prd-developer/SKILL.md)
+
 ## Delivery Modes (Triage)
 
 | Mode | Command | Subagents | Gates | Report template |

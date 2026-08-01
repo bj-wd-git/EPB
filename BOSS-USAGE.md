@@ -53,16 +53,71 @@ Use BOSS to deliver "my-feature"
 
 | You want to… | Say this | Mode |
 |--------------|----------|------|
+| **Write PRD + dev docs first** | `Use BOSS to prd "user-auth"` | **prd** |
 | Fix a typo, link, small bug | `Use BOSS to fix "broken link in README"` | **fix** |
 | Build a feature / API | `Use BOSS to deliver "user-auth"` | **standard** |
 | Platform feature, security-critical | `Use BOSS to deliver "payment-webhook" --full` | **full** |
+| Approve PRD for development | `Use BOSS to prd approve user-auth` | prd approve |
 | Resume yesterday's work | `Use BOSS to continue "user-auth"` | continue |
 
-**Rule of thumb:** If it fits in one chat and &lt; ~50 lines → **fix**. If it needs design + tests → **deliver**. If it touches platform/security → **full**.
+**Recommended for new features:** `prd` → `prd approve` → `deliver`
+
+**Rule of thumb:** New feature? Start with **prd**. Small fix? **fix**. Ready to code? **deliver** (reads dev-docs if present).
 
 ---
 
-## 3. Daily workflows (copy-paste)
+## 3. PRD → Dev-docs → Deliver (new features)
+
+### Step 1 — Author PRD + dev-docs
+
+```text
+Use BOSS to prd "notification-retry"
+
+Context:
+- Add retry with exponential backoff to notification platform
+- Follow epb-vision
+- Full PRD all 17 sections + dev-docs with task breakdown
+```
+
+**Creates:**
+
+```text
+.cursor/team/prds/notification-retry/
+├── PRD.md          # Full product requirements (stakeholders)
+├── dev-docs.md     # Development handoff for BOSS deliver
+└── prd-meta.json   # Status: draft
+```
+
+### Step 2 — Validate
+
+```bash
+node scripts/validate-prd.js --feature notification-retry
+```
+
+### Step 3 — Approve
+
+```text
+Use BOSS to prd approve notification-retry
+```
+
+Sets `prd-meta.json` → `status: approved`
+
+### Step 4 — Deliver
+
+```text
+Use BOSS to deliver "notification-retry"
+
+Read dev-docs at .cursor/team/prds/notification-retry/dev-docs.md
+Execute tasks T-001… in order.
+```
+
+BOSS uses dev-docs for: mode, roles, API contracts, test plan, acceptance criteria.
+
+**Example:** [notification-retry PRD](.cursor/team/prds/_example/notification-retry/PRD.md) · [dev-docs](.cursor/team/prds/_example/notification-retry/dev-docs.md)
+
+---
+
+## 4. Daily workflows (copy-paste)
 
 ### A. Quick fix (fastest)
 
@@ -320,13 +375,16 @@ node scripts/validate-boss-gates.js --feature update-bff-chapter
 ## Quick reference card
 
 ```text
-BOSS init              → first time setup
-BOSS fix "<desc>"      → small/fast
-BOSS deliver "<name>"  → standard feature
+BOSS prd "<name>"           → PRD + dev-docs
+BOSS prd approve "<name>"   → approve for delivery
+BOSS init                   → first time setup
+BOSS fix "<desc>"           → small/fast
+BOSS deliver "<name>"       → standard (reads dev-docs)
 BOSS deliver "<name>" --full → platform + security
-BOSS continue "<name>" → resume
-BOSS mcp list          → MCP status
-validate-boss-gates    → node scripts/validate-boss-gates.js --feature <slug>
+BOSS continue "<name>"      → resume
+BOSS mcp list               → MCP status
+validate-prd                → node scripts/validate-prd.js --feature <slug>
+validate-boss-gates         → node scripts/validate-boss-gates.js --feature <slug>
 ```
 
 ---

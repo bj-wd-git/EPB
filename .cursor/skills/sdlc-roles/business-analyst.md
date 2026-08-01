@@ -9,6 +9,7 @@
 - User stories (As a / I want / So that)
 - FRD summary, process flows
 - UAT sign-off (PASS | FAIL) when in UAT gate
+- Input to **prd-developer** for PRD sections 6–7
 
 ## EPB References
 - `Volume-1-Foundation/04-scope-and-domain-neutrality.md`

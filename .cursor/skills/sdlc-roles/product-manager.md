@@ -10,6 +10,7 @@
 - Acceptance criteria (testable)
 - Priority and out-of-scope list
 - Stakeholder map
+- Input to **prd-developer** when `BOSS prd` runs
 
 ## EPB References
 - `Volume-1-Foundation/01-vision-and-mission.md`

@@ -1,5 +1,5 @@
 ﻿{
-  "version": "2.0",
+  "version": "2.1",
   "maintained-by": "boss",
   "mcps": {
     "active": ["gbrain", "github"],
@@ -8,6 +8,15 @@
   "skills": {
     "catalog": ".cursor/skills/skills-catalog/SKILL.md"
   },
+  "prds": [
+    {
+      "slug": "notification-retry",
+      "status": "approved",
+      "prd": ".cursor/team/prds/_example/notification-retry/PRD.md",
+      "devDocs": ".cursor/team/prds/_example/notification-retry/dev-docs.md",
+      "meta": ".cursor/team/prds/_example/notification-retry/prd-meta.json"
+    }
+  ],
   "teams": [
     {
       "slug": "notification-retry",
@@ -21,7 +30,8 @@
         "security-review"
       ],
       "mcps": ["gbrain", "github"],
-      "skills": ["epb-vision", "mcp-routing"],
+      "skills": ["epb-vision", "mcp-routing", "prd-developer"],
+      "prd": ".cursor/team/prds/_example/notification-retry/dev-docs.md",
       "teamPath": ".cursor/agents/teams/_example/",
       "report": ".cursor/team/reports/_example/notification-retry.md",
       "created": "2026-08-01"

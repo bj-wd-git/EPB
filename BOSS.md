@@ -66,11 +66,20 @@ Use BOSS to mcp list
 
 | Mode | Command | Speed | Gates |
 |------|---------|-------|-------|
+| **prd** | `BOSS prd <name>` | PRD + dev-docs first | validate-prd.js |
 | **fix** | `BOSS fix <desc>` | Fastest — BOSS inline, no subagents | `validation.json` |
 | **standard** | `BOSS deliver <feature>` | Balanced | code-review, qa, uat |
 | **full** | `BOSS deliver <feature> --full` | Thorough | All gates + security-review |
 
 BOSS auto-triages if you don't specify a mode.
+
+### PRD → Deliver pipeline
+
+```text
+BOSS prd <slug> → PRD.md + dev-docs.md → BOSS prd approve <slug> → BOSS deliver <slug>
+```
+
+See [prds README](.cursor/team/prds/README.md) and [BOSS-USAGE.md](BOSS-USAGE.md).
 
 ---
 
@@ -232,6 +241,8 @@ scripts/
 |---------|--------|
 | `BOSS init` | Scaffold role + specialist catalogs, MCP defaults |
 | `BOSS sync` | Update agents, refresh MCP health |
+| `BOSS prd <feature>` | Author full PRD + dev-docs |
+| `BOSS prd approve <feature>` | Approve PRD for delivery |
 | `BOSS fix <desc>` | Fast inline fix + validation gate |
 | `BOSS deliver <feature>` | Standard delivery (auto-triage) |
 | `BOSS deliver <feature> --full` | Full SDLC + all gates |

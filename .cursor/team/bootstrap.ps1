@@ -20,6 +20,7 @@ $paths = @(
     ".cursor/skills/specialist-roles",
     ".cursor/skills/mcp-routing",
     ".cursor/skills/skills-catalog",
+    ".cursor/skills/prd-developer",
     ".cursor/skills/project-vision",
     ".cursor/mcps",
     ".cursor/mcp.json",
@@ -41,11 +42,11 @@ foreach ($rel in $paths) {
 
 # Gate validator script
 $scriptsSrc = Join-Path $SourceRoot "scripts\validate-boss-gates.js"
+$prdSrc = Join-Path $SourceRoot "scripts\validate-prd.js"
 $scriptsDstDir = Join-Path $TargetRoot "scripts"
-if (Test-Path $scriptsSrc) {
-    if (-not (Test-Path $scriptsDstDir)) { New-Item -ItemType Directory -Force -Path $scriptsDstDir | Out-Null }
-    Copy-Item -Path $scriptsSrc -Destination (Join-Path $scriptsDstDir "validate-boss-gates.js") -Force
-}
+if (-not (Test-Path $scriptsDstDir)) { New-Item -ItemType Directory -Force -Path $scriptsDstDir | Out-Null }
+if (Test-Path $scriptsSrc) { Copy-Item -Path $scriptsSrc -Destination (Join-Path $scriptsDstDir "validate-boss-gates.js") -Force }
+if (Test-Path $prdSrc) { Copy-Item -Path $prdSrc -Destination (Join-Path $scriptsDstDir "validate-prd.js") -Force }
 
 # GitHub workflows
 $workflowSrc = Join-Path $SourceRoot ".github\workflows"
@@ -58,7 +59,8 @@ if (Test-Path $workflowSrc) {
 $dirs = @(
     (Join-Path $TargetRoot ".cursor/team/reports"),
     (Join-Path $TargetRoot ".cursor/team/checkpoints"),
-    (Join-Path $TargetRoot ".cursor/team/gates")
+    (Join-Path $TargetRoot ".cursor/team/gates"),
+    (Join-Path $TargetRoot ".cursor/team/prds")
 )
 foreach ($d in $dirs) {
     if (-not (Test-Path $d)) { New-Item -ItemType Directory -Force -Path $d | Out-Null }
@@ -74,3 +76,4 @@ Write-Host "BOSS kit copied to $TargetRoot"
 Write-Host "Customize .cursor/skills/project-vision/SKILL.md for your project."
 Write-Host "Run 'Use BOSS to mcp list' to configure MCPs."
 Write-Host "Validate gates: node scripts/validate-boss-gates.js --feature <slug>"
+Write-Host "Validate PRD: node scripts/validate-prd.js --feature <slug>"

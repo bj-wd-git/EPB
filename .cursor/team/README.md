@@ -22,6 +22,16 @@ Use BOSS to mcp list
 | standard | `BOSS deliver <feature>` | code-review, qa, uat |
 | full | `BOSS deliver <feature> --full` | all gates + security |
 
+## PRD Workspace
+
+Full-level PRD automation: [prds/README.md](prds/README.md)
+
+Validate PRD:
+
+```bash
+node scripts/validate-prd.js --feature notification-retry
+```
+
 ## Gate Enforcement
 
 Gate artifacts: [gates/README.md](gates/README.md)

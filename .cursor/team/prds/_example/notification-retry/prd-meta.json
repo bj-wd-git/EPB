@@ -1,0 +1,10 @@
+{
+  "slug": "notification-retry",
+  "status": "approved",
+  "version": "1.0",
+  "prd": ".cursor/team/prds/_example/notification-retry/PRD.md",
+  "devDocs": ".cursor/team/prds/_example/notification-retry/dev-docs.md",
+  "created": "2026-08-01",
+  "approved": "2026-08-01",
+  "bossMode": "standard"
+}

@@ -5,12 +5,9 @@
 Invoke **BOSS** for all coordinated SDLC work:
 
 ```text
+Use BOSS to prd "notification-retry"
+Use BOSS to prd approve notification-retry
 Use BOSS to deliver "notification-retry"
-Use BOSS to fix "broken link in README"
-Use BOSS to continue "notification-retry"
-Use BOSS to init
-Use BOSS to sync
-Use BOSS to mcp list
 ```
 
 **BOSS** = Build Orchestration Supervisory System
@@ -35,6 +32,7 @@ Use BOSS to mcp list
 | [qa-engineer](roles/qa-engineer.md) | Testing, regression |
 | [documentation-versioning](roles/documentation-versioning.md) | Docs, CHANGELOG, semver |
 | [devops-engineer](roles/devops-engineer.md) | CI/CD, deploy, release |
+| [prd-developer](roles/prd-developer.md) | Full PRD + dev-docs for BOSS |
 
 ## Specialist Catalog
 
