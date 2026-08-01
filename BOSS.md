@@ -8,6 +8,8 @@ Use this document as a **public reference** for any project. Share the link:
 
 `https://github.com/bj-wd-git/EPB/blob/main/BOSS.md`
 
+**How to use (step-by-step):** [BOSS-USAGE.md](BOSS-USAGE.md)
+
 ---
 
 ## What BOSS Does
@@ -250,6 +252,7 @@ See [notification-retry example](.cursor/team/reports/_example/notification-retr
 
 | Doc | Path |
 |-----|------|
+| **How to use** | **[BOSS-USAGE.md](BOSS-USAGE.md)** |
 | Team workspace | [.cursor/team/README.md](.cursor/team/README.md) |
 | Gate artifacts | [.cursor/team/gates/README.md](.cursor/team/gates/README.md) |
 | Checkpoints | [.cursor/team/checkpoints/CHECKPOINT-SCHEMA.md](.cursor/team/checkpoints/CHECKPOINT-SCHEMA.md) |

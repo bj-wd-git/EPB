@@ -4,7 +4,7 @@ A reusable engineering platform handbook for building **any** enterprise applica
 
 **Build the platform once. Build unlimited applications on top of it.**
 
-**[BOSS — SDLC Orchestration for any project →](BOSS.md)**
+**[BOSS — SDLC Orchestration for any project →](BOSS.md)** · **[How to use →](BOSS-USAGE.md)**
 
 ## Start Here
 
@@ -79,6 +79,7 @@ Use BOSS to mcp list
 | Resource | Description |
 |----------|-------------|
 | **[BOSS.md](BOSS.md)** | Public entry point — adopt in any project |
+| **[BOSS-USAGE.md](BOSS-USAGE.md)** | Step-by-step practical guide |
 | [Team README](.cursor/team/README.md) | Quick start, structure, bootstrap |
 | [Agents index](.cursor/agents/README.md) | BOSS + 9 SDLC roles + 6 specialists |
 | [MCP catalog](.cursor/mcps/README.md) | gbrain, GitHub, Linear, Slack, Sentry |
