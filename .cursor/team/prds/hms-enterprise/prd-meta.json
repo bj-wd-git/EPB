@@ -1,12 +1,13 @@
 {
   "slug": "hms-enterprise",
-  "status": "draft",
+  "status": "approved",
   "version": "1.0",
   "qualityScore": 100,
   "source": "HMS.md",
   "prd": ".cursor/team/prds/hms-enterprise/PRD.md",
   "devDocs": ".cursor/team/prds/hms-enterprise/dev-docs.md",
   "created": "2026-08-01",
+  "approved": "2026-08-01",
   "bossMode": "full",
   "traceability": {
     "userStories": 4,

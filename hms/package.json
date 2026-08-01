@@ -1,0 +1,10 @@
+{
+  "name": "hms-enterprise",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hospital Management System Phase 1 — BOSS hms-enterprise",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "bff:dev": "node -e \"require('./apps/bff/src/server').createBffServer().listen(3000, () => console.log('HMS BFF :3000'))\""
+  }
+}

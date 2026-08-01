@@ -1,0 +1,13 @@
+{
+  "gate": "security-review",
+  "result": "PASS",
+  "timestamp": "2026-08-01T18:19:00.000Z",
+  "runner": "security-review",
+  "evidence": [
+    "Decision-Records/ADR-012-hms-phi-audit.md",
+    "hms/apps/bff/src/server.js",
+    "hms/libs/common/src/audit.js"
+  ],
+  "summary": "RBAC enforced (403 on unauthorized); audit events on patient/appointment mutations; ADR-012 PHI controls documented",
+  "findings": []
+}

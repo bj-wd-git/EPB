@@ -1,0 +1,12 @@
+{
+  "gate": "qa",
+  "result": "PASS",
+  "timestamp": "2026-08-01T18:17:00.000Z",
+  "runner": "qa-engineer",
+  "evidence": [
+    "hms/test/uhid.test.js",
+    "hms/test/integration.test.js"
+  ],
+  "summary": "TP-001–TP-004 pass: UHID format, register+book flow, slot conflict 409, clinical note append",
+  "findings": []
+}

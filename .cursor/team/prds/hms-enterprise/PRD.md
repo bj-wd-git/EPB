@@ -5,7 +5,7 @@
 | Field | Value |
 |-------|-------|
 | **Slug** | hms-enterprise |
-| **Status** | Draft |
+| **Status** | Approved |
 | **Version** | 1.0 |
 | **Author** | prd-developer (BOSS) |
 | **Created** | 2026-08-01 |
