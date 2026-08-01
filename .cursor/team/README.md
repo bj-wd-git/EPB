@@ -2,6 +2,8 @@
 
 **BOSS** (Build Orchestration Supervisory System) is the manager agent that composes SDLC teams, specialist agents, MCP servers, and skills dynamically — then writes consolidated feature reports.
 
+**Public reference:** [BOSS.md](../../BOSS.md) — shareable link for any project.
+
 ## Quick Start
 
 ```text

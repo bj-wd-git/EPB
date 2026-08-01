@@ -4,10 +4,13 @@ A reusable engineering platform handbook for building **any** enterprise applica
 
 **Build the platform once. Build unlimited applications on top of it.**
 
+**[BOSS — SDLC Orchestration for any project →](BOSS.md)**
+
 ## Start Here
 
 | If you are... | Start with |
 |---------------|------------|
+| Using BOSS in any project | **[BOSS.md](BOSS.md)** — adopt, bootstrap, deliver features |
 | New to EPB | [Vision and Mission](Volume-1-Foundation/01-vision-and-mission.md) |
 | Architecting a platform | [Layered Architecture](Volume-1-Foundation/06-layered-architecture.md) + [ADRs](Decision-Records/) |
 | Building a service | [Create New Service](Volume-3-Developer-Guide/04-create-new-service.md) |
@@ -65,7 +68,7 @@ A reusable engineering platform handbook for building **any** enterprise applica
 
 ## SDLC Team (BOSS)
 
-This repo includes a **BOSS** (Build Orchestration Supervisory System) agent kit for end-to-end feature delivery — SDLC roles, specialist agents, MCP servers, and skills.
+This repo includes **BOSS** — see **[BOSS.md](BOSS.md)** for the public reference, bootstrap guide, and quick start.
 
 ```text
 Use BOSS to deliver "my-feature"
@@ -75,6 +78,7 @@ Use BOSS to mcp list
 
 | Resource | Description |
 |----------|-------------|
+| **[BOSS.md](BOSS.md)** | Public entry point — adopt in any project |
 | [Team README](.cursor/team/README.md) | Quick start, structure, bootstrap |
 | [Agents index](.cursor/agents/README.md) | BOSS + 9 SDLC roles + 6 specialists |
 | [MCP catalog](.cursor/mcps/README.md) | gbrain, GitHub, Linear, Slack, Sentry |
