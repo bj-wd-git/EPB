@@ -15,6 +15,13 @@
       "prd": ".cursor/team/prds/_example/notification-retry/PRD.md",
       "devDocs": ".cursor/team/prds/_example/notification-retry/dev-docs.md",
       "meta": ".cursor/team/prds/_example/notification-retry/prd-meta.json"
+    },
+    {
+      "slug": "hms-enterprise",
+      "status": "draft",
+      "prd": ".cursor/team/prds/hms-enterprise/PRD.md",
+      "devDocs": ".cursor/team/prds/hms-enterprise/dev-docs.md",
+      "meta": ".cursor/team/prds/hms-enterprise/prd-meta.json"
     }
   ],
   "teams": [
