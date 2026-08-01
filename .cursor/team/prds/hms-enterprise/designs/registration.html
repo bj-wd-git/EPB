@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration — HMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50">
+  <nav class="border-b bg-white px-6 py-3 shadow-sm flex gap-6 items-center">
+    <span class="font-bold text-blue-700">HMS</span>
+    <a href="dashboard.html" class="text-sm text-slate-600">Dashboard</a>
+    <a href="#" class="text-sm font-medium text-blue-600">Registration</a>
+  </nav>
+  <main class="mx-auto max-w-lg p-6">
+    <h1 class="mb-6 text-2xl font-bold">Patient Registration</h1>
+    <form class="rounded-xl border bg-white p-6 shadow-sm space-y-4">
+      <div class="grid gap-3 sm:grid-cols-2">
+        <input class="rounded-lg border px-3 py-2 text-sm" placeholder="First name" required />
+        <input class="rounded-lg border px-3 py-2 text-sm" placeholder="Last name" required />
+        <input class="rounded-lg border px-3 py-2 text-sm" type="date" required />
+        <input class="rounded-lg border px-3 py-2 text-sm" placeholder="Phone" required />
+      </div>
+      <button type="submit" class="w-full rounded-lg bg-blue-600 py-2 text-sm font-medium text-white hover:bg-blue-700">Register Patient</button>
+    </form>
+    <div class="mt-4 rounded-xl border-2 border-green-200 bg-green-50 p-4 hidden" id="uhid-card">
+      <p class="text-sm text-green-800">UHID issued:</p>
+      <p class="text-xl font-mono font-bold text-green-700">HMS-BRN-000042</p>
+    </div>
+  </main>
+</body>
+</html>

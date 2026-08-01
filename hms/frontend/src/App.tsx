@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
-import type { ReactNode } from 'react';
+import { useState, type FormEvent, type ReactNode } from 'react';
+import { registerPatient } from './api';
 
 const nav = [
   { path: '/', label: 'Dashboard' },
@@ -92,18 +93,51 @@ function Login() {
 }
 
 function Registration() {
+  const [uhid, setUhid] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    const fd = new FormData(e.currentTarget);
+    try {
+      const result = await registerPatient({
+        firstName: fd.get('firstName'),
+        lastName: fd.get('lastName'),
+        dateOfBirth: fd.get('dateOfBirth'),
+        phone: fd.get('phone'),
+        branchId: 'b1',
+      });
+      setUhid(result.uhid);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Registration failed');
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <PageLayout title="Patient Registration">
-      <div className="card max-w-lg space-y-4">
-        <p className="text-sm text-slate-600">POST /api/v1/patients — UHID issued on success.</p>
+      <form onSubmit={onSubmit} className="card max-w-lg space-y-4">
         <div className="grid gap-3 sm:grid-cols-2">
-          <input className="rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="First name" />
-          <input className="rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="Last name" />
-          <input className="rounded-lg border border-slate-300 px-3 py-2 text-sm" type="date" />
-          <input className="rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="Phone" />
+          <input name="firstName" className="rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="First name" required />
+          <input name="lastName" className="rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="Last name" required />
+          <input name="dateOfBirth" className="rounded-lg border border-slate-300 px-3 py-2 text-sm" type="date" required />
+          <input name="phone" className="rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="Phone" required />
         </div>
-        <button className="btn-primary">Register Patient</button>
-      </div>
+        {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
+        <button type="submit" className="btn-primary" disabled={loading}>
+          {loading ? 'Registering…' : 'Register Patient'}
+        </button>
+      </form>
+      {uhid && (
+        <div className="mt-4 card max-w-lg border-2 border-green-200 bg-green-50">
+          <p className="text-sm text-green-800">UHID issued:</p>
+          <p className="font-mono text-xl font-bold text-green-700">{uhid}</p>
+        </div>
+      )}
     </PageLayout>
   );
 }

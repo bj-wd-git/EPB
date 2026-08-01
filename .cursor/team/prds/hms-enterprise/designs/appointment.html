@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appointment — HMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50">
+  <nav class="border-b bg-white px-6 py-3 shadow-sm flex gap-6 items-center">
+    <span class="font-bold text-blue-700">HMS</span>
+    <a href="dashboard.html" class="text-sm text-slate-600">Dashboard</a>
+    <a href="#" class="text-sm font-medium text-blue-600">Appointment</a>
+  </nav>
+  <main class="mx-auto max-w-2xl p-6">
+    <h1 class="mb-6 text-2xl font-bold">Book Appointment</h1>
+    <div class="rounded-xl border bg-white p-6 shadow-sm space-y-4">
+      <input class="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Search patient UHID..." />
+      <div class="rounded-lg bg-slate-100 p-3 text-sm">Patient: Jane Doe · HMS-BRN-000042</div>
+      <select class="w-full rounded-lg border px-3 py-2 text-sm"><option>Dr. Smith — General</option></select>
+      <div class="grid grid-cols-4 gap-2">
+        <button class="rounded-lg border bg-blue-600 py-2 text-xs text-white">09:00</button>
+        <button class="rounded-lg border py-2 text-xs hover:bg-slate-50">09:15</button>
+        <button class="rounded-lg border py-2 text-xs hover:bg-slate-50">09:30</button>
+        <button class="rounded-lg border py-2 text-xs text-slate-400 line-through">09:45</button>
+      </div>
+      <button class="w-full rounded-lg bg-blue-600 py-2 text-sm font-medium text-white">Confirm Booking</button>
+    </div>
+  </main>
+</body>
+</html>

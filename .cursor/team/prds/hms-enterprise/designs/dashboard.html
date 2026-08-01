@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — HMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50">
+  <nav class="border-b bg-white px-6 py-3 shadow-sm flex gap-6 items-center">
+    <span class="font-bold text-blue-700">HMS</span>
+    <a href="#" class="text-sm font-medium text-blue-600">Dashboard</a>
+    <a href="registration.html" class="text-sm text-slate-600 hover:text-blue-600">Registration</a>
+    <a href="appointment.html" class="text-sm text-slate-600 hover:text-blue-600">Appointment</a>
+    <a href="admin.html" class="text-sm text-slate-600 hover:text-blue-600">Admin</a>
+  </nav>
+  <main class="mx-auto max-w-6xl p-6">
+    <h1 class="mb-6 text-2xl font-bold text-slate-800">Dashboard</h1>
+    <div class="mb-8 grid gap-4 sm:grid-cols-3">
+      <div class="rounded-xl border bg-white p-6 shadow-sm"><p class="text-sm text-slate-500">Today's Appointments</p><p class="text-3xl font-bold text-blue-600">24</p></div>
+      <div class="rounded-xl border bg-white p-6 shadow-sm"><p class="text-sm text-slate-500">Queue Waiting</p><p class="text-3xl font-bold text-green-600">7</p></div>
+      <div class="rounded-xl border bg-white p-6 shadow-sm"><p class="text-sm text-slate-500">New Registrations</p><p class="text-3xl font-bold text-slate-800">12</p></div>
+    </div>
+    <div class="rounded-xl border bg-white p-6 shadow-sm">
+      <h2 class="mb-4 font-semibold">Quick patient search</h2>
+      <input class="w-full max-w-md rounded-lg border px-3 py-2 text-sm" placeholder="UHID, name, or phone..." aria-label="Patient search" />
+    </div>
+  </main>
+</body>
+</html>

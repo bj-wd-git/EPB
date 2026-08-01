@@ -1,6 +1,7 @@
 # Feature Report: hms-enterprise
 
-## Status: Complete
+## Status: In Progress
+## Pipeline: prd ✓ doc ✓ workflows ✓ ux ✓ designs ✓ develop (in progress)
 ## Mode: full
 ## EPB Vision: applied
 ## Skills Applied: epb-vision, mcp-routing, prd-developer

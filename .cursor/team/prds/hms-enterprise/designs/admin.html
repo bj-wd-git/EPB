@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — HMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50">
+  <nav class="border-b bg-white px-6 py-3 shadow-sm flex gap-6 items-center">
+    <span class="font-bold text-blue-700">HMS</span>
+    <a href="dashboard.html" class="text-sm text-slate-600">Dashboard</a>
+    <a href="#" class="text-sm font-medium text-blue-600">Admin</a>
+  </nav>
+  <main class="mx-auto max-w-4xl p-6">
+    <h1 class="mb-6 text-2xl font-bold">Administration</h1>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div class="rounded-xl border bg-white p-6 shadow-sm">
+        <h2 class="mb-3 font-semibold">Hospitals & Branches</h2>
+        <ul class="text-sm space-y-2"><li>Main Hospital · BRN</li></ul>
+        <button class="mt-3 text-sm text-blue-600">+ Add branch</button>
+      </div>
+      <div class="rounded-xl border bg-white p-6 shadow-sm">
+        <h2 class="mb-3 font-semibold">Users & Roles</h2>
+        <table class="w-full text-sm"><tr class="border-b"><th class="py-2 text-left">User</th><th>Role</th></tr>
+        <tr><td class="py-2">clerk@hms.local</td><td>clerk</td></tr></table>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
