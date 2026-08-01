@@ -1,3 +1,17 @@
+## [0.2.0] - 2026-08-01
+
+### Changed
+
+- **Stack upgrade:** React + Tailwind CSS (Vite), NestJS BFF, MySQL 8 (TypeORM)
+- Docker Compose for local MySQL
+- NestJS modules: patients, appointments, emr, health
+- Tailwind-styled frontend shell
+
+### Added
+
+- `docker-compose.yml`, `.env.example`
+- TypeORM entities and MySQL migrations via synchronize (dev)
+
 ## [0.1.0] - 2026-08-01
 
 ### Added

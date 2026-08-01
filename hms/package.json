@@ -1,10 +1,19 @@
 {
   "name": "hms-enterprise",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "Hospital Management System Phase 1 — BOSS hms-enterprise",
+  "description": "Hospital Management System — React + Tailwind + NestJS + MySQL",
+  "workspaces": [
+    "apps/bff",
+    "frontend"
+  ],
   "scripts": {
     "test": "node --test test/*.test.js",
-    "bff:dev": "node -e \"require('./apps/bff/src/server').createBffServer().listen(3000, () => console.log('HMS BFF :3000'))\""
+    "bff:dev": "npm run start:dev -w @hms/bff",
+    "bff:build": "npm run build -w @hms/bff",
+    "fe:dev": "npm run dev -w @hms/frontend",
+    "fe:build": "npm run build -w @hms/frontend",
+    "db:up": "docker compose up -d mysql",
+    "db:down": "docker compose down"
   }
 }

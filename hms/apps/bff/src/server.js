@@ -1,6 +1,6 @@
 /**
- * HMS BFF — Phase 1 REST API (ADR-001, ADR-007)
- * NestJS target: apps/bff — this module is the Phase 1 functional scaffold.
+ * @deprecated Use NestJS BFF (apps/bff/src/main.ts) with MySQL.
+ * Legacy Node HTTP scaffold — kept for reference.
  */
 const http = require('http');
 const { createHmsStore } = require('../../../libs/common/src/store');
