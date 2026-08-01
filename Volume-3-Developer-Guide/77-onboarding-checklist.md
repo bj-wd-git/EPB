@@ -210,7 +210,7 @@ Close the onboarding ticket. Schedule 30-day check-in.
 | Git process | [Git Workflow](24-git-workflow.md) |
 | Code review | [Code Review Checklist](22-code-review-checklist.md) |
 | Glossary | [EPB Glossary](../docs/GLOSSARY.md) |
-| Handbook index | [goal.md](../goal.md) |
+| Handbook index | [README](../README.md) |
 
 ## Related Chapters
 

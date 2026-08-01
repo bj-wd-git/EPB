@@ -61,12 +61,7 @@ A reusable engineering platform handbook for building **any** enterprise applica
 
 - [Style Guide](docs/STYLE-GUIDE.md) · [Glossary](docs/GLOSSARY.md) · [Chapter Manifest](docs/CHAPTER-MANIFEST.json)
 - [Architecture Diagrams](Architecture-Diagrams/) · [Sequence Diagrams](Sequence-Diagrams/) · [Decision Records](Decision-Records/)
-- [Templates](Templates/) · [Checklists](Checklists/) · [Checkpoint](docs/CHECKPOINT.md)
-
-## Source
-
-- [goal.md](goal.md) — Master design prompt
-- [chat.md](chat.md) — Deliverable scope
+- [Templates](Templates/) · [Checklists](Checklists/)
 
 ---
 

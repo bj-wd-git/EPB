@@ -10,8 +10,7 @@ Thumbs.db
 .vscode/
 *.swp
 
-# gbrain local (global brain lives in ~/.gbrain)
-.gbrain/
+# Local tooling
 .gbrain-source
 
 # Build artifacts

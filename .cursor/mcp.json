@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "gbrain": {
-      "command": "gbrain",
-      "args": ["serve"]
-    }
-  }
-}
