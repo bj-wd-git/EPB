@@ -214,7 +214,11 @@ When delivering EPB features via the SDLC team, BOSS invokes this skill for plat
 |----------|------|
 | BOSS agent | `.cursor/agents/boss.md` |
 | BOSS workflow | `.cursor/skills/boss/SKILL.md` |
-| Role playbooks | `.cursor/skills/sdlc-roles/` |
+| SDLC playbooks | `.cursor/skills/sdlc-roles/` |
+| Specialist playbooks | `.cursor/skills/specialist-roles/` |
+| MCP routing | `.cursor/skills/mcp-routing/SKILL.md` |
+| Skills catalog | `.cursor/skills/skills-catalog/SKILL.md` |
+| MCP catalog | `.cursor/mcps/catalog.json` |
 | Team workspace | `.cursor/team/README.md` |
 | Feature reports | `.cursor/team/reports/<feature-slug>.md` |
 

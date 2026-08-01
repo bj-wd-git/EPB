@@ -8,17 +8,20 @@ Invoke **BOSS** for all coordinated SDLC work:
 Use BOSS to deliver "notification-retry"
 Use BOSS to init
 Use BOSS to sync
+Use BOSS to mcp list
+Use BOSS to mcp enable sentry
 ```
 
 **BOSS** = Build Orchestration Supervisory System
 
 | File | Purpose |
 |------|---------|
-| [boss.md](boss.md) | Manager — composes teams, coordinates roles, writes reports |
-| [roles/](roles/) | Shared reusable role agent catalog |
+| [boss.md](boss.md) | Manager — composes teams, MCPs, skills, coordinates agents, writes reports |
+| [roles/](roles/) | Shared SDLC role agent catalog (9) |
+| [specialists/](specialists/) | Specialist agent catalog (6) |
 | [teams/](teams/) | Per-feature dynamic teams (created by BOSS) |
 
-## Role Catalog
+## SDLC Role Catalog
 
 | Agent | Role |
 |-------|------|
@@ -32,10 +35,32 @@ Use BOSS to sync
 | [documentation-versioning](roles/documentation-versioning.md) | Docs, CHANGELOG, semver |
 | [devops-engineer](roles/devops-engineer.md) | CI/CD, deploy, release |
 
-## Direct Role Invoke (Advanced)
+## Specialist Catalog
+
+| Agent | subagent_type | When |
+|-------|---------------|------|
+| [explore](specialists/explore.md) | explore | Broad codebase search |
+| [shell](specialists/shell.md) | shell | Git, CI, scripts |
+| [bugbot](specialists/bugbot.md) | bugbot | Post-implementation review |
+| [security-review](specialists/security-review.md) | security-review | Security gate |
+| [ci-investigator](specialists/ci-investigator.md) | ci-investigator | Failed PR checks |
+| [cursor-guide](specialists/cursor-guide.md) | cursor-guide | Cursor product questions |
+
+## MCPs
+
+BOSS manages MCPs from [`.cursor/mcps/catalog.json`](../mcps/catalog.json). Active config: [`.cursor/mcp.json`](../mcp.json).
+
+| MCP | EPB default |
+|-----|-------------|
+| gbrain | Yes |
+| github | Yes |
+| linear, slack, sentry | Optional |
+
+## Direct Invoke (Advanced)
 
 ```text
 Use product-manager subagent for acceptance criteria on feature X
+Use security-review subagent for security scan
 ```
 
 ## Skills
@@ -43,7 +68,10 @@ Use product-manager subagent for acceptance criteria on feature X
 | Skill | Path |
 |-------|------|
 | BOSS workflow | `.cursor/skills/boss/SKILL.md` |
-| Role playbooks | `.cursor/skills/sdlc-roles/` |
+| SDLC playbooks | `.cursor/skills/sdlc-roles/` |
+| Specialist playbooks | `.cursor/skills/specialist-roles/` |
+| MCP routing | `.cursor/skills/mcp-routing/SKILL.md` |
+| Skills catalog | `.cursor/skills/skills-catalog/SKILL.md` |
 | EPB Vision | `.cursor/skills/epb-vision/SKILL.md` |
 
 ## Team Workspace

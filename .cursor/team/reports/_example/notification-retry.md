@@ -2,8 +2,10 @@
 
 ## Status: example
 ## EPB Vision: applied
+## Skills Applied: epb-vision, mcp-routing
 ## Team: maintained by BOSS
-## Agents: product-manager, solution-architect, backend-developer, qa-engineer, documentation-versioning
+## Agents: product-manager, solution-architect, backend-developer, qa-engineer, documentation-versioning, security-review
+## MCPs: gbrain, github
 
 ---
 
@@ -21,6 +23,7 @@
 
 - As a platform operator, I want failed notifications retried automatically so that transient failures do not require manual resend
 - FRD: Extend notification event with `retryPolicy`; scheduler handles retry jobs
+- Handbook ref (gbrain): Volume-2 `15-notification-platform.md`, ADR-006
 
 ## 3. Architecture (solution-architect)
 
@@ -67,6 +70,27 @@
 ## 11. Release (devops-engineer)
 
 - *Pending in real delivery*
+
+## 12. MCP Tools Used
+
+| MCP | Tools called | Purpose |
+|-----|--------------|---------|
+| gbrain | search | ADR-006 and notification platform chapter lookup |
+| github | — | Reserved for PR/release in real delivery |
+
+## 13. Specialist Findings
+
+### bugbot
+
+**Result:** N/A (example — not run)
+
+### security-review
+
+**Result:** PASS (example) — retry policy API requires tenant auth; no PII in dead-letter payload
+
+### ci-investigator
+
+**Result:** N/A
 
 ## Open Questions
 

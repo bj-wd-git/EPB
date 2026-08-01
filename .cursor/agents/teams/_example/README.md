@@ -11,6 +11,12 @@ This folder demonstrates a **dynamic team** created by BOSS for a single feature
 | [backend-developer](backend-developer.md) | API and service implementation |
 | [qa-engineer](qa-engineer.md) | Test strategy and execution |
 | [documentation-versioning](documentation-versioning.md) | CHANGELOG and semver |
+| [security-review](security-review.md) | Security gate scan |
+
+## MCPs & Skills
+
+- **MCPs:** gbrain, github
+- **Skills:** epb-vision, mcp-routing
 
 ## Report
 

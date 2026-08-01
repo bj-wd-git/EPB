@@ -1,64 +1,126 @@
 ---
 name: boss
 description: >-
-  BOSS workflow for dynamic SDLC team composition, role agent scaffolding, coordination
-  gates, and consolidated reporting. Use with the boss agent or when managing SDLC delivery.
+  BOSS workflow for dynamic SDLC team composition, specialist agents, MCP orchestration,
+  skills routing, gates, and consolidated reporting. Use with the boss agent or when
+  managing SDLC delivery.
 ---
 
 # BOSS Skill — Team Orchestration
 
 ## Workflow: Deliver a Feature
 
-1. **Analyze** — parse request, pick roles, create feature slug
-2. **Compose** — create `.cursor/agents/teams/<slug>/`, scaffold role agents from templates
-3. **Register** — update `.cursor/team/registry.json`
-4. **Report shell** — create `.cursor/team/reports/<slug>.md` from `REPORT-TEMPLATE.md`
-5. **Execute phases** — invoke role agents, update report sections
-6. **Gate check** — code review, UAT, security — block on FAIL
-7. **Finalize** — set status Complete, summarize for user
+1. **Analyze** — parse request, pick SDLC roles, specialists, MCPs, skills; create feature slug
+2. **Compose** — create `.cursor/agents/teams/<slug>/`, scaffold agents from templates
+3. **Enable MCPs** — merge required templates into `.cursor/mcp.json` from catalog
+4. **Register** — update `.cursor/team/registry.json` (v2: teams, mcps, skills)
+5. **Report shell** — create `.cursor/team/reports/<slug>.md` from `REPORT-TEMPLATE.md`
+6. **Execute phases** — invoke agents, call MCP tools per mcp-routing, update report
+7. **Gate check** — code review, bugbot, UAT, security-review — block on FAIL
+8. **Finalize** — set status Complete, summarize for user
 
-## SDLC Phase Order
+## SDLC + Specialist Phase Order
 
 ```text
 1. product-manager
-2. business-analyst
-3. solution-architect
+2. business-analyst          (gbrain for handbook refs)
+3. solution-architect        (gbrain for ADRs)
 4. ui-ux-designer + backend-developer (parallel)
-5. frontend-developer (after UX)
-6. solution-architect (code review gate)
-7. qa-engineer
-8. business-analyst (UAT gate)
-9. solution-architect (security gate)
+5. frontend-developer
+6. solution-architect (code review) + bugbot (parallel)
+7. qa-engineer               (sentry if production errors)
+8. business-analyst (UAT)
+9. solution-architect + security-review (parallel, security gate)
 10. documentation-versioning
-11. devops-engineer
+11. devops-engineer          (github for release)
+12. ci-investigator          (if CI fails on PR)
 ```
 
-Skip phases not applicable to the request (e.g., docs-only skips FE/BE/UX).
+Skip phases not applicable. Invoke `explore` early for unfamiliar codebases. Use `shell` for git/CI/scripts.
 
 ## Dynamic Composition Rules
 
 | Rule | Detail |
 |------|--------|
-| Minimum viable team | Only roles needed for the request |
+| Minimum viable team | Only agents, MCPs, skills needed for the request |
 | Parallel limit | Max 4 Task subagents at once |
 | Multiple instances | Suffix with `-1`, `-2` for parallel same-role work |
-| Shared catalog | Prefer `.cursor/agents/roles/` for generic roles |
+| Shared catalogs | `.cursor/agents/roles/`, `.cursor/agents/specialists/` |
 | Feature teams | `.cursor/agents/teams/<slug>/` for feature-specific agents |
+| MCP minimum | Enable only MCPs required; EPB defaults: gbrain + github |
 
-## Registry Format
+## MCP Management
+
+### Commands
+
+| Command | Action |
+|---------|--------|
+| `BOSS mcp list` | Read catalog + GetMcpTools for active status |
+| `BOSS mcp enable <id>` | Merge `.cursor/mcps/templates/<id>.json` into mcp.json |
+| `BOSS mcp sync` | GetMcpTools on each active server; report needsAuth/errors |
+| `BOSS mcp auth <id>` | Call mcp_auth, retry |
+
+### Catalog
+
+`.cursor/mcps/catalog.json` — see [MCP README](../../mcps/README.md)
+
+| MCP | Default (EPB) | When |
+|-----|---------------|------|
+| gbrain | Yes | Handbook, ADR, chapter lookup |
+| github | Yes | PR, CI, release |
+| linear | No | Sprint, backlog sync |
+| slack | No | Team comms |
+| sentry | No | Production errors |
+
+Routing details: [mcp-routing skill](../mcp-routing/SKILL.md)
+
+## Specialist Agents
+
+| Specialist | subagent_type | When | Template |
+|------------|---------------|------|----------|
+| explore | explore | Broad codebase search | `templates-specialists/explore.md` |
+| shell | shell | Git, CI, scripts | `templates-specialists/shell.md` |
+| bugbot | bugbot | Post-implementation review | `templates-specialists/bugbot.md` |
+| security-review | security-review | Security gate | `templates-specialists/security-review.md` |
+| ci-investigator | ci-investigator | Failed PR checks | `templates-specialists/ci-investigator.md` |
+| cursor-guide | cursor-guide | Cursor product questions | `templates-specialists/cursor-guide.md` |
+
+Playbooks: `.cursor/skills/specialist-roles/`
+
+## Skills Policy
+
+Read [skills-catalog](../skills-catalog/SKILL.md) before delegating. Record applied skills in report header.
+
+| Task | Skills |
+|------|--------|
+| EPB platform work | epb-vision, mcp-routing |
+| Non-EPB project | project-vision |
+| Any MCP call | mcp-routing |
+| Orchestration | boss (meta) |
+
+## Registry Format (v2)
 
 `.cursor/team/registry.json`:
 
 ```json
 {
+  "version": "2.0",
+  "maintained-by": "boss",
+  "mcps": {
+    "active": ["gbrain", "github"],
+    "catalog": ".cursor/mcps/catalog.json"
+  },
+  "skills": {
+    "catalog": ".cursor/skills/skills-catalog/SKILL.md"
+  },
   "teams": [
     {
       "slug": "notification-retry",
       "status": "in_progress",
-      "agents": ["product-manager", "solution-architect", "backend-developer"],
-      "report": ".cursor/team/reports/notification-retry.md",
-      "created": "2026-08-01",
-      "maintained-by": "boss"
+      "agents": ["product-manager", "backend-developer", "security-review"],
+      "mcps": ["gbrain", "github"],
+      "skills": ["epb-vision", "mcp-routing"],
+      "report": ".cursor/team/reports/notification-retry.md"
     }
   ]
 }
@@ -75,17 +137,19 @@ Skip for generic CRUD, UI-only fixes, or non-EPB projects (use `project-vision` 
 
 ## Agent Scaffolding
 
-Copy from `.cursor/skills/boss/templates/<role>.md` to target path. Replace:
-- `{{FEATURE}}` — feature slug
-- `{{DATE}}` — ISO date
+SDLC: copy from `.cursor/skills/boss/templates/<role>.md`
+Specialists: copy from `.cursor/skills/boss/templates-specialists/<name>.md`
+
+Replace `{{FEATURE}}` with feature slug, `{{DATE}}` with ISO date.
 
 ## Gate Definitions
 
 | Gate | Owner | Blocks |
 |------|-------|--------|
 | Code review | solution-architect | QA |
+| Bugbot review | bugbot | QA (on FAIL) |
 | UAT | business-analyst | Documentation |
-| Security | solution-architect | Documentation, DevOps |
+| Security | solution-architect + security-review | Documentation, DevOps |
 
 ## Role Playbooks
 
@@ -103,10 +167,14 @@ Copy from `.cursor/skills/boss/templates/<role>.md` to target path. Replace:
 
 ## Templates
 
-Role agent templates: `.cursor/skills/boss/templates/`
+- SDLC role agents: `.cursor/skills/boss/templates/`
+- Specialist agents: `.cursor/skills/boss/templates-specialists/`
 
 ## Related
 
-- [agents README](../agents/README.md)
-- [team README](../team/README.md)
+- [agents README](../../agents/README.md)
+- [team README](../../team/README.md)
+- [MCP catalog](../../mcps/README.md)
+- [skills-catalog](../skills-catalog/SKILL.md)
+- [mcp-routing](../mcp-routing/SKILL.md)
 - [epb-vision](../epb-vision/SKILL.md)

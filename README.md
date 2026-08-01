@@ -65,17 +65,20 @@ A reusable engineering platform handbook for building **any** enterprise applica
 
 ## SDLC Team (BOSS)
 
-This repo includes a **BOSS** (Build Orchestration Supervisory System) agent kit for end-to-end feature delivery across SDLC roles.
+This repo includes a **BOSS** (Build Orchestration Supervisory System) agent kit for end-to-end feature delivery — SDLC roles, specialist agents, MCP servers, and skills.
 
 ```text
 Use BOSS to deliver "my-feature"
 Use BOSS to init
+Use BOSS to mcp list
 ```
 
 | Resource | Description |
 |----------|-------------|
 | [Team README](.cursor/team/README.md) | Quick start, structure, bootstrap |
-| [Agents index](.cursor/agents/README.md) | BOSS + 9 role agents |
+| [Agents index](.cursor/agents/README.md) | BOSS + 9 SDLC roles + 6 specialists |
+| [MCP catalog](.cursor/mcps/README.md) | gbrain, GitHub, Linear, Slack, Sentry |
+| [Skills catalog](.cursor/skills/skills-catalog/SKILL.md) | Invocable project skills |
 | [EPB Vision skill](.cursor/skills/epb-vision/SKILL.md) | Platform vision for architecture work |
 
 Copy the kit to other projects: `.\.cursor\team\bootstrap.ps1 -TargetPath <path>`

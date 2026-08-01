@@ -2,8 +2,10 @@
 
 ## Status: In Progress | Complete
 ## EPB Vision: applied | not applicable
+## Skills Applied: {{skills-list}}
 ## Team: maintained by BOSS
 ## Agents: {{agent-list}}
+## MCPs: {{mcp-list}}
 
 ---
 
@@ -63,5 +65,25 @@
 - Deploy steps:
 - Tag:
 - Monitoring:
+
+## 12. MCP Tools Used
+
+| MCP | Tools called | Purpose |
+|-----|--------------|---------|
+| | | |
+
+## 13. Specialist Findings
+
+### bugbot
+
+**Result:** PASS | FAIL | N/A
+
+### security-review
+
+**Result:** PASS | FAIL | N/A
+
+### ci-investigator
+
+**Result:** RESOLVED | NEEDS_FIX | N/A
 
 ## Open Questions

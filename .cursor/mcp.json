@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "gbrain": {
+      "command": "gbrain",
+      "args": ["serve"]
+    },
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/"
+    }
+  }
+}

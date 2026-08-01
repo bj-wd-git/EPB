@@ -1,6 +1,13 @@
 ﻿{
-  "version": "1.0",
+  "version": "2.0",
   "maintained-by": "boss",
+  "mcps": {
+    "active": ["gbrain", "github"],
+    "catalog": ".cursor/mcps/catalog.json"
+  },
+  "skills": {
+    "catalog": ".cursor/skills/skills-catalog/SKILL.md"
+  },
   "teams": [
     {
       "slug": "notification-retry",
@@ -10,8 +17,11 @@
         "solution-architect",
         "backend-developer",
         "qa-engineer",
-        "documentation-versioning"
+        "documentation-versioning",
+        "security-review"
       ],
+      "mcps": ["gbrain", "github"],
+      "skills": ["epb-vision", "mcp-routing"],
       "teamPath": ".cursor/agents/teams/_example/",
       "report": ".cursor/team/reports/_example/notification-retry.md",
       "created": "2026-08-01"

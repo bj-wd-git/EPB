@@ -14,9 +14,15 @@ $paths = @(
     ".cursor/agents/boss.md",
     ".cursor/agents/README.md",
     ".cursor/agents/roles",
+    ".cursor/agents/specialists",
     ".cursor/skills/boss",
     ".cursor/skills/sdlc-roles",
+    ".cursor/skills/specialist-roles",
+    ".cursor/skills/mcp-routing",
+    ".cursor/skills/skills-catalog",
     ".cursor/skills/project-vision",
+    ".cursor/mcps",
+    ".cursor/mcp.json",
     ".cursor/team"
 )
 
@@ -38,9 +44,10 @@ if (-not (Test-Path $reports)) { New-Item -ItemType Directory -Force -Path $repo
 
 $registry = Join-Path $TargetRoot ".cursor/team/registry.json"
 if (-not (Test-Path $registry)) {
-    $emptyRegistry = '{"version":"1.0","maintained-by":"boss","teams":[]}'
+    $emptyRegistry = '{"version":"2.0","maintained-by":"boss","mcps":{"active":[],"catalog":".cursor/mcps/catalog.json"},"skills":{"catalog":".cursor/skills/skills-catalog/SKILL.md"},"teams":[]}'
     Set-Content -Path $registry -Value $emptyRegistry -Encoding UTF8
 }
 
 Write-Host "BOSS kit copied to $TargetRoot"
 Write-Host "Customize .cursor/skills/project-vision/SKILL.md for your project."
+Write-Host "Run 'Use BOSS to mcp list' to configure MCPs."

@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "maintained-by": "boss",
+  "mcps": [
+    {
+      "id": "gbrain",
+      "name": "gbrain",
+      "description": "Handbook and repo semantic/keyword search",
+      "when": ["handbook search", "ADR lookup", "chapter cross-reference", "EPB content"],
+      "template": ".cursor/mcps/templates/gbrain.json",
+      "auth": "none",
+      "default": true
+    },
+    {
+      "id": "github",
+      "name": "github",
+      "description": "Pull requests, issues, CI checks, releases",
+      "when": ["PR review", "CI failure", "release", "issue tracking"],
+      "template": ".cursor/mcps/templates/github.json",
+      "auth": "oauth-or-token",
+      "default": true
+    },
+    {
+      "id": "linear",
+      "name": "linear",
+      "description": "Sprint and issue linkage",
+      "when": ["sprint planning", "issue sync", "backlog"],
+      "template": ".cursor/mcps/templates/linear.json",
+      "auth": "api-key",
+      "default": false
+    },
+    {
+      "id": "slack",
+      "name": "slack",
+      "description": "Team notifications and context search",
+      "when": ["team comms", "incident context", "notifications"],
+      "template": ".cursor/mcps/templates/slack.json",
+      "auth": "oauth",
+      "default": false
+    },
+    {
+      "id": "sentry",
+      "name": "sentry",
+      "description": "Production error monitoring",
+      "when": ["production errors", "incident triage", "QA validation"],
+      "template": ".cursor/mcps/templates/sentry.json",
+      "auth": "api-token",
+      "default": false
+    }
+  ]
+}
