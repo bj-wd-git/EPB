@@ -1,3 +1,16 @@
+## [0.3.0] - 2026-08-02
+
+### Added
+
+- Appointment FE: slot picker, book flow, link to EMR
+- EMR FE: load notes/visits, save clinical notes, allergy alert badge
+- BFF: `GET /branches`, `GET /doctors`, fixed seed branch UUID
+- Dashboard quick UHID search → EMR
+
+### BOSS
+
+- `BOSS deliver hms-enterprise --full` complete — all gates PASS
+
 ## [0.2.0] - 2026-08-01
 
 ### Changed

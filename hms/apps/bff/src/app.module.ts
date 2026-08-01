@@ -5,6 +5,7 @@ import { HealthModule } from './health/health.module';
 import { PatientsModule } from './patients/patients.module';
 import { AppointmentsModule } from './appointments/appointments.module';
 import { EmrModule } from './emr/emr.module';
+import { ConfigModule as HmsConfigModule } from './config/config.module';
 import { Branch } from './entities/branch.entity';
 import { Patient } from './entities/patient.entity';
 import { UhidSequence } from './entities/uhid-sequence.entity';
@@ -35,6 +36,7 @@ import { DatabaseSeedService } from './common/database-seed.service';
     PatientsModule,
     AppointmentsModule,
     EmrModule,
+    HmsConfigModule,
   ],
   providers: [DatabaseSeedService],
 })

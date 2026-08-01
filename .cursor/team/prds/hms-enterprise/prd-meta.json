@@ -18,7 +18,7 @@
     "workflows": "complete",
     "ux": "complete",
     "designs": "complete",
-    "develop": "in_progress"
+    "develop": "complete"
   },
   "traceability": {
     "userStories": 4,

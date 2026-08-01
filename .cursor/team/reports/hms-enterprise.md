@@ -1,7 +1,7 @@
 # Feature Report: hms-enterprise
 
-## Status: In Progress
-## Pipeline: prd ✓ doc ✓ workflows ✓ ux ✓ designs ✓ develop (in progress)
+## Status: Complete
+## Pipeline: prd ✓ doc ✓ workflows ✓ ux ✓ designs ✓ develop ✓
 ## Mode: full
 ## EPB Vision: applied
 ## Skills Applied: epb-vision, mcp-routing, prd-developer
@@ -43,14 +43,15 @@
 
 ### Backend (backend-developer)
 
-- T-001–T-009 complete: ADRs, UHID module, domain store, BFF REST server with RBAC
-- Files: `hms/libs/common/src/`, `hms/apps/bff/src/server.js`
-- Phase 2 service stubs: `hms/services/README.md`
+- T-001–T-009 complete: NestJS BFF + TypeORM MySQL, UHID, patients, appointments, EMR, audit
+- Files: `hms/apps/bff/src/`, `hms/libs/common/src/`
+- Config: `GET /branches`, `GET /doctors` for FE
 
 ### Frontend (frontend-developer)
 
-- T-010: React shell with routes for all Phase 1 screens
-- File: `hms/frontend/src/App.tsx`
+- T-010 complete: Registration, Appointment, EMR wired to BFF API
+- T-011: Matches HTML designs in `designs/` — Tailwind, allergy badge, slot picker
+- Files: `hms/frontend/src/App.tsx`, `api.ts`, `config.ts`
 
 ## 6. Code Review (solution-architect)
 

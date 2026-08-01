@@ -1,34 +1,33 @@
 {
   "slug": "hms-enterprise",
   "mode": "full",
-  "phase": 5,
-  "phaseName": "designs",
-  "status": "in_progress",
+  "phase": 14,
+  "phaseName": "documentation-versioning",
+  "status": "complete",
   "pipeline": {
     "prd": "complete",
     "doc": "complete",
     "workflows": "complete",
     "ux": "complete",
     "designs": "complete",
-    "develop": "in_progress"
+    "develop": "complete"
   },
   "blockedOn": null,
   "blockedReason": null,
-  "lastUpdated": "2026-08-02T00:00:00.000Z",
+  "lastUpdated": "2026-08-02T00:30:00.000Z",
   "phasesCompleted": [
     "product-manager",
     "business-analyst",
     "solution-architect",
     "prd-developer",
     "ui-ux-designer",
-    "backend-developer"
-  ],
-  "phasesRemaining": [
+    "backend-developer",
     "frontend-developer",
     "qa-engineer",
     "security-review",
     "documentation-versioning"
   ],
+  "phasesRemaining": [],
   "report": ".cursor/team/reports/hms-enterprise.md",
   "prd": ".cursor/team/prds/hms-enterprise/dev-docs.md",
   "unattended": false
