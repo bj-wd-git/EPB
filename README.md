@@ -63,6 +63,23 @@ A reusable engineering platform handbook for building **any** enterprise applica
 - [Architecture Diagrams](Architecture-Diagrams/) · [Sequence Diagrams](Sequence-Diagrams/) · [Decision Records](Decision-Records/)
 - [Templates](Templates/) · [Checklists](Checklists/)
 
+## SDLC Team (BOSS)
+
+This repo includes a **BOSS** (Build Orchestration Supervisory System) agent kit for end-to-end feature delivery across SDLC roles.
+
+```text
+Use BOSS to deliver "my-feature"
+Use BOSS to init
+```
+
+| Resource | Description |
+|----------|-------------|
+| [Team README](.cursor/team/README.md) | Quick start, structure, bootstrap |
+| [Agents index](.cursor/agents/README.md) | BOSS + 9 role agents |
+| [EPB Vision skill](.cursor/skills/epb-vision/SKILL.md) | Platform vision for architecture work |
+
+Copy the kit to other projects: `.\.cursor\team\bootstrap.ps1 -TargetPath <path>`
+
 ---
 
 *192 chapters · Framework-agnostic · Domain-neutral*

@@ -206,6 +206,22 @@ EPB/
     └── CHAPTER-MANIFEST.json
 ```
 
+## SDLC Team (BOSS)
+
+When delivering EPB features via the SDLC team, BOSS invokes this skill for platform and architecture work.
+
+| Resource | Path |
+|----------|------|
+| BOSS agent | `.cursor/agents/boss.md` |
+| BOSS workflow | `.cursor/skills/boss/SKILL.md` |
+| Role playbooks | `.cursor/skills/sdlc-roles/` |
+| Team workspace | `.cursor/team/README.md` |
+| Feature reports | `.cursor/team/reports/<feature-slug>.md` |
+
+**Invoke:** `Use BOSS to deliver "<feature-name>"`
+
+For non-EPB projects, use [project-vision](../project-vision/SKILL.md) instead.
+
 ## Additional Resources
 
 - Full glossary, style rules, communication patterns, data flow: [reference.md](reference.md)
