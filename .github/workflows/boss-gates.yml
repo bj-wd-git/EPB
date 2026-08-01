@@ -34,5 +34,5 @@ jobs:
             node scripts/validate-prd.js --feature "${{ github.event.inputs.feature }}" || true
           else
             node scripts/validate-boss-gates.js --feature notification-retry --mode standard
-            node scripts/validate-prd.js --feature notification-retry
+            node scripts/validate-prd.js --feature notification-retry --score
           fi

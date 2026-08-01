@@ -174,7 +174,16 @@ T-001 → T-002 → T-003 → T-004 → T-005
 
 ---
 
-## 14. Open Questions
+## 14. Requirements Traceability Matrix
+
+| US | FR | Task | Test | AC |
+|----|----|------|------|-----|
+| US-001 | FR-001, FR-002, FR-003 | T-002, T-003 | TP-001, TP-002 | AC-001, AC-002, AC-003 |
+| US-002 | FR-001, FR-005 | T-002 | TP-003 | AC-004, AC-005 |
+
+---
+
+## 15. Open Questions
 
 | ID | Question | Blocks |
 |----|----------|--------|
@@ -182,7 +191,7 @@ T-001 → T-002 → T-003 → T-004 → T-005
 
 ---
 
-## Handoff
+## 16. Handoff
 
 ```text
 Use BOSS to deliver "notification-retry"

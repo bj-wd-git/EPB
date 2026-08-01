@@ -29,9 +29,15 @@ description: >-
 
 ### BOSS prd approve
 
-1. Run validate-prd.js — must pass
-2. Set `prd-meta.json` → `status: approved`, `approved: <date>`
+1. Run `node scripts/validate-prd.js --feature <slug> --score` — must pass with score ≥ 85
+2. Set `prd-meta.json` → `status: approved`, `approved: <date>`, `qualityScore: <score>`
 3. Confirm dev-docs status → `Ready for BOSS`
+
+### BOSS prd revise
+
+1. Set `prd-meta.json` → `status: draft`, bump `version` (semver patch)
+2. Re-run prd-developer with revision notes
+3. Re-validate before re-approve
 
 ### BOSS deliver with dev-docs
 

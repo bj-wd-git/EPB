@@ -187,3 +187,16 @@ _One paragraph: what, why, for whom, expected outcome._
 | Engineering | | | Pending |
 
 **Approved PRD unlocks:** `BOSS deliver {{slug}}`
+
+---
+
+## 18. Requirements Summary
+
+| Type | Count | IDs |
+|------|-------|-----|
+| User stories | | US-001… |
+| Functional reqs | | FR-001… |
+| Acceptance criteria | | AC-001… |
+| Open questions | | OQ-001… |
+
+_Quality target: validate-prd.js score ≥ 85_

@@ -32,7 +32,7 @@ Use BOSS to deliver "notification-retry"
 | [qa-engineer](roles/qa-engineer.md) | Testing, regression |
 | [documentation-versioning](roles/documentation-versioning.md) | Docs, CHANGELOG, semver |
 | [devops-engineer](roles/devops-engineer.md) | CI/CD, deploy, release |
-| [prd-developer](roles/prd-developer.md) | Full PRD + dev-docs for BOSS |
+| [prd-developer](roles/prd-developer.md) | Enterprise PRD + dev-docs + traceability (score ≥ 85) |
 
 ## Specialist Catalog
 

@@ -2,6 +2,10 @@
 
 Full-level PRD automation — produce **PRD** + **dev-docs** that BOSS `deliver` consumes.
 
+**Quality bar:** score ≥ 85/100 (`node scripts/validate-prd.js --feature <slug> --score`)
+
+Skill: [prd-developer](../../skills/prd-developer/SKILL.md) · Reference: [reference.md](../../skills/prd-developer/reference.md)
+
 ## Flow
 
 ```text

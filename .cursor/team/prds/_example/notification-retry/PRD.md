@@ -220,3 +220,16 @@ API only v1 — no UI. Future: admin screen in platform console.
 | Engineering | solution-architect | 2026-08-01 | Approved |
 
 **Approved PRD unlocks:** `BOSS deliver notification-retry`
+
+---
+
+## 18. Requirements Summary
+
+| Type | Count | IDs |
+|------|-------|-----|
+| User stories | 2 | US-001, US-002 |
+| Functional reqs | 5 | FR-001–FR-005 |
+| Acceptance criteria | 5 | AC-001–AC-005 |
+| Open questions | 1 | OQ-001 |
+
+_Quality target: validate-prd.js score ≥ 85_

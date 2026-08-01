@@ -91,8 +91,10 @@ Context:
 ### Step 2 — Validate
 
 ```bash
-node scripts/validate-prd.js --feature notification-retry
+node scripts/validate-prd.js --feature notification-retry --score
 ```
+
+Target: **≥ 85/100** before `BOSS prd approve`.
 
 ### Step 3 — Approve
 

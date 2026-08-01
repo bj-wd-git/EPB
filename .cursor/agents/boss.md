@@ -120,8 +120,9 @@ BOSS prd <slug> → PRD.md + dev-docs.md → BOSS prd approve <slug> → BOSS de
 |-----------|-----------|
 | `BOSS init` | Scaffold role + specialist catalogs, MCP defaults |
 | `BOSS sync` | Update all agents, refresh MCP health |
-| `BOSS prd <feature>` | Author PRD + dev-docs via prd-developer |
-| `BOSS prd approve <feature>` | Approve PRD after validation |
+| `BOSS prd <feature>` | Author PRD + dev-docs via prd-developer (score ≥ 85) |
+| `BOSS prd approve <feature>` | Approve PRD after validate-prd.js passes |
+| `BOSS prd revise <feature>` | Revise PRD — reset to draft, increment version |
 | `BOSS fix <desc>` | Fast inline fix + validation.json gate |
 | `BOSS deliver <feature>` | Read dev-docs → triage → compose team → deliver |
 | `BOSS deliver <feature> --full` | Full SDLC + all specialists and gates |

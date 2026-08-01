@@ -167,7 +167,17 @@ T-001 → T-002 → (T-003 + T-004 parallel) → T-005
 
 ---
 
-## 14. Open Questions
+## 14. Requirements Traceability Matrix
+
+| US | FR | Task | Test | AC |
+|----|----|------|------|-----|
+| US-001 | FR-001 | T-001 | TP-001 | AC-001 |
+
+_Every Must FR must map to ≥1 task and ≥1 test._
+
+---
+
+## 15. Open Questions
 
 | ID | Question | Blocks |
 |----|----------|--------|
@@ -175,7 +185,7 @@ T-001 → T-002 → (T-003 + T-004 parallel) → T-005
 
 ---
 
-## Handoff
+## 16. Handoff
 
 When this doc is **Ready for BOSS**:
 
