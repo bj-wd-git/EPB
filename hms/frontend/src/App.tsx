@@ -2,11 +2,16 @@ import { BrowserRouter, Routes, Route, Link, NavLink, useParams, useNavigate } f
 import { useState, useEffect, type FormEvent, type ReactNode } from 'react';
 import { registerPatient, bookAppointment, getEmr, addClinicalNote } from './api';
 import { SEED_BRANCH_ID, SEED_DOCTOR_ID, SLOTS } from './config';
+import { LabPage, RadiologyPage, PharmacyPage, BillingPage } from './Phase2Pages';
 
 const nav = [
   { path: '/', label: 'Dashboard' },
   { path: '/registration', label: 'Registration' },
   { path: '/appointments/new', label: 'Appointment' },
+  { path: '/lab', label: 'Lab' },
+  { path: '/radiology', label: 'Radiology' },
+  { path: '/pharmacy', label: 'Pharmacy' },
+  { path: '/billing', label: 'Billing' },
   { path: '/admin', label: 'Admin' },
 ];
 
@@ -53,6 +58,10 @@ export default function App() {
         <Route path="/registration" element={<Registration />} />
         <Route path="/appointments/new" element={<Appointment />} />
         <Route path="/patients/:uhid/emr" element={<Emr />} />
+        <Route path="/lab" element={<PageLayout title="Laboratory"><LabPage /></PageLayout>} />
+        <Route path="/radiology" element={<PageLayout title="Radiology"><RadiologyPage /></PageLayout>} />
+        <Route path="/pharmacy" element={<PageLayout title="Pharmacy"><PharmacyPage /></PageLayout>} />
+        <Route path="/billing" element={<PageLayout title="Billing"><BillingPage /></PageLayout>} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>

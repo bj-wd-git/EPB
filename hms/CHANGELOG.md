@@ -1,3 +1,15 @@
+## [0.4.0] - 2026-08-02
+
+### Added — Phase 2
+
+- **Laboratory:** test catalog, orders, results (NestJS + MySQL)
+- **Radiology:** imaging orders, report completion
+- **Pharmacy:** prescriptions, dispense workflow
+- **Billing:** OP invoices, pay flow
+- React pages: `/lab`, `/radiology`, `/pharmacy`, `/billing`
+- Tests: `hms/test/phase2.test.js` (4 scenarios)
+- RBAC: lab, pharmacist roles; extended doctor/clerk permissions
+
 ## [0.3.0] - 2026-08-02
 
 ### Added

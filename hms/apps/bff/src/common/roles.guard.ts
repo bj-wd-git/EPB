@@ -4,9 +4,11 @@ import { ROLES_KEY } from './roles.decorator';
 
 const ROLE_PERMISSIONS: Record<string, string[]> = {
   admin: ['*'],
-  clerk: ['patients:read', 'patients:write', 'appointments:write', 'emr:read'],
-  doctor: ['patients:read', 'emr:read', 'emr:write', 'appointments:read'],
-  nurse: ['patients:read', 'emr:read', 'emr:write'],
+  clerk: ['patients:read', 'patients:write', 'appointments:write', 'emr:read', 'billing:read', 'billing:write', 'lab:read'],
+  doctor: ['patients:read', 'emr:read', 'emr:write', 'appointments:read', 'lab:write', 'radiology:write', 'pharmacy:write', 'billing:read'],
+  nurse: ['patients:read', 'emr:read', 'emr:write', 'lab:read'],
+  lab: ['lab:read', 'lab:write'],
+  pharmacist: ['pharmacy:read', 'pharmacy:write'],
 };
 
 export function hasPermission(role: string, perm: string): boolean {
