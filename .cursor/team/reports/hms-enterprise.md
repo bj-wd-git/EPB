@@ -101,16 +101,17 @@
 
 ## 10. Documentation (documentation-versioning)
 
-- CHANGELOG: `hms/CHANGELOG.md` v0.8.0
+- CHANGELOG: `hms/CHANGELOG.md` v0.8.1
 - Phase READMEs: `hms-phase-2` … `hms-phase-6`
 - Services matrix: `hms/services/README.md`
-- Semver: 0.8.0
+- Semver: 0.8.1
 
 ## 11. Release (devops-engineer)
 
-- **Run:** `cd hms && docker compose up -d mysql && npm run bff:dev && npm run fe:dev`
+- **Run:** `cd hms && docker compose up -d mysql && cp .env.example .env && npm run bff:dev && npm run fe:dev`
+- **MySQL:** Docker maps host port **3307** (avoids conflict with existing :3306)
 - **Tests:** `npm test` (32/32)
-- **Branch:** `origin/hms` — ready for PR to `main`
+- **Branch:** `origin/hms` @ `77d8353` — ready for PR to `main`
 - **Tag:** `hms-v0.8.1` on merge to `main`
 
 ## 12. MCP Tools Used
