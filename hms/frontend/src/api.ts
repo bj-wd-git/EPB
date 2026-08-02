@@ -1,24 +1,23 @@
+import { authHeaders } from './auth';
+
 const API = '/api/v1';
 
-const clerkHeaders = { 'Content-Type': 'application/json', 'x-role': 'clerk', 'x-actor-id': 'fe-clerk' };
-const doctorHeaders = { 'Content-Type': 'application/json', 'x-role': 'doctor', 'x-actor-id': 'fe-doctor' };
-
 export async function registerPatient(body: Record<string, unknown>) {
-  const res = await fetch(`${API}/patients`, { method: 'POST', headers: clerkHeaders, body: JSON.stringify(body) });
+  const res = await fetch(`${API}/patients`, { method: 'POST', headers: authHeaders('clerk'), body: JSON.stringify(body) });
   const data = await res.json();
   if (!res.ok) throw Object.assign(new Error(data.message?.message || data.error || 'Registration failed'), { status: res.status, data });
   return data as { uhid: string; patientId: string; createdAt: string };
 }
 
 export async function bookAppointment(body: Record<string, unknown>) {
-  const res = await fetch(`${API}/appointments`, { method: 'POST', headers: clerkHeaders, body: JSON.stringify(body) });
+  const res = await fetch(`${API}/appointments`, { method: 'POST', headers: authHeaders('clerk'), body: JSON.stringify(body) });
   const data = await res.json();
   if (!res.ok) throw Object.assign(new Error(data.message?.message || data.error || 'Booking failed'), { status: res.status, data });
   return data as { appointmentId: string; status: string; queuePosition: number | null };
 }
 
 export async function getEmr(uhid: string) {
-  const res = await fetch(`${API}/patients/${encodeURIComponent(uhid)}/emr`, { headers: doctorHeaders });
+  const res = await fetch(`${API}/patients/${encodeURIComponent(uhid)}/emr`, { headers: authHeaders('doctor') });
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || data.error || 'EMR load failed');
   return data as {
@@ -30,10 +29,11 @@ export async function getEmr(uhid: string) {
 }
 
 export async function addClinicalNote(uhid: string, text: string) {
+  const headers = authHeaders('doctor');
   const res = await fetch(`${API}/patients/${encodeURIComponent(uhid)}/emr/notes`, {
     method: 'POST',
-    headers: doctorHeaders,
-    body: JSON.stringify({ authorId: 'fe-doctor', text }),
+    headers,
+    body: JSON.stringify({ authorId: headers['x-actor-id'], text }),
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || data.error || 'Note save failed');

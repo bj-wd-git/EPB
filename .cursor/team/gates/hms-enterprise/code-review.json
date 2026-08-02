@@ -1,14 +1,14 @@
 {
   "gate": "code-review",
   "result": "PASS",
-  "timestamp": "2026-08-01T18:15:00.000Z",
+  "timestamp": "2026-08-02T07:50:00.000Z",
   "runner": "solution-architect",
   "evidence": [
     "Decision-Records/ADR-010-hms-domain-service-boundaries.md",
     "Decision-Records/ADR-011-hms-uhid-generation.md",
-    "hms/apps/bff/src/server.js",
-    ".cursor/team/reports/hms-enterprise.md"
+    "hms/apps/bff/src/app.module.ts",
+    "hms/services/README.md"
   ],
-  "summary": "BFF follows ADR-001/007 — no business logic leakage; domain store separated; RBAC on endpoints",
+  "summary": "NestJS module boundaries per phase; domain store for unit tests; RBAC guard on all protected endpoints; consistent DTO validation",
   "findings": []
 }

@@ -1,13 +1,18 @@
 {
   "gate": "uat",
   "result": "PASS",
-  "timestamp": "2026-08-01T18:18:00.000Z",
+  "timestamp": "2026-08-02T07:50:00.000Z",
   "runner": "business-analyst",
   "evidence": [
     ".cursor/team/prds/hms-enterprise/PRD.md",
-    ".cursor/team/prds/hms-enterprise/dev-docs.md",
-    "hms/README.md"
+    "HMS.md",
+    "hms/services/README.md",
+    ".cursor/team/prds/hms-phase-2/README.md",
+    ".cursor/team/prds/hms-phase-3/README.md",
+    ".cursor/team/prds/hms-phase-4/README.md",
+    ".cursor/team/prds/hms-phase-5/README.md",
+    ".cursor/team/prds/hms-phase-6/README.md"
   ],
-  "summary": "US-001–US-004 acceptance criteria traceable to implementation; Phase 1 scope matches PRD",
+  "summary": "Full HMS.md module roadmap (Phases 1–6) traceable to live services and FE routes; 22 domain services live",
   "findings": []
 }

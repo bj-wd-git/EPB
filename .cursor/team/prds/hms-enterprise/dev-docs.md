@@ -18,7 +18,9 @@
 
 ## 1. Implementation Summary
 
-Scaffold enterprise HMS Phase 1 on EPB: NestJS monorepo with React FE, BFF (auth, validation, aggregation), and domain services (patient/registration, appointment, emr, doctor, configuration, audit). Deliver UHID registration, OP appointment booking with conflict detection, core EMR read/write, multi-hospital RBAC, and audit/notification integration. Phase 2+ module folders created as empty scaffolds per HMS.md.
+Enterprise HMS **Phases 1–6** on EPB: React + Tailwind + NestJS BFF + MySQL. Delivers full HMS.md module roadmap — registration, clinical, diagnostics, billing, inpatient, back-office, portals, compliance, security, and mobile sync APIs.
+
+**Develop stage (latest):** Staff login wired to `POST /security/sessions`; session stored in FE `auth.ts` and propagated to all API clients via `authHeaders()`.
 
 ---
 
@@ -236,18 +238,18 @@ Scaffold enterprise HMS Phase 1 on EPB: NestJS monorepo with React FE, BFF (auth
 
 ## 10. Acceptance Criteria (from PRD)
 
-- [ ] AC-001: Patient registration returns UHID in correct format
-- [ ] AC-002: Duplicate detection warns before create
-- [ ] AC-003: Registration audit event emitted
-- [ ] AC-004: Appointment books only on available slot
-- [ ] AC-005: Slot conflict returns 409
-- [ ] AC-006: Appointment triggers notification event
-- [ ] AC-007: EMR aggregate returns full clinical view
-- [ ] AC-008: Clinical note append with author/timestamp
-- [ ] AC-009: Unconfirmed allergies show warning
-- [ ] AC-010: Multi-hospital/branch setup works
-- [ ] AC-011: RBAC denies unauthorized access (403)
-- [ ] AC-012: Admin mutations in audit trail
+- [x] AC-001: Patient registration returns UHID in correct format
+- [x] AC-002: Duplicate detection warns before create
+- [x] AC-003: Registration audit event emitted
+- [x] AC-004: Appointment books only on available slot
+- [x] AC-005: Slot conflict returns 409
+- [x] AC-006: Appointment triggers notification event
+- [x] AC-007: EMR aggregate returns full clinical view
+- [x] AC-008: Clinical note append with author/timestamp
+- [x] AC-009: Unconfirmed allergies show warning
+- [x] AC-010: Multi-hospital/branch setup works
+- [x] AC-011: RBAC denies unauthorized access (403)
+- [x] AC-012: Admin mutations in audit trail
 
 ---
 
@@ -262,9 +264,11 @@ T-001 → T-002 → T-003 → T-004 → T-005 → (T-006 + T-007 parallel) → T
 
 ## 12. Out of Scope (reminder)
 
-- Lab, Radiology, Pharmacy, Billing, IPD, OT, Blood Bank, ICU
-- HL7/FHIR, PACS, payment gateway, patient portal, mobile apps
-- Telemedicine, AI/CDS, NABH compliance workflows
+- Production JWT/OAuth (session scaffold in Phase 6; role headers in dev)
+- Real SMS/push/WhatsApp gateways (communications queues messages)
+- Native iOS/Android binaries (mobile sync APIs only)
+- HL7/FHIR, PACS integrations
+- Telemedicine video (teleconsult booking only)
 
 ---
 

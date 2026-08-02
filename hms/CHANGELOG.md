@@ -1,3 +1,12 @@
+## [0.8.1] - 2026-08-02
+
+### Added — BOSS develop
+
+- Staff login wired to `POST /security/sessions` (Phase 6 security)
+- `auth.ts` session storage; all FE API clients use `authHeaders()`
+- NavBar shows logged-in role; logout support
+- README updated for Phases 1–6; appointment entity TS fix
+
 ## [0.8.0] - 2026-08-02
 
 ### Added — Phase 6

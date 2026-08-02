@@ -1,14 +1,17 @@
 {
   "gate": "qa",
   "result": "PASS",
-  "timestamp": "2026-08-02T00:30:00.000Z",
+  "timestamp": "2026-08-02T07:50:00.000Z",
   "runner": "qa-engineer",
   "evidence": [
     "hms/test/uhid.test.js",
     "hms/test/integration.test.js",
-    "hms/frontend/src/App.tsx",
-    "hms/frontend/src/api.ts"
+    "hms/test/phase2.test.js",
+    "hms/test/phase3.test.js",
+    "hms/test/phase4.test.js",
+    "hms/test/phase5.test.js",
+    "hms/test/phase6.test.js"
   ],
-  "summary": "TP-001–TP-005: UHID, register+book, conflict 409, EMR notes, FE wired to NestJS BFF",
+  "summary": "32/32 tests PASS — Phases 1–6 (UHID, integration, lab/radiology/pharmacy/billing, ward/IPD/OT/ER, insurance/HR/inventory, portals/comms, compliance/security/mobile)",
   "findings": []
 }

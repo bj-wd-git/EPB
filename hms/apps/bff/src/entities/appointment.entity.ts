@@ -27,5 +27,5 @@ export class Appointment {
   status: string;
 
   @Column({ nullable: true })
-  queuePosition: number;
+  queuePosition: number | null;
 }

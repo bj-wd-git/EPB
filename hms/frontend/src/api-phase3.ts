@@ -1,6 +1,4 @@
-const nurseHeaders = { 'Content-Type': 'application/json', 'x-role': 'nurse', 'x-actor-id': 'fe-nurse' };
-const doctorHeaders = { 'Content-Type': 'application/json', 'x-role': 'doctor', 'x-actor-id': 'fe-doctor' };
-const clerkHeaders = { 'Content-Type': 'application/json', 'x-role': 'clerk', 'x-actor-id': 'fe-clerk' };
+import { authHeaders } from './auth';
 
 async function apiPost(path: string, body: unknown, headers: Record<string, string>) {
   const res = await fetch(`/api/v1${path}`, { method: 'POST', headers, body: JSON.stringify(body) });
@@ -23,38 +21,42 @@ async function apiGet(path: string, headers: Record<string, string>) {
   return data;
 }
 
+const nurse = () => authHeaders('nurse');
+const doctor = () => authHeaders('doctor');
+const clerk = () => authHeaders('clerk');
+
 export function listWards() {
-  return apiGet('/wards', nurseHeaders);
+  return apiGet('/wards', nurse());
 }
 
 export function getOccupancy() {
-  return apiGet('/wards/occupancy', nurseHeaders);
+  return apiGet('/wards/occupancy', nurse());
 }
 
 export function listBeds(wardId: string) {
-  return apiGet(`/wards/${wardId}/beds`, nurseHeaders);
+  return apiGet(`/wards/${wardId}/beds`, nurse());
 }
 
 export function admitPatient(patientUhid: string, bedId: string) {
-  return apiPost('/ipd/admissions', { patientUhid, bedId }, nurseHeaders);
+  return apiPost('/ipd/admissions', { patientUhid, bedId }, nurse());
 }
 
 export function dischargePatient(admissionId: string) {
-  return apiPost(`/ipd/admissions/${admissionId}/discharge`, {}, nurseHeaders);
+  return apiPost(`/ipd/admissions/${admissionId}/discharge`, {}, nurse());
 }
 
 export function bookOt(patientUhid: string, surgeonId: string, procedure: string, scheduledAt: string) {
-  return apiPost('/ot/bookings', { patientUhid, surgeonId, procedure, scheduledAt }, doctorHeaders);
+  return apiPost('/ot/bookings', { patientUhid, surgeonId, procedure, scheduledAt }, doctor());
 }
 
 export function registerErVisit(input: { patientUhid?: string; walkInName?: string; chiefComplaint?: string }) {
-  return apiPost('/emergency/visits', input, clerkHeaders);
+  return apiPost('/emergency/visits', input, clerk());
 }
 
 export function triageErVisit(visitId: string, triageLevel: string) {
-  return apiPatch(`/emergency/visits/${visitId}/triage`, { triageLevel }, nurseHeaders);
+  return apiPatch(`/emergency/visits/${visitId}/triage`, { triageLevel }, nurse());
 }
 
 export function listActiveErVisits() {
-  return apiGet('/emergency/visits/active', nurseHeaders);
+  return apiGet('/emergency/visits/active', nurse());
 }

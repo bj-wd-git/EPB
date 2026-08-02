@@ -1,85 +1,78 @@
-const adminHeaders = { 'Content-Type': 'application/json', 'x-role': 'admin', 'x-actor-id': 'fe-admin' };
-const nurseHeaders = { 'Content-Type': 'application/json', 'x-role': 'nurse', 'x-actor-id': 'fe-nurse' };
-const patientHeaders = { 'Content-Type': 'application/json', 'x-role': 'patient', 'x-actor-id': 'fe-patient' };
-const doctorHeaders = { 'Content-Type': 'application/json', 'x-role': 'doctor', 'x-actor-id': 'fe-doctor' };
+import { authHeaders } from './auth';
 
-async function apiPost(path: string, body: unknown, headers: Record<string, string> = {}) {
-  const res = await fetch(`/api/v1${path}`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...headers }, body: JSON.stringify(body) });
+async function apiPost(path: string, body: unknown, role?: string) {
+  const res = await fetch(`/api/v1${path}`, { method: 'POST', headers: role ? authHeaders(role) : { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || data.error || 'Request failed');
   return data;
 }
 
-async function apiPatch(path: string, headers: Record<string, string>) {
-  const res = await fetch(`/api/v1${path}`, { method: 'PATCH', headers });
+async function apiPatch(path: string, role: string) {
+  const res = await fetch(`/api/v1${path}`, { method: 'PATCH', headers: authHeaders(role) });
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || data.error || 'Request failed');
   return data;
 }
 
-async function apiGet(path: string, headers: Record<string, string> = {}) {
-  const res = await fetch(`/api/v1${path}`, { headers });
+async function apiGet(path: string, role: string) {
+  const res = await fetch(`/api/v1${path}`, { headers: authHeaders(role) });
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || data.error || 'Request failed');
   return data;
 }
 
 export function reportIncident(title: string, description: string, severity: string) {
-  return apiPost('/compliance/incidents', { title, description, severity }, nurseHeaders);
+  return apiPost('/compliance/incidents', { title, description, severity }, 'nurse');
 }
 
 export function listIncidents() {
-  return apiGet('/compliance/incidents', adminHeaders);
+  return apiGet('/compliance/incidents', 'admin');
 }
 
 export function resolveIncident(id: string) {
-  return apiPatch(`/compliance/incidents/${id}/resolve`, adminHeaders);
+  return apiPatch(`/compliance/incidents/${id}/resolve`, 'admin');
 }
 
 export function recordConsent(patientUhid: string, formType: string) {
-  return apiPost('/compliance/consents', { patientUhid, formType }, nurseHeaders);
+  return apiPost('/compliance/consents', { patientUhid, formType }, 'nurse');
 }
 
 export function getComplianceSummary() {
-  return apiGet('/compliance/audit-summary', adminHeaders);
-}
-
-export function createSession(actorId: string, role: string) {
-  return apiPost('/security/sessions', { actorId, role });
+  return apiGet('/compliance/audit-summary', 'admin');
 }
 
 export function createApiKey(name: string, role: string) {
-  return apiPost('/security/api-keys', { name, role }, adminHeaders);
+  return apiPost('/security/api-keys', { name, role }, 'admin');
 }
 
 export function listApiKeys() {
-  return apiGet('/security/api-keys', adminHeaders);
+  return apiGet('/security/api-keys', 'admin');
 }
 
 export function listAccessLogs() {
-  return apiGet('/security/access-logs', adminHeaders);
+  return apiGet('/security/access-logs', 'admin');
 }
 
 export function getPhiAudit() {
-  return apiGet('/security/phi-audit', adminHeaders);
+  return apiGet('/security/phi-audit', 'admin');
 }
 
 export function registerDevice(userId: string, appType: string, platform: string, deviceToken: string) {
-  return apiPost('/mobile/devices', { userId, appType, platform, deviceToken }, patientHeaders);
+  return apiPost('/mobile/devices', { userId, appType, platform, deviceToken }, 'patient');
 }
 
 export function patientMobileSync(uhid: string) {
-  return apiGet(`/mobile/patient/${encodeURIComponent(uhid)}/sync`, patientHeaders);
+  return apiGet(`/mobile/patient/${encodeURIComponent(uhid)}/sync`, 'patient');
 }
 
 export function doctorMobileSync(doctorId: string) {
-  return apiGet(`/mobile/doctor/${doctorId}/sync`, doctorHeaders);
+  return apiGet(`/mobile/doctor/${doctorId}/sync`, 'doctor');
 }
 
 export function nurseMobileSync() {
-  return apiGet('/mobile/nurse/sync', nurseHeaders);
+  return apiGet('/mobile/nurse/sync', 'nurse');
 }
 
 export function listMobileDevices() {
-  return apiGet('/mobile/devices', adminHeaders);
+  return apiGet('/mobile/devices', 'admin');
 }

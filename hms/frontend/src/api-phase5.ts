@@ -1,6 +1,4 @@
-const patientHeaders = { 'Content-Type': 'application/json', 'x-role': 'patient', 'x-actor-id': 'fe-patient' };
-const doctorHeaders = { 'Content-Type': 'application/json', 'x-role': 'doctor', 'x-actor-id': 'fe-doctor' };
-const clerkHeaders = { 'Content-Type': 'application/json', 'x-role': 'clerk', 'x-actor-id': 'fe-clerk' };
+import { authHeaders } from './auth';
 
 async function apiPost(path: string, body: unknown, headers: Record<string, string>) {
   const res = await fetch(`/api/v1${path}`, { method: 'POST', headers, body: JSON.stringify(body) });
@@ -17,49 +15,49 @@ async function apiGet(path: string, headers: Record<string, string>) {
 }
 
 export function getPatientDashboard(uhid: string) {
-  return apiGet(`/portal/patient/${encodeURIComponent(uhid)}/dashboard`, patientHeaders);
+  return apiGet(`/portal/patient/${encodeURIComponent(uhid)}/dashboard`, authHeaders('patient'));
 }
 
 export function getPatientAppointments(uhid: string) {
-  return apiGet(`/portal/patient/${encodeURIComponent(uhid)}/appointments`, patientHeaders);
+  return apiGet(`/portal/patient/${encodeURIComponent(uhid)}/appointments`, authHeaders('patient'));
 }
 
 export function getPatientBills(uhid: string) {
-  return apiGet(`/portal/patient/${encodeURIComponent(uhid)}/bills`, patientHeaders);
+  return apiGet(`/portal/patient/${encodeURIComponent(uhid)}/bills`, authHeaders('patient'));
 }
 
 export function getPatientPrescriptions(uhid: string) {
-  return apiGet(`/portal/patient/${encodeURIComponent(uhid)}/prescriptions`, patientHeaders);
+  return apiGet(`/portal/patient/${encodeURIComponent(uhid)}/prescriptions`, authHeaders('patient'));
 }
 
 export function bookPortalAppointment(uhid: string, doctorId: string, slotStart: string, slotEnd: string) {
-  return apiPost(`/portal/patient/${encodeURIComponent(uhid)}/appointments`, { doctorId, slotStart, slotEnd }, patientHeaders);
+  return apiPost(`/portal/patient/${encodeURIComponent(uhid)}/appointments`, { doctorId, slotStart, slotEnd }, authHeaders('patient'));
 }
 
 export function bookTeleconsult(uhid: string, doctorId: string, scheduledAt: string) {
-  return apiPost(`/portal/patient/${encodeURIComponent(uhid)}/teleconsult`, { doctorId, scheduledAt }, patientHeaders);
+  return apiPost(`/portal/patient/${encodeURIComponent(uhid)}/teleconsult`, { doctorId, scheduledAt }, authHeaders('patient'));
 }
 
 export function getDoctorSchedule(doctorId: string) {
-  return apiGet(`/portal/doctor/${doctorId}/schedule`, doctorHeaders);
+  return apiGet(`/portal/doctor/${doctorId}/schedule`, authHeaders('doctor'));
 }
 
 export function getDoctorLabQueue(doctorId: string) {
-  return apiGet(`/portal/doctor/${doctorId}/lab-queue`, doctorHeaders);
+  return apiGet(`/portal/doctor/${doctorId}/lab-queue`, authHeaders('doctor'));
 }
 
 export function addDoctorNote(doctorId: string, patientUhid: string, text: string) {
-  return apiPost(`/portal/doctor/${doctorId}/notes`, { patientUhid, text }, doctorHeaders);
+  return apiPost(`/portal/doctor/${doctorId}/notes`, { patientUhid, text }, authHeaders('doctor'));
 }
 
 export function sendMessage(channel: string, recipient: string, body: string, subject?: string) {
-  return apiPost('/communications/messages', { channel, recipient, body, subject }, clerkHeaders);
+  return apiPost('/communications/messages', { channel, recipient, body, subject }, authHeaders('clerk'));
 }
 
 export function listMessages() {
-  return apiGet('/communications/messages', clerkHeaders);
+  return apiGet('/communications/messages', authHeaders('clerk'));
 }
 
 export function sendAppointmentReminder(appointmentId: string) {
-  return apiPost('/communications/reminders/appointment', { appointmentId }, clerkHeaders);
+  return apiPost('/communications/reminders/appointment', { appointmentId }, authHeaders('clerk'));
 }

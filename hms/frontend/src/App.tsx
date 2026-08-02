@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link, NavLink, useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect, type FormEvent, type ReactNode } from 'react';
 import { registerPatient, bookAppointment, getEmr, addClinicalNote } from './api';
+import { getSession, clearSession, createSession } from './auth';
 import { SEED_BRANCH_ID, SEED_DOCTOR_ID, SLOTS } from './config';
 import { LabPage, RadiologyPage, PharmacyPage, BillingPage } from './Phase2Pages';
 import { WardPage, IpdPage, OtPage, EmergencyPage } from './Phase3Pages';
@@ -34,24 +35,43 @@ const nav = [
 ];
 
 function NavBar() {
+  const [session, setSession] = useState(getSession());
+  useEffect(() => {
+    const onStorage = () => setSession(getSession());
+    window.addEventListener('storage', onStorage);
+    window.addEventListener('hms-session', onStorage);
+    return () => {
+      window.removeEventListener('storage', onStorage);
+      window.removeEventListener('hms-session', onStorage);
+    };
+  }, []);
   return (
     <nav className="border-b border-slate-200 bg-white shadow-sm">
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-3">
         <span className="text-lg font-bold text-primary-700">HMS</span>
-        <div className="flex gap-4">
+        <div className="flex gap-4 overflow-x-auto">
           {nav.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `text-sm font-medium transition ${isActive ? 'text-primary-600' : 'text-slate-600 hover:text-primary-600'}`
+                `whitespace-nowrap text-sm font-medium transition ${isActive ? 'text-primary-600' : 'text-slate-600 hover:text-primary-600'}`
               }
             >
               {item.label}
             </NavLink>
           ))}
         </div>
-        <Link to="/login" className="ml-auto text-sm text-slate-500 hover:text-primary-600">Login</Link>
+        <div className="ml-auto flex items-center gap-3">
+          {session ? (
+            <>
+              <span className="text-xs text-slate-500">{session.role} · {session.actorId}</span>
+              <button type="button" className="text-sm text-slate-500 hover:text-red-600" onClick={() => { clearSession(); setSession(null); }}>Logout</button>
+            </>
+          ) : (
+            <Link to="/login" className="text-sm text-slate-500 hover:text-primary-600">Login</Link>
+          )}
+        </div>
       </div>
     </nav>
   );
@@ -130,12 +150,39 @@ function Dashboard() {
 }
 
 function Login() {
+  const [actorId, setActorId] = useState('staff-1');
+  const [role, setRole] = useState('clerk');
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  async function onSubmit(e: FormEvent) {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    try {
+      await createSession(actorId, role);
+      navigate('/');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Login failed');
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <PageLayout title="Staff Login">
-      <div className="card max-w-md">
-        <p className="mb-4 text-sm text-slate-600">JWT auth — Phase 1.1. Use role headers in dev.</p>
-        <button className="btn-primary w-full">Sign in</button>
-      </div>
+      <form onSubmit={onSubmit} className="card max-w-md space-y-4">
+        <p className="text-sm text-slate-600">Sign in via Security sessions (Phase 6). Role is sent as BFF header.</p>
+        <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Actor ID" value={actorId} onChange={(e) => setActorId(e.target.value)} required />
+        <select className="w-full rounded-lg border px-3 py-2 text-sm" value={role} onChange={(e) => setRole(e.target.value)}>
+          {['clerk', 'doctor', 'nurse', 'admin', 'pharmacist', 'lab', 'hr', 'patient'].map((r) => (
+            <option key={r} value={r}>{r}</option>
+          ))}
+        </select>
+        {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
+        <button type="submit" className="btn-primary w-full" disabled={loading}>{loading ? 'Signing in…' : 'Sign in'}</button>
+      </form>
     </PageLayout>
   );
 }

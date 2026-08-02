@@ -1,9 +1,18 @@
 {
   "slug": "hms-enterprise",
   "mode": "full",
-  "phase": 14,
+  "phase": 20,
   "phaseName": "documentation-versioning",
   "status": "complete",
+  "hmsVersion": "0.8.1",
+  "hmsPhases": {
+    "1": "complete",
+    "2": "complete",
+    "3": "complete",
+    "4": "complete",
+    "5": "complete",
+    "6": "complete"
+  },
   "pipeline": {
     "prd": "complete",
     "doc": "complete",
@@ -14,7 +23,8 @@
   },
   "blockedOn": null,
   "blockedReason": null,
-  "lastUpdated": "2026-08-02T00:30:00.000Z",
+  "lastUpdated": "2026-08-02T08:00:00.000Z",
+  "developNote": "Staff login wired to security sessions; authHeaders() in all FE API clients",
   "phasesCompleted": [
     "product-manager",
     "business-analyst",
@@ -25,10 +35,17 @@
     "frontend-developer",
     "qa-engineer",
     "security-review",
-    "documentation-versioning"
+    "documentation-versioning",
+    "hms-phase-2",
+    "hms-phase-3",
+    "hms-phase-4",
+    "hms-phase-5",
+    "hms-phase-6"
   ],
   "phasesRemaining": [],
   "report": ".cursor/team/reports/hms-enterprise.md",
   "prd": ".cursor/team/prds/hms-enterprise/dev-docs.md",
+  "branch": "hms",
+  "commit": "ac19193",
   "unattended": false
 }

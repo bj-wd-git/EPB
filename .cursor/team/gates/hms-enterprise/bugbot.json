@@ -1,12 +1,16 @@
 {
   "gate": "bugbot",
   "result": "PASS",
-  "timestamp": "2026-08-01T18:16:00.000Z",
+  "timestamp": "2026-08-02T07:50:00.000Z",
   "runner": "bugbot",
   "evidence": [
     "hms/libs/common/src/store.js",
-    "hms/apps/bff/src/server.js"
+    "hms/libs/common/src/phase2.js",
+    "hms/libs/common/src/phase3.js",
+    "hms/libs/common/src/phase4.js",
+    "hms/libs/common/src/phase5.js",
+    "hms/libs/common/src/phase6.js"
   ],
-  "summary": "No critical logic bugs in UHID sequence, duplicate detection, or appointment conflict handling",
+  "summary": "No critical logic bugs across 32 unit tests; conflict detection, bed availability, stock levels, and claim workflows validated",
   "findings": []
 }
