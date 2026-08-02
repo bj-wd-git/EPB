@@ -23,8 +23,8 @@
   },
   "blockedOn": null,
   "blockedReason": null,
-  "lastUpdated": "2026-08-02T08:00:00.000Z",
-  "developNote": "Staff login wired to security sessions; authHeaders() in all FE API clients",
+  "lastUpdated": "2026-08-02T09:35:00.000Z",
+  "developNote": "Staff login + authHeaders(); MySQL on :3307; TypeORM nullable column types fixed",
   "phasesCompleted": [
     "product-manager",
     "business-analyst",
@@ -46,6 +46,6 @@
   "report": ".cursor/team/reports/hms-enterprise.md",
   "prd": ".cursor/team/prds/hms-enterprise/dev-docs.md",
   "branch": "hms",
-  "commit": "49d92fc",
+  "commit": "77d8353",
   "unattended": false
 }
