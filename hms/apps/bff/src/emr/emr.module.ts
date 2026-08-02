@@ -10,5 +10,6 @@ import { Appointment } from '../entities/appointment.entity';
   imports: [TypeOrmModule.forFeature([Patient, ClinicalNote, Appointment])],
   controllers: [EmrController],
   providers: [EmrService],
+  exports: [EmrService],
 })
 export class EmrModule {}

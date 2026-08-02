@@ -3,6 +3,10 @@ import { useState, useEffect, type FormEvent, type ReactNode } from 'react';
 import { registerPatient, bookAppointment, getEmr, addClinicalNote } from './api';
 import { SEED_BRANCH_ID, SEED_DOCTOR_ID, SLOTS } from './config';
 import { LabPage, RadiologyPage, PharmacyPage, BillingPage } from './Phase2Pages';
+import { WardPage, IpdPage, OtPage, EmergencyPage } from './Phase3Pages';
+import { InsurancePage, HrPage, InventoryPage, ReportsPage } from './Phase4Pages';
+import { PatientPortalPage, DoctorPortalPage, CommunicationsPage } from './Phase5Pages';
+import { CompliancePage, SecurityPage, MobileAppsPage } from './Phase6Pages';
 
 const nav = [
   { path: '/', label: 'Dashboard' },
@@ -12,6 +16,20 @@ const nav = [
   { path: '/radiology', label: 'Radiology' },
   { path: '/pharmacy', label: 'Pharmacy' },
   { path: '/billing', label: 'Billing' },
+  { path: '/ward', label: 'Ward' },
+  { path: '/ipd', label: 'IPD' },
+  { path: '/ot', label: 'OT' },
+  { path: '/emergency', label: 'Emergency' },
+  { path: '/insurance', label: 'Insurance' },
+  { path: '/hr', label: 'HR' },
+  { path: '/inventory', label: 'Inventory' },
+  { path: '/reports', label: 'Reports' },
+  { path: '/portal/patient', label: 'Patient Portal' },
+  { path: '/portal/doctor', label: 'Doctor Portal' },
+  { path: '/communications', label: 'Comms' },
+  { path: '/compliance', label: 'Compliance' },
+  { path: '/security', label: 'Security' },
+  { path: '/mobile', label: 'Mobile' },
   { path: '/admin', label: 'Admin' },
 ];
 
@@ -62,6 +80,20 @@ export default function App() {
         <Route path="/radiology" element={<PageLayout title="Radiology"><RadiologyPage /></PageLayout>} />
         <Route path="/pharmacy" element={<PageLayout title="Pharmacy"><PharmacyPage /></PageLayout>} />
         <Route path="/billing" element={<PageLayout title="Billing"><BillingPage /></PageLayout>} />
+        <Route path="/ward" element={<PageLayout title="Ward Management"><WardPage /></PageLayout>} />
+        <Route path="/ipd" element={<PageLayout title="Inpatient (IPD)"><IpdPage /></PageLayout>} />
+        <Route path="/ot" element={<PageLayout title="Operation Theatre"><OtPage /></PageLayout>} />
+        <Route path="/emergency" element={<PageLayout title="Emergency"><EmergencyPage /></PageLayout>} />
+        <Route path="/insurance" element={<PageLayout title="Insurance (TPA)"><InsurancePage /></PageLayout>} />
+        <Route path="/hr" element={<PageLayout title="Human Resources"><HrPage /></PageLayout>} />
+        <Route path="/inventory" element={<PageLayout title="Inventory"><InventoryPage /></PageLayout>} />
+        <Route path="/reports" element={<PageLayout title="Reports & Analytics"><ReportsPage /></PageLayout>} />
+        <Route path="/portal/patient" element={<PageLayout title="Patient Portal"><PatientPortalPage /></PageLayout>} />
+        <Route path="/portal/doctor" element={<PageLayout title="Doctor Portal"><DoctorPortalPage /></PageLayout>} />
+        <Route path="/communications" element={<PageLayout title="Communication Center"><CommunicationsPage /></PageLayout>} />
+        <Route path="/compliance" element={<PageLayout title="Compliance & Quality"><CompliancePage /></PageLayout>} />
+        <Route path="/security" element={<PageLayout title="Security"><SecurityPage /></PageLayout>} />
+        <Route path="/mobile" element={<PageLayout title="Mobile Apps"><MobileAppsPage /></PageLayout>} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>

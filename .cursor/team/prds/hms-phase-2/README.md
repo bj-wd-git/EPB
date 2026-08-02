@@ -23,4 +23,4 @@ Extends HMS Phase 1 with diagnostic and revenue modules per HMS.md roadmap.
 
 ## Next: Phase 3
 
-IPD, Ward, OT, Emergency (per PRD roadmap)
+IPD, Ward, OT, Emergency (per PRD roadmap) — **Done** → see `hms-phase-3/README.md`

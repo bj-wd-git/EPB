@@ -11,5 +11,6 @@ import { AuditService } from '../common/audit.service';
   imports: [TypeOrmModule.forFeature([Appointment, Patient, AuditEvent])],
   controllers: [AppointmentsController],
   providers: [AppointmentsService, AuditService],
+  exports: [AppointmentsService],
 })
 export class AppointmentsModule {}

@@ -1,3 +1,55 @@
+## [0.8.0] - 2026-08-02
+
+### Added — Phase 6
+
+- **Compliance:** incident reporting, consent forms, CAPA actions, NABH/JCI audit summary
+- **Security:** sessions, API key management, access logs, PHI audit trail
+- **Mobile:** device registration, patient/doctor/nurse sync bundles
+- React pages: `/compliance`, `/security`, `/mobile`
+- Tests: `hms/test/phase6.test.js` (6 scenarios)
+- RBAC: `compliance`, `security`, `mobile` permissions
+
+### Milestone
+
+HMS Phases 1–6 complete — full module roadmap from HMS.md implemented.
+
+## [0.7.0] - 2026-08-02
+
+### Added — Phase 5
+
+- **Patient Portal:** dashboard, online appointments, bills, prescriptions, lab reports, teleconsult booking
+- **Doctor Portal:** schedule view, lab review queue, clinical notes
+- **Communications:** SMS/email/WhatsApp/push messaging, appointment reminders
+- React pages: `/portal/patient`, `/portal/doctor`, `/communications`
+- Tests: `hms/test/phase5.test.js` (5 scenarios)
+- RBAC: `portal:patient`, `portal:doctor`, `communications` permissions; new `patient` role
+
+## [0.6.0] - 2026-08-02
+
+### Added — Phase 4
+
+- **Insurance:** policy registration, pre-auth, claims submission and settlement
+- **HR:** employee management, leave request and approval workflow
+- **Inventory:** item master, stock receive/consume, low-stock alerts
+- **Reports:** operational, financial, clinical, and inventory dashboards
+- React pages: `/insurance`, `/hr`, `/inventory`, `/reports`
+- Seed data: 3 employees, 3 inventory items (with low-stock demo)
+- Tests: `hms/test/phase4.test.js` (5 scenarios)
+- RBAC: insurance, hr, inventory, reports permissions; new `hr` role
+
+## [0.5.0] - 2026-08-02
+
+### Added — Phase 3
+
+- **Ward:** ward list, bed inventory, occupancy metrics
+- **IPD:** admit, discharge, bed transfer workflows
+- **OT:** surgery booking and completion
+- **Emergency:** ER registration (UHID or walk-in), triage levels 1–5
+- React pages: `/ward`, `/ipd`, `/ot`, `/emergency`
+- Seed data: General Ward (3 beds), ICU (2 beds)
+- Tests: `hms/test/phase3.test.js` (6 scenarios)
+- RBAC: ward, ipd, ot, emergency permissions for nurse, doctor, clerk
+
 ## [0.4.0] - 2026-08-02
 
 ### Added — Phase 2
