@@ -46,6 +46,6 @@
   "report": ".cursor/team/reports/hms-enterprise.md",
   "prd": ".cursor/team/prds/hms-enterprise/dev-docs.md",
   "branch": "hms",
-  "commit": "ac19193",
+  "commit": "49d92fc",
   "unattended": false
 }
