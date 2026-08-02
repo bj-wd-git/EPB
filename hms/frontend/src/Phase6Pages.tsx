@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import {
   reportIncident, listIncidents, resolveIncident, recordConsent, getComplianceSummary,
-  createSession, createApiKey, listApiKeys, listAccessLogs, getPhiAudit,
+  createApiKey, listApiKeys, listAccessLogs, getPhiAudit,
   registerDevice, patientMobileSync, doctorMobileSync, nurseMobileSync, listMobileDevices,
 } from './api-phase6';
+import { createSession } from './auth';
 import { SEED_DOCTOR_ID } from './config';
 
 type Incident = { id: string; title: string; severity: string; status: string };

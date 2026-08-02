@@ -22,7 +22,7 @@ React + Tailwind (frontend/)  →  NestJS BFF (apps/bff/)  →  MySQL 8
 
 ```bash
 cd hms
-docker compose up -d mysql    # skip if MySQL already on :3306
+docker compose up -d mysql    # HMS MySQL on :3307 (if :3306 taken by another instance)
 cp .env.example .env          # first time only
 npm install
 

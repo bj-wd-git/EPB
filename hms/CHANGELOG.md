@@ -6,6 +6,8 @@
 - `auth.ts` session storage; all FE API clients use `authHeaders()`
 - NavBar shows logged-in role; logout support
 - README updated for Phases 1–6; appointment entity TS fix
+- Docker MySQL mapped to host port **3307** (avoids conflict with existing :3306)
+- Phase 6 FE: `createSession` import fixed (`auth.ts` not `api-phase6`)
 
 ## [0.8.0] - 2026-08-02
 
