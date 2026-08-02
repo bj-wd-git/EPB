@@ -26,6 +26,6 @@ export class Appointment {
   @Column({ default: 'confirmed' })
   status: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'int', nullable: true })
   queuePosition: number | null;
 }

@@ -10,10 +10,10 @@ export class ErVisit {
   @JoinColumn({ name: 'patientId' })
   patient: Patient | null;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', length: 36, nullable: true })
   patientId: string | null;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   walkInName: string | null;
 
   @Column({ default: 'pending' })

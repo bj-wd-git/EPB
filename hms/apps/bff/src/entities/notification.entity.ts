@@ -11,7 +11,7 @@ export class Notification {
   @Column()
   recipient: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   subject: string | null;
 
   @Column({ type: 'text' })
@@ -20,7 +20,7 @@ export class Notification {
   @Column({ default: 'queued' })
   status: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', length: 36, nullable: true })
   referenceId: string | null;
 
   @CreateDateColumn()

@@ -14,7 +14,7 @@ export class AccessLog {
   @Column()
   path: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   ip: string | null;
 
   @CreateDateColumn()

@@ -8,6 +8,7 @@
 - README updated for Phases 1–6; appointment entity TS fix
 - Docker MySQL mapped to host port **3307** (avoids conflict with existing :3306)
 - Phase 6 FE: `createSession` import fixed (`auth.ts` not `api-phase6`)
+- TypeORM entity column types fixed for nullable fields (MySQL runtime)
 
 ## [0.8.0] - 2026-08-02
 

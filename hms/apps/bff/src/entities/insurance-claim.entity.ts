@@ -24,7 +24,7 @@ export class InsuranceClaim {
   @Column({ type: 'decimal', precision: 12, scale: 2 })
   amount: number;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', length: 36, nullable: true })
   invoiceId: string | null;
 
   @Column({ default: 'submitted' })

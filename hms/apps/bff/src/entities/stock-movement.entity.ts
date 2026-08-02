@@ -19,7 +19,7 @@ export class StockMovement {
   @Column()
   type: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   reference: string | null;
 
   @CreateDateColumn()
