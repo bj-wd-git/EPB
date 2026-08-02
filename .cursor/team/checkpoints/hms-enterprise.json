@@ -4,7 +4,7 @@
   "phase": 20,
   "phaseName": "documentation-versioning",
   "status": "complete",
-  "hmsVersion": "0.8.1",
+  "hmsVersion": "0.8.2",
   "hmsPhases": {
     "1": "complete",
     "2": "complete",
@@ -23,8 +23,8 @@
   },
   "blockedOn": null,
   "blockedReason": null,
-  "lastUpdated": "2026-08-02T09:35:00.000Z",
-  "developNote": "Staff login + authHeaders(); MySQL on :3307; TypeORM nullable column types fixed",
+  "lastUpdated": "2026-08-02T09:55:00.000Z",
+  "developNote": "Demo seed v0.8.2: 5 patients BRN000001-5 across phases; HMS_SEED_DEMO",
   "phasesCompleted": [
     "product-manager",
     "business-analyst",
@@ -40,12 +40,13 @@
     "hms-phase-3",
     "hms-phase-4",
     "hms-phase-5",
-    "hms-phase-6"
+    "hms-phase-6",
+    "hms-demo-seed"
   ],
   "phasesRemaining": [],
   "report": ".cursor/team/reports/hms-enterprise.md",
   "prd": ".cursor/team/prds/hms-enterprise/dev-docs.md",
   "branch": "hms",
-  "commit": "77d8353",
+  "commit": "a731d03",
   "unattended": false
 }

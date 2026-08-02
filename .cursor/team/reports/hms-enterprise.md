@@ -3,14 +3,14 @@
 ## Status: Complete
 ## Pipeline: prd ✓ doc ✓ workflows ✓ ux ✓ designs ✓ develop ✓
 ## Mode: full
-## Version: hms v0.8.1 (Phases 1–6)
+## Version: hms v0.8.2 (Phases 1–6 + demo seed)
 ## EPB Vision: applied
 ## Skills Applied: epb-vision, mcp-routing, prd-developer
 ## Team: maintained by BOSS
 ## Agents: product-manager, business-analyst, solution-architect, backend-developer, frontend-developer, qa-engineer, documentation-versioning, security-review, ui-ux-designer
 ## MCPs: gbrain, github
 ## PRD: approved (score 100/100)
-## Branch: `hms` @ `77d8353`
+## Branch: `hms` @ `a731d03`
 
 ---
 
@@ -101,18 +101,20 @@
 
 ## 10. Documentation (documentation-versioning)
 
-- CHANGELOG: `hms/CHANGELOG.md` v0.8.1
+- CHANGELOG: `hms/CHANGELOG.md` v0.8.2
 - Phase READMEs: `hms-phase-2` … `hms-phase-6`
 - Services matrix: `hms/services/README.md`
-- Semver: 0.8.1
+- Semver: 0.8.2
+- **Demo seed:** BFF `DatabaseSeedService` — 5 patients, multi-module clinical sample data (`HMS_SEED_DEMO`)
 
 ## 11. Release (devops-engineer)
 
 - **Run:** `cd hms && docker compose up -d mysql && cp .env.example .env && npm run bff:dev && npm run fe:dev`
 - **MySQL:** Docker maps host port **3307** (avoids conflict with existing :3306)
+- **Demo UHIDs:** `BRN000001`–`BRN000005` (Arjun Mehta … Rahul Nair)
 - **Tests:** `npm test` (32/32)
-- **Branch:** `origin/hms` @ `77d8353` — ready for PR to `main`
-- **Tag:** `hms-v0.8.1` on merge to `main`
+- **Branch:** `origin/hms` — ready for PR to `main`
+- **Tag:** `hms-v0.8.2` on merge to `main`
 
 ## 12. MCP Tools Used
 
