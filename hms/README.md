@@ -1,6 +1,6 @@
 # HMS — Hospital Management System
 
-**Version:** 0.8.1 · **Stack:** React + Tailwind · NestJS BFF · MySQL 8
+**Version:** 0.8.2 · **Stack:** React + Tailwind · NestJS BFF · MySQL 8
 
 Enterprise HMS on the EPB platform (ADR-001 BFF pattern). Full HMS.md roadmap — Phases 1–6.
 
@@ -31,6 +31,18 @@ npm run fe:dev                # http://localhost:5173
 ```
 
 Open http://localhost:5173 → **Login** (staff session via `/api/v1/security/sessions`).
+
+### Demo data
+
+On first BFF start (dev), MySQL is seeded with demo patients and clinical records across all phases.
+
+| Demo | Value |
+|------|--------|
+| Patients | `BRN000001` Arjun Mehta … `BRN000005` Rahul Nair |
+| Doctors | Dr. Smith, Dr. Ananya Rao |
+| Branches | Main Branch (`BRN`), East Clinic (`EST`) |
+| IPD | Vikram Singh admitted on bed A1 |
+| Disable | `HMS_SEED_DEMO=false` in `.env` |
 
 ## Modules (Phases 1–6)
 

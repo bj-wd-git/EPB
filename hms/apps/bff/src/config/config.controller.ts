@@ -17,6 +17,9 @@ export class ConfigController {
 
   @Get('doctors')
   doctors() {
-    return [{ id: SEED_DOCTOR_ID, name: 'Dr. Smith', department: 'General', branchId: SEED_BRANCH_ID }];
+    return [
+      { id: SEED_DOCTOR_ID, name: 'Dr. Smith', department: 'General', branchId: SEED_BRANCH_ID },
+      { id: '00000000-0000-0000-0000-000000000003', name: 'Dr. Ananya Rao', department: 'Surgery', branchId: SEED_BRANCH_ID },
+    ];
   }
 }

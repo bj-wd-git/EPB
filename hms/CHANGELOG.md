@@ -1,3 +1,14 @@
+## [0.8.2] - 2026-08-02
+
+### Added — Demo data (BOSS)
+
+- Rich MySQL demo seed across Phases 1–6 on BFF startup (`HMS_SEED_DEMO`)
+- 5 demo patients (`BRN000001`–`BRN000005`), 2 doctors, East Clinic branch
+- Sample appointments, EMR notes, lab/radiology/pharmacy/billing
+- IPD admission + OT booking + ER visits; insurance, HR leave, stock movements
+- Teleconsult, notifications, compliance CAPA, consents, mobile devices
+- Expanded catalogs: lab tests, wards/beds, employees, inventory SKUs
+
 ## [0.8.1] - 2026-08-02
 
 ### Added — BOSS develop
