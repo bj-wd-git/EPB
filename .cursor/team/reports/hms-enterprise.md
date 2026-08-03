@@ -10,7 +10,7 @@
 ## Agents: product-manager, business-analyst, solution-architect, backend-developer, frontend-developer, qa-engineer, documentation-versioning, security-review, ui-ux-designer
 ## MCPs: gbrain, github
 ## PRD: approved (score 100/100)
-## Branch: `hms` @ pending-ui
+## Branch: `hms` @ `6c6f90d`
 
 ---
 

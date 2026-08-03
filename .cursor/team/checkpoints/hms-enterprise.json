@@ -48,6 +48,6 @@
   "report": ".cursor/team/reports/hms-enterprise.md",
   "prd": ".cursor/team/prds/hms-enterprise/dev-docs.md",
   "branch": "hms",
-  "commit": "pending",
+  "commit": "6c6f90d",
   "unattended": false
 }
