@@ -25,9 +25,9 @@ export function InsurancePage() {
   return (
     <div className="card max-w-lg space-y-4">
       <h2 className="font-semibold">Insurance (TPA)</h2>
-      <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Patient UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
-      <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Provider" value={provider} onChange={(e) => setProvider(e.target.value)} />
-      <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Policy number" value={policyNumber} onChange={(e) => setPolicyNumber(e.target.value)} />
+      <input className="field" placeholder="Patient UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
+      <input className="field" placeholder="Provider" value={provider} onChange={(e) => setProvider(e.target.value)} />
+      <input className="field" placeholder="Policy number" value={policyNumber} onChange={(e) => setPolicyNumber(e.target.value)} />
       <button type="button" className="btn-primary" onClick={async () => {
         try {
           const r = await createPolicy(uhid, provider, policyNumber, 500000);
@@ -67,7 +67,7 @@ export function HrPage() {
   return (
     <div className="card max-w-lg space-y-4">
       <h2 className="font-semibold">HR & Leave</h2>
-      <select className="w-full rounded-lg border px-3 py-2 text-sm" value={selectedEmp} onChange={(e) => setSelectedEmp(e.target.value)}>
+      <select className="field" value={selectedEmp} onChange={(e) => setSelectedEmp(e.target.value)}>
         <option value="" disabled>Select employee</option>
         {employees.map((e) => <option key={e.id} value={e.id}>{e.employeeCode} — {e.firstName} {e.lastName} ({e.department})</option>)}
       </select>
@@ -99,11 +99,11 @@ export function InventoryPage() {
     <div className="space-y-4">
       <div className="card max-w-lg space-y-4">
         <h2 className="font-semibold">Inventory</h2>
-        <select className="w-full rounded-lg border px-3 py-2 text-sm" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
+        <select className="field" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
           <option value="" disabled>Select item</option>
           {items.map((i) => <option key={i.id} value={i.id}>{i.sku} — {i.name} (qty: {i.quantity})</option>)}
         </select>
-        <input type="number" className="w-full rounded-lg border px-3 py-2 text-sm" value={qty} onChange={(e) => setQty(Number(e.target.value))} />
+        <input type="number" className="field" value={qty} onChange={(e) => setQty(Number(e.target.value))} />
         <div className="flex gap-2">
           <button type="button" className="btn-primary" onClick={async () => {
             try { await receiveStock(selectedItem, qty); setMsg(`Received ${qty} units`); refresh(); } catch (e) { setMsg(e instanceof Error ? e.message : 'Error'); }

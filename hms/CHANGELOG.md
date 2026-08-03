@@ -1,3 +1,13 @@
+## [0.8.3] - 2026-08-02
+
+### Fixed — UI/UX (BOSS)
+
+- Replaced flat 22-link top nav with grouped clinical sidebar (desktop sticky / mobile drawer)
+- Branded full-bleed staff login; app chrome hidden on `/login`
+- Design tokens: Sora + Source Sans 3, navy primary, clinical green, soft surface wash
+- Dashboard loads live demo stats (patients, beds, ER, labs) + shortcuts
+- Shared `.field` / page header patterns; UX IA updated in `ux-spec.md`
+
 ## [0.8.2] - 2026-08-02
 
 ### Added — Demo data (BOSS)

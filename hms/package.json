@@ -1,6 +1,6 @@
 {
   "name": "hms-enterprise",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "private": true,
   "description": "Hospital Management System — React + Tailwind + NestJS + MySQL",
   "workspaces": [

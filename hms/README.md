@@ -1,6 +1,6 @@
 # HMS — Hospital Management System
 
-**Version:** 0.8.2 · **Stack:** React + Tailwind · NestJS BFF · MySQL 8
+**Version:** 0.8.3 · **Stack:** React + Tailwind · NestJS BFF · MySQL 8
 
 Enterprise HMS on the EPB platform (ADR-001 BFF pattern). Full HMS.md roadmap — Phases 1–6.
 

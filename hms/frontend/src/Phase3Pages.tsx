@@ -84,12 +84,12 @@ export function IpdPage() {
   return (
     <div className="card max-w-lg space-y-4">
       <h2 className="font-semibold">Inpatient Admission</h2>
-      <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Patient UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
-      <select className="w-full rounded-lg border px-3 py-2 text-sm" onChange={(e) => loadBeds(e.target.value)} defaultValue="">
+      <input className="field" placeholder="Patient UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
+      <select className="field" onChange={(e) => loadBeds(e.target.value)} defaultValue="">
         <option value="" disabled>Select ward</option>
         {wards.map((w) => <option key={w.id} value={w.id}>{w.name}</option>)}
       </select>
-      <select className="w-full rounded-lg border px-3 py-2 text-sm" value={bedId} onChange={(e) => setBedId(e.target.value)}>
+      <select className="field" value={bedId} onChange={(e) => setBedId(e.target.value)}>
         <option value="" disabled>Select bed</option>
         {beds.filter((b) => b.status === 'available').map((b) => <option key={b.id} value={b.id}>{b.code}</option>)}
       </select>
@@ -121,8 +121,8 @@ export function OtPage() {
   return (
     <div className="card max-w-lg space-y-4">
       <h2 className="font-semibold">Operation Theatre</h2>
-      <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Patient UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
-      <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Procedure" value={procedure} onChange={(e) => setProcedure(e.target.value)} />
+      <input className="field" placeholder="Patient UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
+      <input className="field" placeholder="Procedure" value={procedure} onChange={(e) => setProcedure(e.target.value)} />
       <button type="button" className="btn-primary" onClick={async () => {
         try {
           const r = await bookOt(uhid, SEED_DOCTOR_ID, procedure, new Date(Date.now() + 86400000).toISOString());
@@ -151,9 +151,9 @@ export function EmergencyPage() {
     <div className="space-y-4">
       <div className="card max-w-lg space-y-4">
         <h2 className="font-semibold">Emergency Registration</h2>
-        <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Patient UHID (optional)" value={uhid} onChange={(e) => setUhid(e.target.value)} />
-        <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Walk-in name (if no UHID)" value={walkIn} onChange={(e) => setWalkIn(e.target.value)} />
-        <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Chief complaint" value={complaint} onChange={(e) => setComplaint(e.target.value)} />
+        <input className="field" placeholder="Patient UHID (optional)" value={uhid} onChange={(e) => setUhid(e.target.value)} />
+        <input className="field" placeholder="Walk-in name (if no UHID)" value={walkIn} onChange={(e) => setWalkIn(e.target.value)} />
+        <input className="field" placeholder="Chief complaint" value={complaint} onChange={(e) => setComplaint(e.target.value)} />
         <button type="button" className="btn-primary" onClick={async () => {
           try {
             const r = await registerErVisit({ patientUhid: uhid || undefined, walkInName: walkIn || undefined, chiefComplaint: complaint });

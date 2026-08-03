@@ -4,26 +4,36 @@
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard — HMS</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Source Sans 3', sans-serif; background: #f4f7fb; color: #0f2744; }
+    h1, strong { font-family: Sora, sans-serif; }
+  </style>
 </head>
-<body class="bg-slate-50">
-  <nav class="border-b bg-white px-6 py-3 shadow-sm flex gap-6 items-center">
-    <span class="font-bold text-blue-700">HMS</span>
-    <a href="#" class="text-sm font-medium text-blue-600">Dashboard</a>
-    <a href="registration.html" class="text-sm text-slate-600 hover:text-blue-600">Registration</a>
-    <a href="appointment.html" class="text-sm text-slate-600 hover:text-blue-600">Appointment</a>
-    <a href="admin.html" class="text-sm text-slate-600 hover:text-blue-600">Admin</a>
-  </nav>
-  <main class="mx-auto max-w-6xl p-6">
-    <h1 class="mb-6 text-2xl font-bold text-slate-800">Dashboard</h1>
-    <div class="mb-8 grid gap-4 sm:grid-cols-3">
-      <div class="rounded-xl border bg-white p-6 shadow-sm"><p class="text-sm text-slate-500">Today's Appointments</p><p class="text-3xl font-bold text-blue-600">24</p></div>
-      <div class="rounded-xl border bg-white p-6 shadow-sm"><p class="text-sm text-slate-500">Queue Waiting</p><p class="text-3xl font-bold text-green-600">7</p></div>
-      <div class="rounded-xl border bg-white p-6 shadow-sm"><p class="text-sm text-slate-500">New Registrations</p><p class="text-3xl font-bold text-slate-800">12</p></div>
-    </div>
-    <div class="rounded-xl border bg-white p-6 shadow-sm">
-      <h2 class="mb-4 font-semibold">Quick patient search</h2>
-      <input class="w-full max-w-md rounded-lg border px-3 py-2 text-sm" placeholder="UHID, name, or phone..." aria-label="Patient search" />
-    </div>
-  </main>
+<body>
+  <div class="min-h-screen lg:grid lg:grid-cols-[272px_1fr]">
+    <aside class="bg-[#0c2138] text-[#c5d4e4] p-4">
+      <div class="flex items-center gap-3 mb-8 text-white">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-[#2f6fba] to-[#0f7a5f] font-bold">H</span>
+        <div><strong class="block">HMS</strong><small class="opacity-70">Clinical workspace</small></div>
+      </div>
+      <p class="text-[10px] uppercase tracking-widest opacity-50 mb-2">Front desk</p>
+      <a class="block rounded-lg bg-[#2f6fba]/50 px-3 py-2 text-white text-sm mb-1" href="#">Dashboard</a>
+      <a class="block rounded-lg px-3 py-2 text-sm hover:bg-white/5" href="registration.html">Registration</a>
+      <a class="block rounded-lg px-3 py-2 text-sm hover:bg-white/5" href="appointment.html">Appointment</a>
+    </aside>
+    <main class="p-6 max-w-5xl">
+      <h1 class="mb-6 text-2xl font-bold tracking-tight">Dashboard</h1>
+      <div class="mb-8 grid gap-4 sm:grid-cols-3">
+        <div class="rounded-2xl border border-[#d7e0ea] bg-white p-6 shadow-sm"><p class="text-sm text-[#5b6b7c]">Registered patients</p><p class="mt-1 text-3xl font-bold text-[#1b4f8c]">5</p></div>
+        <div class="rounded-2xl border border-[#d7e0ea] bg-white p-6 shadow-sm"><p class="text-sm text-[#5b6b7c]">Bed occupancy</p><p class="mt-1 text-3xl font-bold text-[#0f7a5f]">11%</p></div>
+        <div class="rounded-2xl border border-[#d7e0ea] bg-white p-6 shadow-sm"><p class="text-sm text-[#5b6b7c]">Active ER · pending labs</p><p class="mt-1 text-3xl font-bold">2 · 1</p></div>
+      </div>
+      <div class="rounded-2xl border border-[#d7e0ea] bg-white p-6 shadow-sm">
+        <h2 class="mb-3 font-semibold">Quick patient search</h2>
+        <input class="w-full max-w-md rounded-xl border border-[#d7e0ea] px-3 py-2.5 text-sm" placeholder="UHID e.g. BRN000001" aria-label="Patient search" />
+      </div>
+    </main>
+  </div>
 </body>
 </html>

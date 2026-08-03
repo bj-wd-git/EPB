@@ -46,13 +46,23 @@
 ## 3. Information Architecture
 
 ```text
-/login
-/                 Dashboard
-/registration     Patient Registration
-/appointments/new Book Appointment
-/patients/:uhid/emr  EMR
-/admin            Administration
+/login                 Staff sign-in (no chrome)
+/                      Dashboard (live ops snapshot)
+── Front desk ──────────
+/registration          Patient Registration
+/appointments/new      Book Appointment
+/patients/:uhid/emr    EMR
+── Diagnostics ─────────
+/lab /radiology /pharmacy /billing
+── Inpatient ───────────
+/ward /ipd /ot /emergency
+── Operations ──────────
+/insurance /hr /inventory /reports
+── Portals & quality ───
+/portal/* /communications /compliance /security /mobile /admin
 ```
+
+**Nav pattern:** Collapsible sidebar groups (desktop sticky; mobile drawer). Login is a full-bleed branded screen without the app chrome.
 
 ---
 
@@ -129,14 +139,16 @@
 
 ---
 
-## 6. Design Tokens (Tailwind)
+## 6. Design Tokens (Tailwind / CSS)
 
-| Token | Class | Usage |
+| Token | Value | Usage |
 |-------|-------|-------|
-| primary | `blue-600/700` | CTAs, nav active |
-| clinical | `green-600` | Success, queue OK |
-| alert | `amber-100/800` | Allergy warning |
-| surface | `slate-50`, `white` | Background, cards |
+| primary | `#1b4f8c` / `primary-600` | CTAs, active nav |
+| clinical | `#0f7a5f` / `clinical-600` | Success, occupancy OK |
+| alert | amber-100/800 | Allergy warning |
+| surface | `#f4f7fb` + soft radial wash | App background |
+| sidebar | `#0c2138` | Navigation chrome |
+| type | Sora (display) · Source Sans 3 (body) | Hierarchy |
 
 ---
 

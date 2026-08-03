@@ -29,7 +29,7 @@ export function PatientPortalPage() {
     <div className="space-y-4">
       <div className="card max-w-lg space-y-4">
         <h2 className="font-semibold">Patient Portal</h2>
-        <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Your UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
+        <input className="field" placeholder="Your UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
         <button type="button" className="btn-primary" onClick={load}>Load Dashboard</button>
       </div>
       {dash && (
@@ -111,8 +111,8 @@ export function DoctorPortalPage() {
         </div>
         <div className="card space-y-3">
           <h2 className="font-semibold">Add Clinical Note</h2>
-          <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Patient UHID" value={noteUhid} onChange={(e) => setNoteUhid(e.target.value)} />
-          <textarea className="w-full rounded-lg border px-3 py-2 text-sm" rows={2} placeholder="Note..." value={noteText} onChange={(e) => setNoteText(e.target.value)} />
+          <input className="field" placeholder="Patient UHID" value={noteUhid} onChange={(e) => setNoteUhid(e.target.value)} />
+          <textarea className="field" rows={2} placeholder="Note..." value={noteText} onChange={(e) => setNoteText(e.target.value)} />
           <button type="button" className="btn-primary" onClick={async () => {
             try {
               await addDoctorNote(SEED_DOCTOR_ID, noteUhid, noteText);
@@ -145,11 +145,11 @@ export function CommunicationsPage() {
     <div className="grid gap-4 lg:grid-cols-2">
       <div className="card space-y-4">
         <h2 className="font-semibold">Send Message</h2>
-        <select className="w-full rounded-lg border px-3 py-2 text-sm" value={channel} onChange={(e) => setChannel(e.target.value)}>
+        <select className="field" value={channel} onChange={(e) => setChannel(e.target.value)}>
           {['sms', 'email', 'whatsapp', 'push'].map((c) => <option key={c} value={c}>{c.toUpperCase()}</option>)}
         </select>
-        <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Recipient" value={recipient} onChange={(e) => setRecipient(e.target.value)} />
-        <textarea className="w-full rounded-lg border px-3 py-2 text-sm" rows={3} placeholder="Message body" value={body} onChange={(e) => setBody(e.target.value)} />
+        <input className="field" placeholder="Recipient" value={recipient} onChange={(e) => setRecipient(e.target.value)} />
+        <textarea className="field" rows={3} placeholder="Message body" value={body} onChange={(e) => setBody(e.target.value)} />
         <button type="button" className="btn-primary" onClick={async () => {
           try {
             const r = await sendMessage(channel, recipient, body);
@@ -159,7 +159,7 @@ export function CommunicationsPage() {
         }}>Send</button>
         <hr />
         <h3 className="text-sm font-medium">Appointment Reminder</h3>
-        <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Appointment ID" value={appointmentId} onChange={(e) => setAppointmentId(e.target.value)} />
+        <input className="field" placeholder="Appointment ID" value={appointmentId} onChange={(e) => setAppointmentId(e.target.value)} />
         <button type="button" className="rounded-lg border px-4 py-2 text-sm hover:bg-slate-50" onClick={async () => {
           try {
             const r = await sendAppointmentReminder(appointmentId);

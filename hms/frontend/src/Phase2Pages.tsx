@@ -7,7 +7,7 @@ export function LabPage() {
   return (
     <div className="card max-w-lg space-y-4">
       <h2 className="font-semibold text-slate-800">Laboratory</h2>
-      <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Patient UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
+      <input className="field" placeholder="Patient UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
       <button type="button" className="btn-primary" onClick={async () => {
         try {
           const tests = await listLabTests();
@@ -26,7 +26,7 @@ export function RadiologyPage() {
   return (
     <div className="card max-w-lg space-y-4">
       <h2 className="font-semibold">Radiology</h2>
-      <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
+      <input className="field" placeholder="UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
       <button type="button" className="btn-primary" onClick={async () => {
         try {
           const r = await orderRadiology(uhid, 'xray');
@@ -44,7 +44,7 @@ export function PharmacyPage() {
   return (
     <div className="card max-w-lg space-y-4">
       <h2 className="font-semibold">Pharmacy</h2>
-      <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
+      <input className="field" placeholder="UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
       <button type="button" className="btn-primary" onClick={async () => {
         try {
           const r = await prescribe(uhid, [{ drug: 'Paracetamol', dose: '500mg', frequency: 'TDS' }]);
@@ -62,7 +62,7 @@ export function BillingPage() {
   return (
     <div className="card max-w-lg space-y-4">
       <h2 className="font-semibold">Billing</h2>
-      <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
+      <input className="field" placeholder="UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
       <button type="button" className="btn-primary" onClick={async () => {
         try {
           const inv = await createInvoice(uhid, [

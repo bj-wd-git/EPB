@@ -43,8 +43,8 @@ export function CompliancePage() {
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="card space-y-4">
           <h2 className="font-semibold">Report Incident</h2>
-          <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-          <textarea className="w-full rounded-lg border px-3 py-2 text-sm" rows={2} placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
+          <input className="field" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+          <textarea className="field" rows={2} placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
           <button type="button" className="btn-primary" onClick={async () => {
             try {
               const r = await reportIncident(title, description, 'medium');
@@ -54,7 +54,7 @@ export function CompliancePage() {
           }}>Report</button>
           <hr />
           <h3 className="text-sm font-medium">Record Consent</h3>
-          <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Patient UHID" value={consentUhid} onChange={(e) => setConsentUhid(e.target.value)} />
+          <input className="field" placeholder="Patient UHID" value={consentUhid} onChange={(e) => setConsentUhid(e.target.value)} />
           <button type="button" className="rounded-lg border px-4 py-2 text-sm hover:bg-slate-50" onClick={async () => {
             try {
               const r = await recordConsent(consentUhid, 'treatment');
@@ -139,7 +139,7 @@ export function MobileAppsPage() {
     <div className="space-y-4">
       <div className="card max-w-lg space-y-4">
         <h2 className="font-semibold">Mobile App Sync</h2>
-        <input className="w-full rounded-lg border px-3 py-2 text-sm" placeholder="Patient UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
+        <input className="field" placeholder="Patient UHID" value={uhid} onChange={(e) => setUhid(e.target.value)} />
         <div className="flex flex-wrap gap-2">
           <button type="button" className="btn-primary" onClick={async () => {
             try {

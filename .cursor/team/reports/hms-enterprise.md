@@ -3,14 +3,14 @@
 ## Status: Complete
 ## Pipeline: prd ✓ doc ✓ workflows ✓ ux ✓ designs ✓ develop ✓
 ## Mode: full
-## Version: hms v0.8.2 (Phases 1–6 + demo seed)
+## Version: hms v0.8.3 (Phases 1–6 + demo seed + UI shell)
 ## EPB Vision: applied
 ## Skills Applied: epb-vision, mcp-routing, prd-developer
 ## Team: maintained by BOSS
 ## Agents: product-manager, business-analyst, solution-architect, backend-developer, frontend-developer, qa-engineer, documentation-versioning, security-review, ui-ux-designer
 ## MCPs: gbrain, github
 ## PRD: approved (score 100/100)
-## Branch: `hms` @ `a731d03`
+## Branch: `hms` @ pending-ui
 
 ---
 
@@ -65,8 +65,9 @@
 
 ### Frontend (frontend-developer)
 
-- `App.tsx` — full nav + routes for all phases
+- `App.tsx` + `layout.tsx` — grouped sidebar shell, branded login, live dashboard
 - API clients: `api.ts`, `api-phase2.ts` … `api-phase6.ts`
+- Design tokens: Sora / Source Sans 3 · navy primary · clinical green (ux-spec §6)
 - Wired to BFF via Vite proxy
 
 ## 6. Code Review (solution-architect)
